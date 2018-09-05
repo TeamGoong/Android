@@ -6,19 +6,96 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.main.MainActivity">
+    <!--앱 바-->
+<include
+    android:id="@+id/appbar_main"
+    android:layout_height="60dp"
+    android:layout_width="match_parent"
+    layout="@layout/actionbar_main"/>
 
-    <!--커스텀 액션바-->
+    <!--1. 하단 메뉴-->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_below="@id/appbar_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- 1-1.예매 하기/예매 확인 -->
     <RelativeLayout
         android:gravity="center"
-        android:background="@color/maincolor"
+        android:background="#FAECEC"
+        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="60dp">
-        <TextView
-            android:textColor="#ffffff"
-            android:text="짝궁"
-            android:textSize="20dp"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="vertical"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/btn_ticket"
+                android:src="@mipmap/ic_launcher_round"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginTop="15dp"
+                android:text="예매 하기"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginTop="10dp"
+                android:text="예매 확인"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
     </RelativeLayout>
 
+
+        <!-- 1-2. 궁궐 정보/궁궐 투어 -->
+    <RelativeLayout
+       android:gravity="center"
+       android:background="#F1F1F1"
+       android:layout_weight="1"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/btn_tour"
+                android:src="@mipmap/ic_launcher_round"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginTop="15dp"
+                android:text="궁궐 정보"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginTop="10dp"
+                android:text="궁궐 투어"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    </LinearLayout>
+
+    <!-- 2. 외국인 메뉴 -->
+    <RelativeLayout
+        android:gravity="center"
+        android:background="#f39384"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:text="외국인이면 클릭"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
 </RelativeLayout>
