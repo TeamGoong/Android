@@ -1,15 +1,15 @@
-package com.example.jinyoungkim.teamgung.ui.splash;
+package com.example.jinyoungkim.teamgung.ui.main;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.jinyoungkim.teamgung.R;
 
-public class SplashActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
+        setContentView(R.layout.activity_main);
     }
 }
