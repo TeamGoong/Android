@@ -1,7 +1,5 @@
-package com.example.jinyoungkim.teamgung.ui.gung_ticket;
+package com.example.jinyoungkim.teamgung.ui.gung_tour;
 
-import android.annotation.SuppressLint;
-import android.app.ActionBar;
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -10,60 +8,55 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 
 import com.example.jinyoungkim.teamgung.R;
-import com.example.jinyoungkim.teamgung.ui.gung_ticket.confirm_reservation.ConfirmReservationFragment;
-import com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.MakeReservationFragment;
-import com.example.jinyoungkim.teamgung.ui.gung_tour.TourMainActivity;
+import com.example.jinyoungkim.teamgung.ui.gung_ticket.TicketMainActivity;
+import com.example.jinyoungkim.teamgung.ui.gung_tour.going_palace.GoingPalaceFragment;
+import com.example.jinyoungkim.teamgung.ui.gung_tour.learning_palace.LearningPalaceFragment;
+import com.example.jinyoungkim.teamgung.ui.gung_tour.looking_palace.LookingPalaceFragment;
 
-// 예매하기, 예매 확인 메인 액티비티
+// 궁궐 정보, 궁궐 투어 메인 액티비티
 
-public class TicketMainActivity extends AppCompatActivity {
+public class TourMainActivity extends AppCompatActivity {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    private Switch switch_ticket;
+    private Switch switch_tour;
 
-    @SuppressLint("WrongConstant")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ticket_main);
+        setContentView(R.layout.activity_tour_main);
 
 //        뷰 초기화
-        tabLayout = (TabLayout)findViewById(R.id.tab_ticket);
-        viewPager = (ViewPager)findViewById(R.id.viewpager_ticket);
-        switch_ticket = (Switch)findViewById(R.id.switch_ticket);
-
+        tabLayout = (TabLayout)findViewById(R.id.tab_tour);
+        viewPager = (ViewPager)findViewById(R.id.viewpager_tour);
+        switch_tour = (Switch)findViewById(R.id.switch_tour);
 
 //        스위치
-        switch_ticket.setChecked(false);
-        switch_ticket.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        switch_tour.setChecked(true);
+        switch_tour.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
-                    startActivity(new Intent(getApplicationContext(), TourMainActivity.class));
+                if(!isChecked){
+                    startActivity(new Intent(getApplicationContext(), TicketMainActivity.class));
                     finish();
                 }
             }
         });
 
-
 //        탭 레이아웃 초기화
-        tabLayout.addTab(tabLayout.newTab().setText("예매확인"));
-        tabLayout.addTab(tabLayout.newTab().setText("예매하기"));
+        tabLayout.addTab(tabLayout.newTab().setText("알아보기"));
+        tabLayout.addTab(tabLayout.newTab().setText("다녀보기"));
+        tabLayout.addTab(tabLayout.newTab().setText("배워보기"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-
 
 //        탭 어댑터
         TabPagerAdapter pagerAdapter = new TabPagerAdapter(getSupportFragmentManager(),tabLayout.getTabCount());
         viewPager.setAdapter(pagerAdapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-
 
 //        탭 리스너
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -83,8 +76,8 @@ public class TicketMainActivity extends AppCompatActivity {
             }
         });
 
-    }
 
+    }
 
     /************* 탭 레이아웃 어댑터 클래스 *************/
     public class TabPagerAdapter extends FragmentStatePagerAdapter {
@@ -101,18 +94,21 @@ public class TicketMainActivity extends AppCompatActivity {
 
             switch (position) {
                 case 0:
-                    ConfirmReservationFragment confirmReservationFragment = new ConfirmReservationFragment();
-                    return  confirmReservationFragment; //예매 확인하기 프래그먼트
-
+                    LookingPalaceFragment lookingPalaceFragment = new LookingPalaceFragment();
+                    return lookingPalaceFragment; //알아보기 탭
                 case 1:
-                    MakeReservationFragment makeReservationFragment = new MakeReservationFragment();
-                    return makeReservationFragment; //예매 하기 프래그먼트
+                    GoingPalaceFragment goingPalaceFragment = new GoingPalaceFragment();
+                    return goingPalaceFragment; //다녀보기 탭
+
+                case 2:
+                    LearningPalaceFragment learningPalaceFragment = new LearningPalaceFragment();
+                    return learningPalaceFragment; //배워보기 탭
 
                 default:
                     return null;
             }
 
-    }
+        }
 
         @Override
         public int getCount() {

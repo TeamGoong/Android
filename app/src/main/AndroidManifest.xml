@@ -19,7 +19,8 @@
         <activity android:name=".ui.account.LoginActivity" />
         <activity android:name=".ui.account.SignupActivity" />
         <activity android:name=".ui.main.MainActivity" />
-        <activity android:name=".ui.gung_ticket.TicketMainActivity"></activity>
+        <activity android:name=".ui.gung_ticket.TicketMainActivity" />
+        <activity android:name=".ui.gung_tour.TourMainActivity"></activity>
     </application>
 
 </manifest>

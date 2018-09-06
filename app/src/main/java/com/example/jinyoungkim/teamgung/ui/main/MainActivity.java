@@ -8,6 +8,7 @@ import android.widget.ImageView;
 
 import com.example.jinyoungkim.teamgung.R;
 import com.example.jinyoungkim.teamgung.ui.gung_ticket.TicketMainActivity;
+import com.example.jinyoungkim.teamgung.ui.gung_tour.TourMainActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,10 +23,19 @@ public class MainActivity extends AppCompatActivity {
         btn_ticket = (ImageView)findViewById(R.id.btn_ticket);
         btn_tour = (ImageView)findViewById(R.id.btn_tour);
 
+//       1. 티켓 예매/화인 메뉴로 가기
         btn_ticket.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), TicketMainActivity.class));
+            }
+        });
+
+//       2. 궁 투어 메뉴로 가기
+        btn_tour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), TourMainActivity.class));
             }
         });
 

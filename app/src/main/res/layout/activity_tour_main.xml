@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- 티켓 예매/확인 메인 액티비티 -->
+<!-- 궁궐 투어 메인 액티비티 -->
 
 <LinearLayout
     android:orientation="vertical"
@@ -9,52 +9,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.gung_ticket.TicketMainActivity">
-
+    tools:context=".ui.gung_tour.TourMainActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
         <!--앱 바-->
         <include
-            android:id="@+id/appbar_ticket"
+            android:id="@+id/appbar_tour"
             android:layout_height="60dp"
             android:layout_width="match_parent"
             layout="@layout/actionbar_detail"/>
 
         <!-- 예매정보/궁궐정보 화면전환 스위치 -->
         <Switch
-            android:id="@+id/switch_ticket"
+            android:id="@+id/switch_tour"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="20dp"
             android:layout_alignParentLeft="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-
-
     </RelativeLayout>
 
 
 
     <!-- 1. 탭 레이아웃 -->
-<android.support.design.widget.TabLayout
-    android:id="@+id/tab_ticket"
-    android:background="@color/maincolor"
-    app:tabIndicatorColor="@color/subcolor"
-    android:layout_alignParentTop="true"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tab_tour"
+        android:background="@color/maincolor"
+        app:tabIndicatorColor="@color/subcolor"
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-</android.support.design.widget.TabLayout>
+    </android.support.design.widget.TabLayout>
 
     <!-- 2. 뷰페이저 -->
-<android.support.v4.view.ViewPager
-    android:id="@+id/viewpager_ticket"
-    android:layout_below="@+id/tab_ticket"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"></android.support.v4.view.ViewPager>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager_tour"
+        android:layout_below="@+id/tab_tour"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></android.support.v4.view.ViewPager>
 
 
 </LinearLayout>
