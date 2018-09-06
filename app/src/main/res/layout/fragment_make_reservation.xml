@@ -3,12 +3,12 @@
 <!-- 예약하기 프래그먼트 -->
 
 <LinearLayout
-    android:background="@android:color/holo_blue_light"
-    android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/holo_blue_light"
+    android:orientation="vertical"
     tools:context=".ui.gung_ticket.make_reservation.MakeReservationFragment">
 
     <TextView
