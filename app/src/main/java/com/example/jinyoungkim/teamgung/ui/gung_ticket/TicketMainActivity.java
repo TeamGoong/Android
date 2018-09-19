@@ -47,6 +47,7 @@ public class TicketMainActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
                     startActivity(new Intent(getApplicationContext(), TourMainActivity.class));
+                    overridePendingTransition(0,0);
                     finish();
                 }
             }
@@ -84,7 +85,7 @@ public class TicketMainActivity extends AppCompatActivity {
         });
 
     }
-
+//탭 리스너 추가 하기
 
     /************* 탭 레이아웃 어댑터 클래스 *************/
     public class TabPagerAdapter extends FragmentStatePagerAdapter {

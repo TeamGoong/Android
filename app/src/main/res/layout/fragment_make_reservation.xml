@@ -2,18 +2,39 @@
 
 <!-- 예약하기 프래그먼트 -->
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_blue_light"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".ui.gung_ticket.make_reservation.MakeReservationFragment">
 
-    <TextView
+
+    <!-- 안내 문구 -->
+    <LinearLayout
+        android:layout_margin="10dp"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="예약하기 프래그먼트" />
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_marginLeft="20dp"
+            android:src="@mipmap/ic_launcher_round"
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
+
+        <TextView
+            android:layout_marginLeft="20dp"
+            android:layout_gravity="center_vertical"
+            android:text="궁궐 선택하기"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+    <!-- 뷰페이저 -->
+
 
 </LinearLayout>
