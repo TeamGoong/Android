@@ -22,7 +22,6 @@ import com.kakao.usermgmt.LoginButton;
 public class Changdeok extends Fragment {
 
     FrameLayout goto_reservation;
-    LoginButton btn_login;
 
     public Changdeok() {
     }
@@ -39,12 +38,12 @@ public class Changdeok extends Fragment {
         View view = inflater.inflate(R.layout.vpitem_changdeok, container, false);
 //        초기화
         goto_reservation = (FrameLayout)view.findViewById(R.id.changdeok);
-        btn_login = (LoginButton)view.findViewById(R.id.login_changgeok);
 
+
+//        여기 추후에 로그인 여부에 따라 넘어가는 화면 바꿔야댐
         goto_reservation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                btn_login.performClick();
                 Session session = Session.getCurrentSession();
                 session.addCallback(new SessionCallback());
                 session.open(AuthType.KAKAO_LOGIN_ALL,Changdeok.this);
