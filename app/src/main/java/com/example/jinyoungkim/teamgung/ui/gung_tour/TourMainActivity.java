@@ -1,6 +1,7 @@
 package com.example.jinyoungkim.teamgung.ui.gung_tour;
 
 import android.content.Intent;
+import android.os.Build;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -30,7 +31,7 @@ public class TourMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tour_main);
 
-//        뷰 초기화
+//        뷰 초기화                                                    
         tabLayout = (TabLayout)findViewById(R.id.tab_tour);
         viewPager = (ViewPager)findViewById(R.id.viewpager_tour);
         switch_tour = (Switch)findViewById(R.id.switch_tour);
@@ -42,6 +43,7 @@ public class TourMainActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(!isChecked){
                     startActivity(new Intent(getApplicationContext(), TicketMainActivity.class));
+                    overridePendingTransition(0,0);
                     finish();
                 }
             }

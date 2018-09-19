@@ -3,6 +3,8 @@ package com.example.jinyoungkim.teamgung.ui.gung_ticket;
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -12,6 +14,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 
@@ -28,11 +32,16 @@ public class TicketMainActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private Switch switch_ticket;
 
-    @SuppressLint("WrongConstant")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ticket_main);
+
+//        상태바 색상변경
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(0xffb54141);
+        }
+
 
 //        뷰 초기화
         tabLayout = (TabLayout)findViewById(R.id.tab_ticket);
@@ -47,6 +56,7 @@ public class TicketMainActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
                     startActivity(new Intent(getApplicationContext(), TourMainActivity.class));
+                    overridePendingTransition(0,0);
                     finish();
                 }
             }
@@ -57,6 +67,7 @@ public class TicketMainActivity extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setText("예매확인"));
         tabLayout.addTab(tabLayout.newTab().setText("예매하기"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+        tabLayout.setTabTextColors(R.color.background,Color.BLACK);
 
 
 //        탭 어댑터
@@ -84,7 +95,7 @@ public class TicketMainActivity extends AppCompatActivity {
         });
 
     }
-
+//탭 리스너 추가 하기
 
     /************* 탭 레이아웃 어댑터 클래스 *************/
     public class TabPagerAdapter extends FragmentStatePagerAdapter {

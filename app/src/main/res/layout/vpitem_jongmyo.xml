@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<!-- 예약 확인하기 프래그먼트 -->
-
-<LinearLayout
+<FrameLayout
+    android:background="#009988"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ui.gung_ticket.confirm_reservation.ConfirmReservationFragment">
+    tools:context=".ui.gung_ticket.make_reservation.viewpager_items.Jongmyo">
 
+    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="예약 확인 프래그먼트" />
+        android:text="@string/hello_blank_fragment" />
 
-</LinearLayout>
+</FrameLayout>

@@ -11,8 +11,23 @@
     tools:context=".ui.gung_tour.looking_palace.LookingPalaceFragment">
 
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="칼럼" />
+    <android.support.v4.view.ViewPager
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="궁궐 알아보기" />
+        android:layout_height="200dp">
+
+    </android.support.v4.view.ViewPager>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="후기" />
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+    </android.support.v4.view.ViewPager>
+
 
 </LinearLayout>

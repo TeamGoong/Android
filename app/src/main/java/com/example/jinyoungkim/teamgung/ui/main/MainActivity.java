@@ -1,8 +1,13 @@
 package com.example.jinyoungkim.teamgung.ui.main;
 
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -10,7 +15,11 @@ import com.example.jinyoungkim.teamgung.R;
 import com.example.jinyoungkim.teamgung.ui.gung_ticket.TicketMainActivity;
 import com.example.jinyoungkim.teamgung.ui.gung_tour.TourMainActivity;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 public class MainActivity extends AppCompatActivity {
+
 
     ImageView btn_ticket, btn_tour; //예매정보, 궁궐정보 페이지로 넘어가는 이미지 버튼
 
@@ -18,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        getHashKey();
 
 //        뷰 초기화
         btn_ticket = (ImageView)findViewById(R.id.btn_ticket);
@@ -27,7 +38,8 @@ public class MainActivity extends AppCompatActivity {
         btn_ticket.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), TicketMainActivity.class));
+                Intent i1 = new Intent(getApplicationContext(), TicketMainActivity.class);
+                startActivity(i1);
             }
         });
 
@@ -35,9 +47,32 @@ public class MainActivity extends AppCompatActivity {
         btn_tour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), TourMainActivity.class));
+                Intent i2 = new Intent(getApplicationContext(),TourMainActivity.class);
+                startActivity(i2);
             }
         });
 
     }
+
+//   카카오 로그인 해시키 가져오는 함수
+    private void getHashKey(){
+
+        try{
+
+            PackageInfo info = getPackageManager().getPackageInfo("com.example.jinyoungkim.teamgung", PackageManager.GET_SIGNATURES);
+
+            for(Signature signature : info.signatures){
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                Log.d("TAG: ","key_hash: "+ Base64.encodeToString(md.digest(),Base64.DEFAULT));
+            }
+
+        } catch (PackageManager.NameNotFoundException e){
+            e.printStackTrace();
+        } catch (NoSuchAlgorithmException e){
+            e.printStackTrace();
+        }
+
+    }
+
 }
