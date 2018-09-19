@@ -3,6 +3,7 @@
 <!-- 상단에 액션바 (메인화면 전용) -->
 
 <RelativeLayout
+    android:elevation="20dp"
     android:gravity="center"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="@color/maincolor"
@@ -12,7 +13,7 @@
     <TextView
         android:textColor="#ffffff"
         android:textSize="20sp"
-        android:text="짝궁"
+        android:text="이궁저궁"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 </RelativeLayout>

@@ -41,8 +41,9 @@
     <!-- 1. 탭 레이아웃 -->
 <android.support.design.widget.TabLayout
     android:id="@+id/tab_ticket"
-    android:background="@color/maincolor"
-    app:tabIndicatorColor="@color/subcolor"
+    android:background="#ffffff"
+    app:tabIndicatorColor="@color/tabindicator1"
+    app:tabIndicatorHeight="4dp"
     android:layout_alignParentTop="true"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
