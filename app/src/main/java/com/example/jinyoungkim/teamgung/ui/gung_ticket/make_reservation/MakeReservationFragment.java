@@ -37,7 +37,7 @@ public class MakeReservationFragment extends Fragment {
 //        뷰 초기화
         viewPager = (ViewPager)view.findViewById(R.id.viewpager_make_ticket);
         viewPager.setAdapter(new pagerAdapter(getFragmentManager()));
-        viewPager.setPageMargin(50);
+        viewPager.setPageMargin(60);
         viewPager.setCurrentItem(2);
 
         indicator=(CircleIndicator)view.findViewById(R.id.indicator_make_reservation);
@@ -68,6 +68,7 @@ public class MakeReservationFragment extends Fragment {
                 return duksu; //덕수궁
             case 3:
                 Changdeok changdeok = new Changdeok(); //창덕궁
+                return changdeok;
             case 4:
                 Jongmyo jongmyo = new Jongmyo();
                 return jongmyo; //종묘

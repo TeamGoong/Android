@@ -3,7 +3,6 @@
 <!-- 예약 확인하기 프래그먼트 -->
 
 <LinearLayout
-    android:background="@android:color/holo_orange_light"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"

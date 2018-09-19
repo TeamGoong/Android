@@ -67,6 +67,7 @@ public class TicketMainActivity extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setText("예매확인"));
         tabLayout.addTab(tabLayout.newTab().setText("예매하기"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+        tabLayout.setTabTextColors(R.color.background,Color.BLACK);
 
 
 //        탭 어댑터
