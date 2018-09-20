@@ -2,32 +2,50 @@
 
 <!-- 궁궐 알아보기 프래그먼트 -->
 
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".ui.gung_tour.looking_palace.LookingPalaceFragment">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="칼럼" />
-    <android.support.v4.view.ViewPager
+  <android.support.v4.widget.NestedScrollView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+     >
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="칼럼"/>
+      <android.support.v4.view.ViewPager
+          android:id="@+id/viewpager_column_tourlooking"
+          android:layout_width="match_parent"
+          android:layout_height="250dp"></android.support.v4.view.ViewPager>
+      <com.pm10.library.CircleIndicator
+          android:layout_gravity="center"
+          android:id="@+id/indicator_column_tourlooking"
+          android:layout_width="match_parent"
+          android:layout_height="50dp" />
 
-    </android.support.v4.view.ViewPager>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="후기" />
-    <android.support.v4.view.ViewPager
-        android:layout_width="match_parent"
-        android:layout_height="200dp">
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="후기"/>
 
-    </android.support.v4.view.ViewPager>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rcv_reviews_lookingpalace"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"></android.support.v7.widget.RecyclerView>
+      <FrameLayout
+          android:id="@+id/frame_review_lookingpalace"
+          android:layout_width="match_parent"
+          android:layout_height="300dp"
+          android:background="#ebc200"></FrameLayout>
+      </LinearLayout>
+  </android.support.v4.widget.NestedScrollView>
 
 
-</LinearLayout>
+</RelativeLayout>

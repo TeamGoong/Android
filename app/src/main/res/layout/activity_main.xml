@@ -35,7 +35,7 @@
             android:layout_height="wrap_content">
             <ImageView
                 android:id="@+id/btn_ticket"
-                android:src="@mipmap/ic_launcher_round"
+                android:src="@drawable/ic_launcher_background"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
@@ -67,7 +67,7 @@
             android:layout_height="wrap_content">
             <ImageView
                 android:id="@+id/btn_tour"
-                android:src="@mipmap/ic_launcher_round"
+                android:src="@drawable/ic_launcher_background"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
