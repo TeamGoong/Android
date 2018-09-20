@@ -75,25 +75,5 @@
 
     </RelativeLayout>
 
-    <RelativeLayout
-        android:background="#ffffff"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <RelativeLayout
-            android:background="#ffffff"
-            android:gravity="center"
-            android:elevation="20dp"
-            android:layout_alignParentBottom="true"
-            android:layout_width="match_parent"
-            android:layout_height="50dp">
-            <TextView
-                android:text="선착순 특별관람 예매하기"
-                android:textSize="@dimen/textSize"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </RelativeLayout>
-    </RelativeLayout>
-
-
 
 </LinearLayout>

@@ -31,11 +31,12 @@
             android:name="com.kakao.sdk.AppKey"
             android:value="@string/kakao_app_key" />
 
-        <activity android:name=".ui.gung_ticket.make_reservation.booking_pages.BookingGyeongbokActivity" />
-        <activity android:name=".ui.gung_ticket.make_reservation.booking_pages.BookingChangdeokActivity" />
-        <activity android:name=".ui.gung_ticket.make_reservation.booking_pages.BookingChanggyeongActivity" />
-        <activity android:name=".ui.gung_ticket.make_reservation.booking_pages.BookingJongmyoActivity" />
-        <activity android:name=".ui.gung_ticket.make_reservation.booking_pages.BookingDuksuActivity"></activity>
+        <activity android:name=".ui.gung_ticket.make_reservation.booking.BookingGyeongbokActivity" />
+        <activity android:name=".ui.gung_ticket.make_reservation.booking.BookingChangdeokActivity" />
+        <activity android:name=".ui.gung_ticket.make_reservation.booking.BookingChanggyeongActivity" />
+        <activity android:name=".ui.gung_ticket.make_reservation.booking.BookingJongmyoActivity" />
+        <activity android:name=".ui.gung_ticket.make_reservation.booking.BookingDuksuActivity" />
+        <activity android:name=".ui.gung_ticket.make_reservation.booking_normal.ChangdeokNormalActivity"></activity>
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.booking_pages;
+package com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.booking;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
