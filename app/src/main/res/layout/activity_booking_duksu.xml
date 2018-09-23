@@ -69,13 +69,13 @@
             <ImageView
                 android:id="@+id/btn_normal_duksu"
                 android:layout_marginRight="30dp"
-                android:src="@mipmap/ic_launcher_round"
+                android:src="@drawable/deoksugung_normal_x"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <ImageView
                 android:id="@+id/btn_special_duksu"
                 android:layout_marginLeft="30dp"
-                android:src="@mipmap/ic_launcher_round"
+                android:src="@drawable/deoksugung_special_x"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>

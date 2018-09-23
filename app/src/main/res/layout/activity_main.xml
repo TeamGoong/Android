@@ -59,6 +59,7 @@
 
         <!-- 슬라이딩 패널 하단 레이아웃 시작 -->
         <LinearLayout
+            android:background= "#00000000"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">

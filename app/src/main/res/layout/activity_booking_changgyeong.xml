@@ -3,7 +3,6 @@
     android:background="@color/background"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -68,13 +67,13 @@
             <ImageView
                 android:id="@+id/btn_normal_changgyeong"
                 android:layout_marginRight="30dp"
-                android:src="@mipmap/ic_launcher_round"
+                android:src="@drawable/changgyeonggung_normal_x"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <ImageView
+                android:src="@drawable/changgyeonggung_special_x"
                 android:id="@+id/btn_special_changgyeong"
                 android:layout_marginLeft="30dp"
-                android:src="@mipmap/ic_launcher_round"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>

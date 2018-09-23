@@ -14,7 +14,6 @@
 
         <!--앱 바-->
         <include
-            android:id="@+id/appbar_reservation"
             android:layout_height="60dp"
             android:layout_width="match_parent"
             layout="@layout/actionbar_reservarion"/>
