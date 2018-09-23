@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    android:background="@color/background"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.gung_ticket.make_reservation.booking.BookingGyeongbokActivity">
+    tools:context=".ui.gung_ticket.make_reservation.booking_special.ChangdeokSpecial1Activity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -18,7 +17,6 @@
             android:layout_height="60dp"
             android:layout_width="match_parent"
             layout="@layout/actionbar_reservarion"/>
-
 
         <!-- 프로필 -->
         <ImageView
@@ -45,53 +43,37 @@
             android:textStyle="bold"
             android:textColor="#000000"
             android:layout_gravity="center_vertical"
-            android:text="예매권 선택하기"
+            android:text="날짜 선택하기"
             android:textSize="@dimen/textSize_sub"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
     </LinearLayout>
 
-    <LinearLayout
-        android:background="#ffffff"
-        android:gravity="center_vertical"
+    <CalendarView
         android:layout_marginTop="10dp"
-        android:orientation="vertical"
+        android:background="#ffffff"
+        android:id="@+id/calendar_changdeok_special"
         android:layout_width="match_parent"
-        android:layout_height="160dp">
+        android:layout_height="300dp"
+        ></CalendarView>
 
-        <LinearLayout
-            android:gravity="center_horizontal"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:id="@+id/btn_normal_gyeongbok"
-                android:layout_marginRight="30dp"
-                android:src="@drawable/gyeongbokgung_booking_normal_noselect"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <ImageView
-                android:src="@drawable/gyeongbokgung_booking_special_noselect"
-                android:id="@+id/btn_special_gyeongbok"
-                android:layout_marginLeft="30dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
         <RelativeLayout
-            android:layout_marginTop="20dp"
             android:gravity="center"
+            android:layout_alignParentBottom="true"
+            android:background="@color/changduk"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="55dp">
             <TextView
-                android:textSize="10sp"
-                android:text="※ 특별권 (궁궐 통합관람권)상시 관람권/ 점심시간 관람권/ 시간제 권람"
+                android:text="다음 단계"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/textSize_sub"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </RelativeLayout>
-
-
-    </LinearLayout>
-
+    </RelativeLayout>
 </LinearLayout>

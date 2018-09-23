@@ -1,9 +1,14 @@
 package com.example.jinyoungkim.teamgung.util;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.kakao.auth.ErrorCode;
 import com.kakao.auth.ISessionCallback;
+import com.kakao.auth.Session;
 import com.kakao.network.ErrorResult;
 import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.MeResponseCallback;
@@ -11,6 +16,13 @@ import com.kakao.usermgmt.response.model.UserProfile;
 import com.kakao.util.exception.KakaoException;
 
 public class SessionCallback implements ISessionCallback {
+
+    String token; //서버로 넘겨줄 토큰
+    Context context;
+
+    public void setContext(Context context) {
+        this.context = context;
+    }
 
     // 로그인에 성공한 상태
     @Override
@@ -66,5 +78,8 @@ public class SessionCallback implements ISessionCallback {
                 Log.e("SessionCallback :: ", "onFailure : " + errorResult.getErrorMessage());
             }
         });
+
+
     }
+
 }
