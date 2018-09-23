@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:background="#F9F9F9"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <!-- 안내 문구 -->
+        <LinearLayout
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+
+            <TextView
+                android:id="@+id/title_learning_palace"
+                android:layout_marginTop="3dp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:layout_marginLeft="20dp"
+                android:layout_gravity="center_vertical"
+                android:text="종묘"
+                android:textSize="@dimen/textSize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:background="#bbb233"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></RelativeLayout>
+
+
+
+    </LinearLayout>
+
+</RelativeLayout>

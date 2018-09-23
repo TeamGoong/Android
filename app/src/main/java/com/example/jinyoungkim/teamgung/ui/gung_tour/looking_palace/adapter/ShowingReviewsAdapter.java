@@ -43,7 +43,7 @@ public class ShowingReviewsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         this.view = view;
         this.fm = fm;
         this.transaction = fm.beginTransaction();
-        transaction.add(R.id.frame_review_lookingpalace,new ReivewDuksu());
+        transaction.add(R.id.frame_review_lookingpalace,new ReviewGyeongbok());
         transaction.addToBackStack(null);
 
         transaction.commit();
@@ -69,62 +69,62 @@ public class ShowingReviewsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
         final ShowingReviewViewHolder showingReviewViewHolder = (ShowingReviewViewHolder) holder;
 
-        palaceArrayList.set(0,new PalaceData(R.drawable.ic_launcher_foreground,1));
+        showingReviewViewHolder.palace.setImageResource(palaceArrayList.get(position).drawableID);
         showingReviewViewHolder.palace.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                         switch (position){
                             case 0 :
-                                palaceArrayList.set(0,new PalaceData(R.drawable.ic_launcher_foreground,1));
+                                palaceArrayList.set(0,new PalaceData(R.drawable.gyeongbokgung_review_big,1));
 
-                                palaceArrayList.set(1,new PalaceData(R.drawable.ic_launcher_background,0));
-                                palaceArrayList.set(2,new PalaceData(R.drawable.ic_launcher_background,0));
-                                palaceArrayList.set(3,new PalaceData(R.drawable.ic_launcher_background,0));
-                                palaceArrayList.set(4,new PalaceData(R.drawable.ic_launcher_background,0));
-                                replaceFragment(new ReivewDuksu());
+                                palaceArrayList.set(1,new PalaceData(R.drawable.changdeokgung_review_white,0));
+                                palaceArrayList.set(2,new PalaceData(R.drawable.changyeonggung_review_white,0));
+                                palaceArrayList.set(3,new PalaceData(R.drawable.deoksugung_review_white,0));
+                                palaceArrayList.set(4,new PalaceData(R.drawable.jongmyo_review_white,0));
+                                replaceFragment(new ReviewGyeongbok());
 
 
                                 break;
                             case 1:
-                                 palaceArrayList.set(1,new PalaceData(R.drawable.ic_launcher_foreground,1));
+                                 palaceArrayList.set(1,new PalaceData(R.drawable.changdeokgung_review_big,1));
 
-                                palaceArrayList.set(0,new PalaceData(R.drawable.ic_launcher_background,0));
-                                palaceArrayList.set(2,new PalaceData(R.drawable.ic_launcher_background,0));
-                                palaceArrayList.set(3,new PalaceData(R.drawable.ic_launcher_background,0));
-                                palaceArrayList.set(4,new PalaceData(R.drawable.ic_launcher_background,0));
+                                palaceArrayList.set(0,new PalaceData(R.drawable.gyeongbokgung_review_white,0));
+                                palaceArrayList.set(2,new PalaceData(R.drawable.changyeonggung_review_white,0));
+                                palaceArrayList.set(3,new PalaceData(R.drawable.deoksugung_review_white,0));
+                                palaceArrayList.set(4,new PalaceData(R.drawable.jongmyo_review_white,0));
                                 replaceFragment(new ReviewChangdeok());
                                  break;
                             case 2:
-                                palaceArrayList.set(2,new PalaceData(R.drawable.ic_launcher_foreground,1));
+                                palaceArrayList.set(2,new PalaceData(R.drawable.changyeonggung_review_big,1));
 
-                                palaceArrayList.set(0,new PalaceData(R.drawable.ic_launcher_background,0));
-                                palaceArrayList.set(1,new PalaceData(R.drawable.ic_launcher_background,0));
-                                palaceArrayList.set(3,new PalaceData(R.drawable.ic_launcher_background,0));
-                                palaceArrayList.set(4,new PalaceData(R.drawable.ic_launcher_background,0));
+                                palaceArrayList.set(0,new PalaceData(R.drawable.gyeongbokgung_review_white,0));
+                                palaceArrayList.set(1,new PalaceData(R.drawable.changdeokgung_review_white,0));
+                                palaceArrayList.set(3,new PalaceData(R.drawable.deoksugung_review_white,0));
+                                palaceArrayList.set(4,new PalaceData(R.drawable.jongmyo_review_white,0));
 
                                 replaceFragment(new ReviewChanggyong());
 
 
                                 break;
                             case 3:
-                                palaceArrayList.set(3,new PalaceData(R.drawable.ic_launcher_foreground,1));
+                                palaceArrayList.set(3,new PalaceData(R.drawable.deoksugung_review_big,1));
 
-                                palaceArrayList.set(0,new PalaceData(R.drawable.ic_launcher_background,0));
-                                palaceArrayList.set(1,new PalaceData(R.drawable.ic_launcher_background,0));
-                                palaceArrayList.set(2,new PalaceData(R.drawable.ic_launcher_background,0));
-                                palaceArrayList.set(4,new PalaceData(R.drawable.ic_launcher_background,0));
+                                palaceArrayList.set(0,new PalaceData(R.drawable.gyeongbokgung_review_white,0));
+                                palaceArrayList.set(1,new PalaceData(R.drawable.changdeokgung_review_white,0));
+                                palaceArrayList.set(2,new PalaceData(R.drawable.changyeonggung_review_white,0));
+                                palaceArrayList.set(4,new PalaceData(R.drawable.jongmyo_review_white,0));
 
-                                replaceFragment(new ReviewGyeongbok());
+                                replaceFragment(new ReivewDuksu());
 
                                 break;
                             case 4:
-                                palaceArrayList.set(4,new PalaceData(R.drawable.ic_launcher_foreground,1));
+                                palaceArrayList.set(4,new PalaceData(R.drawable.jongmyo_review_big,1));
 
-                                palaceArrayList.set(0,new PalaceData(R.drawable.ic_launcher_background,0));
-                                palaceArrayList.set(1,new PalaceData(R.drawable.ic_launcher_background,0));
-                                palaceArrayList.set(2,new PalaceData(R.drawable.ic_launcher_background,0));
-                                palaceArrayList.set(3,new PalaceData(R.drawable.ic_launcher_background,0));
+                                palaceArrayList.set(0,new PalaceData(R.drawable.gyeongbokgung_review_white,0));
+                                palaceArrayList.set(1,new PalaceData(R.drawable.changdeokgung_review_white,0));
+                                palaceArrayList.set(2,new PalaceData(R.drawable.changyeonggung_review_white,0));
+                                palaceArrayList.set(3,new PalaceData(R.drawable.deoksugung_review_white,0));
 
                                 replaceFragment(new ReviewJongmyo());
 
