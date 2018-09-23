@@ -10,4 +10,10 @@
         <item name="android:windowActionBarOverlay">true</item>
     </style>
 
+    <style name="changdeok" parent="AppTheme" >
+        <item name="colorPrimary">@color/changduk</item>
+        <item name="colorAccent">@color/changduk</item>
+        <item name="colorPrimaryDark">@color/changduk</item>
+    </style>
+
 </resources>

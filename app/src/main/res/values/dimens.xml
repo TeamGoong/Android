@@ -4,4 +4,6 @@
     <dimen name="vp_margin">-50dp</dimen>
     <dimen name="vp_marginfix">32dp</dimen>
     <dimen name="textSize">20sp</dimen>
+    <dimen name="textSize_sub">18sp</dimen>
+    <dimen name="reservation_info">15sp</dimen>
 </resources>

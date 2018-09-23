@@ -60,7 +60,6 @@ public class Changdeok extends Fragment {
                 session.open(AuthType.KAKAO_LOGIN_ALL,Changdeok.this);
 
                 if (Session.getCurrentSession().getTokenInfo() != null) {
-                    Log.e("토큰: ",Session.getCurrentSession().getAccessToken());
                     token = Session.getCurrentSession().getAccessToken();
 
                     // 토큰 저장

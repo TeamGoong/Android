@@ -36,7 +36,9 @@
         <activity android:name=".ui.gung_ticket.make_reservation.booking.BookingChanggyeongActivity" />
         <activity android:name=".ui.gung_ticket.make_reservation.booking.BookingJongmyoActivity" />
         <activity android:name=".ui.gung_ticket.make_reservation.booking.BookingDuksuActivity" />
-        <activity android:name=".ui.gung_ticket.make_reservation.booking_normal.ChangdeokNormalActivity"></activity>
+        <activity android:name=".ui.gung_ticket.make_reservation.booking_normal.ChangdeokNormalActivity" />
+        <activity android:name=".ui.gung_ticket.make_reservation.booking_special.ChangdeokSpecial1Activity" />
+        <activity android:name=".ui.gung_ticket.make_reservation.booking_special.ChangdeokSpecial2Activity"></activity>
     </application>
 
 </manifest>
