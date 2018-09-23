@@ -14,4 +14,7 @@
     <color name="changgyeong">#C8D509</color>
     <color name="duksu">#394E7E</color>
     <color name="jongmyo">#60A682</color>
+
+    <!-- 궁 투어 테마색 -->
+    <color name="going">#F9C210</color>
 </resources>
