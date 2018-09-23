@@ -10,6 +10,7 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.example.jinyoungkim.teamgung.R;
 import com.example.jinyoungkim.teamgung.ui.gung_ticket.TicketMainActivity;
@@ -21,7 +22,7 @@ import java.security.NoSuchAlgorithmException;
 public class MainActivity extends AppCompatActivity {
 
 
-    ImageView btn_ticket, btn_tour; //예매정보, 궁궐정보 페이지로 넘어가는 이미지 버튼
+    RelativeLayout btn_ticket, btn_tour; //예매정보, 궁궐정보 페이지로 넘어가는 이미지 버튼
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +32,8 @@ public class MainActivity extends AppCompatActivity {
         getHashKey();
 
 //        뷰 초기화
-        btn_ticket = (ImageView)findViewById(R.id.btn_ticket);
-        btn_tour = (ImageView)findViewById(R.id.btn_tour);
+        btn_ticket = (RelativeLayout)findViewById(R.id.btn_ticket);
+        btn_tour = (RelativeLayout)findViewById(R.id.btn_tour);
 
 //       1. 티켓 예매/화인 메뉴로 가기
         btn_ticket.setOnClickListener(new View.OnClickListener() {

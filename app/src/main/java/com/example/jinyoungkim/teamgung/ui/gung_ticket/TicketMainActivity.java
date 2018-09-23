@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.CompoundButton;
+import android.widget.LinearLayout;
 import android.widget.Switch;
 
 import com.example.jinyoungkim.teamgung.R;
@@ -31,6 +32,7 @@ public class TicketMainActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private Switch switch_ticket;
+    private LinearLayout special_reservation_layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +46,10 @@ public class TicketMainActivity extends AppCompatActivity {
 
 
 //        뷰 초기화
-        tabLayout = (TabLayout)findViewById(R.id.tab_ticket);
-        viewPager = (ViewPager)findViewById(R.id.viewpager_ticket);
-        switch_ticket = (Switch)findViewById(R.id.switch_ticket);
+        tabLayout = (TabLayout)findViewById(R.id.tab_ticket); // 예매확인/예매하기 탭
+        viewPager = (ViewPager)findViewById(R.id.viewpager_ticket); // 뷰페이저
+        switch_ticket = (Switch)findViewById(R.id.switch_ticket); // 화면전환 스위치
+        special_reservation_layout= (LinearLayout)findViewById(R.id.special_reservation_layout); // 특별관람 예매하기 하단 레이아웃
 
 
 //        스위치
@@ -95,7 +98,8 @@ public class TicketMainActivity extends AppCompatActivity {
         });
 
     }
-//탭 리스너 추가 하기
+
+//  탭 리스너 추가 하기
 
     /************* 탭 레이아웃 어댑터 클래스 *************/
     public class TabPagerAdapter extends FragmentStatePagerAdapter {
@@ -112,10 +116,12 @@ public class TicketMainActivity extends AppCompatActivity {
 
             switch (position) {
                 case 0:
+                    special_reservation_layout.setVisibility(View.GONE);
                     ConfirmReservationFragment confirmReservationFragment = new ConfirmReservationFragment();
                     return  confirmReservationFragment; //예매 확인하기 프래그먼트
 
                 case 1:
+                    special_reservation_layout.setVisibility(View.VISIBLE);
                     MakeReservationFragment makeReservationFragment = new MakeReservationFragment();
                     return makeReservationFragment; //예매 하기 프래그먼트
 
