@@ -66,14 +66,14 @@
             android:layout_height="wrap_content">
             <ImageView
                 android:id="@+id/btn_normal_changgyeong"
-                android:layout_marginRight="30dp"
+                android:layout_marginRight="20dp"
                 android:src="@drawable/changgyeonggung_normal_x"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <ImageView
                 android:src="@drawable/changgyeonggung_special_x"
                 android:id="@+id/btn_special_changgyeong"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>

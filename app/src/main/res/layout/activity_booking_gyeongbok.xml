@@ -67,14 +67,14 @@
             android:layout_height="wrap_content">
             <ImageView
                 android:id="@+id/btn_normal_gyeongbok"
-                android:layout_marginRight="30dp"
+                android:layout_marginRight="20dp"
                 android:src="@drawable/gyeongbokgung_booking_normal_noselect"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <ImageView
                 android:src="@drawable/gyeongbokgung_booking_special_noselect"
                 android:id="@+id/btn_special_gyeongbok"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
