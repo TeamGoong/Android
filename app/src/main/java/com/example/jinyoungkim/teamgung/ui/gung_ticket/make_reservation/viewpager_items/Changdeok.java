@@ -55,18 +55,23 @@ public class Changdeok extends Fragment {
             @Override
             public void onClick(View v) {
 
+                Log.e("버튼클릭","click");
                 Session session = Session.getCurrentSession();
                 session.addCallback(new SessionCallback());
                 session.open(AuthType.KAKAO_LOGIN_ALL,Changdeok.this);
 
                 if (Session.getCurrentSession().getTokenInfo() != null) {
-                    token = Session.getCurrentSession().getAccessToken();
 
+                    Log.e("세선 진입","session");
+                    token = Session.getCurrentSession().getAccessToken();
                     // 토큰 저장
                     editor.putString("token",token);
                     editor.commit();
 
                     startActivity(new Intent(getActivity().getApplicationContext(), BookingChangdeokActivity.class));
+                } else
+                {
+                    Log.e("else","else");
                 }
 
             }
