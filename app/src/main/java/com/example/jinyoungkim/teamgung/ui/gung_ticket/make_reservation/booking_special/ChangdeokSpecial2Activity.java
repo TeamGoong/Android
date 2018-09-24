@@ -153,7 +153,7 @@ public class ChangdeokSpecial2Activity extends AppCompatActivity {
             }
         });
 
-        ticket_people = "대인 " + adult_number_changdeok_special_i;
+
         palace_id = 2; // 창덕궁 아이디
         ticket_jongro = 0;
 
@@ -165,7 +165,9 @@ public class ChangdeokSpecial2Activity extends AppCompatActivity {
                 Log.e("특별권 종류) ",ticket_title);
                 Log.e("티켓 시작날짜) ",ticket_start);
                 Log.e("티켓 끝나날짜) ", ticket_end);
+                ticket_people = "대인 " + adult_number_changdeok_special_i;
                 Log.e("사람정보) ", ticket_people);
+                ticket_special=1;
                 Log.e("특별권 구분) ", String.valueOf(ticket_special));
                 Log.e("종로 구분) ",String.valueOf(ticket_jongro));
 
