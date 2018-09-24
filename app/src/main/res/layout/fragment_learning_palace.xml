@@ -43,19 +43,19 @@
                     <!-- 안내 문구 -->
                     <LinearLayout
                         android:background="#F9F9F9"
-                        android:paddingRight="10dp"
-                        android:paddingLeft="10dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginBottom="15dp"
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
-                        android:layout_height="60dp">
+                        android:layout_height="wrap_content">
 
                         <TextView
                             android:id="@+id/title_learning_palace"
 
-                            android:layout_marginTop="3dp"
                             android:textStyle="bold"
                             android:textColor="#000000"
-                            android:layout_marginLeft="20dp"
+
                             android:layout_gravity="center_vertical"
                             android:text="궁 정보"
                             android:textSize="@dimen/textSize"
