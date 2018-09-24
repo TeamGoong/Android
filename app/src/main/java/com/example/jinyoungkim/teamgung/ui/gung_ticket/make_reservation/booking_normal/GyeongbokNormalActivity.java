@@ -72,7 +72,7 @@ public class GyeongbokNormalActivity extends AppCompatActivity {
                     adult_number_gyeongbok_palace.setText(String.valueOf(adult_number_gyeongbok_palace_i));
                 }
 
-                ticket_people_adult = "대인 "+adult_number_gyeongbok_palace_i;
+                ticket_people_adult = "대인 "+String.valueOf(adult_number_gyeongbok_palace_i);
                 Log.e("대인",ticket_people_adult);
             }
         });
@@ -82,7 +82,7 @@ public class GyeongbokNormalActivity extends AppCompatActivity {
             public void onClick(View v) {
                 adult_number_gyeongbok_palace_i ++;
                 adult_number_gyeongbok_palace.setText(String.valueOf(adult_number_gyeongbok_palace_i));
-                ticket_people_adult = "대인 "+adult_number_gyeongbok_palace_i;
+                ticket_people_adult = "대인 "+String.valueOf(adult_number_gyeongbok_palace_i);
                 Log.e("대인",ticket_people_adult);
             }
         });
@@ -95,7 +95,7 @@ public class GyeongbokNormalActivity extends AppCompatActivity {
                     jongro_number_gyeongbok_palace_i --;
                     jongro_number_gyeongbok_palace.setText(String.valueOf(jongro_number_gyeongbok_palace_i));
                 }
-                ticket_people_jongro = "종로구민 "+jongro_number_gyeongbok_palace_i;
+                ticket_people_jongro = "종로구민 "+String.valueOf(jongro_number_gyeongbok_palace_i);
                 Log.e("종로구민",ticket_people_jongro);
             }
         });
@@ -105,7 +105,7 @@ public class GyeongbokNormalActivity extends AppCompatActivity {
             public void onClick(View v) {
                 jongro_number_gyeongbok_palace_i ++;
                 jongro_number_gyeongbok_palace.setText(String.valueOf(jongro_number_gyeongbok_palace_i));
-                ticket_people_jongro = "종로구민 "+jongro_number_gyeongbok_palace_i;
+                ticket_people_jongro = "종로구민 "+String.valueOf(jongro_number_gyeongbok_palace_i);
                 Log.e("종로구민",ticket_people_jongro);
             }
         });
@@ -125,7 +125,6 @@ public class GyeongbokNormalActivity extends AppCompatActivity {
 
         palace_id = 0; // 경복궁 아이디
         ticket_title = "경복궁 일반권";
-        ticket_people = ticket_people_adult+", "+ticket_people_jongro;
         ticket_special = 0;
 
 
@@ -137,7 +136,8 @@ public class GyeongbokNormalActivity extends AppCompatActivity {
                Log.e("티켓종류) ", ticket_title);
                Log.e("티켓 시작일) ", ticket_start);
                Log.e("티켓 종료일) ", ticket_end);
-               Log.e("사람 종류) ", ticket_people_adult);
+               ticket_people = ticket_people_adult+" "+ticket_people_jongro;
+               Log.e("사람 종류) ", ticket_people);
                Log.e("특별권 구분) ", String.valueOf(ticket_special));
            }
        });

@@ -65,7 +65,7 @@
             android:layout_height="match_parent">
             <CalendarView
                 android:background="#ffffff"
-                android:id="@+id/calendar_gyeongbok"
+                android:id="@+id/calendar_jongmyo"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 ></CalendarView>
@@ -111,10 +111,12 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content">
                                 <ImageView
+                                    android:id="@+id/adult_minus_jongmyo_palace"
                                     android:src="@drawable/minus_button"
                                     android:layout_width="50dp"
                                     android:layout_height="50dp" />
                                 <TextView
+                                    android:id="@+id/adult_number_jongmyo_palace"
                                     android:layout_margin="10dp"
                                     android:textStyle="bold"
                                     android:textSize="@dimen/reservation_info"
@@ -122,6 +124,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content" />
                                 <ImageView
+                                    android:id="@+id/adult_plus_jongmyo_palace"
                                     android:src="@drawable/plus_button"
                                     android:layout_width="50dp"
                                     android:layout_height="50dp" />
@@ -157,10 +160,12 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content">
                                 <ImageView
+                                    android:id="@+id/junggu_minus_jongmyo_palace"
                                     android:src="@drawable/minus_button"
                                     android:layout_width="50dp"
                                     android:layout_height="50dp" />
                                 <TextView
+                                    android:id="@+id/junggu_number_jongmyo_palace"
                                     android:layout_margin="10dp"
                                     android:textStyle="bold"
                                     android:textSize="@dimen/reservation_info"
@@ -168,6 +173,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content" />
                                 <ImageView
+                                    android:id="@+id/junggu_plus_jongmyo_palace"
                                     android:src="@drawable/plus_button"
                                     android:layout_width="50dp"
                                     android:layout_height="50dp" />
@@ -212,6 +218,7 @@
 
     </ScrollView>
     <RelativeLayout
+        android:id="@+id/payment_jongmyo_normal"
         android:gravity="center"
         android:layout_alignParentBottom="true"
         android:background="@color/jongmyo"

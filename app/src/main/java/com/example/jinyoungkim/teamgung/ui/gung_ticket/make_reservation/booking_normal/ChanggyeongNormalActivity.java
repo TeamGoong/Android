@@ -125,7 +125,7 @@ public class ChanggyeongNormalActivity extends AppCompatActivity {
 
         palace_id = 2; // 창경궁 아이디
         ticket_title = "창경궁 일반권";
-        ticket_people = ticket_people_adult+", "+ticket_people_jongro;
+
         ticket_special = 0;
 
 
@@ -137,7 +137,8 @@ public class ChanggyeongNormalActivity extends AppCompatActivity {
                 Log.e("티켓종류) ", ticket_title);
                 Log.e("티켓 시작일) ", ticket_start);
                 Log.e("티켓 종료일) ", ticket_end);
-                Log.e("사람 종류) ", ticket_people_adult);
+                ticket_people = ticket_people_adult+", "+ticket_people_jongro;
+                Log.e("사람 종류) ", ticket_people);
                 Log.e("특별권 구분) ", String.valueOf(ticket_special));
             }
         });

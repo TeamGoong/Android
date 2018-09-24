@@ -113,7 +113,7 @@ public class ChanggyeongSpecial2Activity extends AppCompatActivity {
                 r_day = i.getIntExtra("r_day",0);
                 r_month = r_month+1;
                 ticket_end = r_year+"."+r_month+"."+r_day;
-                ticket_special = 1;
+
             }
         });
 
@@ -182,7 +182,7 @@ public class ChanggyeongSpecial2Activity extends AppCompatActivity {
             }
         });
 
-        ticket_people = "대인 " + adult_number_changgyeong_special_i;
+
         palace_id = 2; // 창경궁 아이디
         ticket_jongro = 0;
 
@@ -190,10 +190,14 @@ public class ChanggyeongSpecial2Activity extends AppCompatActivity {
         payment_changgyeong_special.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                ticket_special = 1;
+
                 Log.e("궁 아이디", String.valueOf(palace_id));
                 Log.e("특별권 종류) ",ticket_title);
                 Log.e("티켓 시작날짜) ",ticket_start);
                 Log.e("티켓 끝나날짜) ", ticket_end);
+                ticket_people = "대인 " + adult_number_changgyeong_special_i;
                 Log.e("사람정보) ", ticket_people);
                 Log.e("특별권 구분) ", String.valueOf(ticket_special));
                 Log.e("종로 구분) ",String.valueOf(ticket_jongro));

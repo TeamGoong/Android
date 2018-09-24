@@ -15,7 +15,7 @@ import com.example.jinyoungkim.teamgung.R;
 public class ChanggyeongSpecial1Activity extends AppCompatActivity {
 
     CalendarView calendarView;
-    RelativeLayout next_btn_gyeonbok;
+    RelativeLayout next_btn_changgyeong;
     int r_year, r_month, r_day;
 
     @Override
@@ -31,7 +31,7 @@ public class ChanggyeongSpecial1Activity extends AppCompatActivity {
 
         // 초기화
         calendarView = (CalendarView)findViewById(R.id.calendar_changgyeong_special);
-        next_btn_gyeonbok = (RelativeLayout)findViewById(R.id.next_btn_changgyeong);
+        next_btn_changgyeong = (RelativeLayout)findViewById(R.id.next_btn_changgyeong);
 
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
@@ -42,7 +42,7 @@ public class ChanggyeongSpecial1Activity extends AppCompatActivity {
             }
         });
 
-        next_btn_gyeonbok.setOnClickListener(new View.OnClickListener() {
+        next_btn_changgyeong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.e("예매날짜) ", r_year+"년 "+r_month+"월 "+r_day+"일");
