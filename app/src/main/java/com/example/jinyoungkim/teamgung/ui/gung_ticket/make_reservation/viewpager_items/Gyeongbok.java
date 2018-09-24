@@ -54,7 +54,6 @@ public class Gyeongbok extends Fragment {
                     Log.e("세선 진입","session");
                     token = Session.getCurrentSession().getAccessToken();
                     // 토큰 저장
-                    Log.e("token",token);
                     editor.putString("token",token);
                     editor.commit();
 

@@ -374,7 +374,6 @@ public class ChangdeokNormalActivity extends AppCompatActivity {
 
         /**************************** 예매 데이터 ****************************/
 
-        Log.e("날짜 데이터", String.valueOf(calendar_changdeok.getDate()));
         calendar_changdeok.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {

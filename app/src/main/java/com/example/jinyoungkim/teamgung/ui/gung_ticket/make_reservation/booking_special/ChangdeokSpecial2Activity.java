@@ -22,6 +22,7 @@ public class ChangdeokSpecial2Activity extends AppCompatActivity {
     LinearLayout changdeok_special_layout1,changdeok_special_layout2,changdeok_special_layout3; // 하단 정보
     RelativeLayout payment_changdeok_special; // 결제하기 버튼
     int r_year, r_month, r_day;
+    Intent i;
 
 //  통신에 넘길 데이터
     int palace_id; // 궁 아이디(0 : 경복궁, 1 : 창덕궁, 2 : 창경궁, 3 : 덕수궁, 4 : 종묘 )
@@ -44,7 +45,7 @@ public class ChangdeokSpecial2Activity extends AppCompatActivity {
         }
 
         // Special1Activity에서 받은 예매 날짜
-        Intent i = getIntent();
+        i = getIntent();
         r_year = i.getIntExtra("r_year",0);
         r_month = i.getIntExtra("r_month",0);
         r_day = i.getIntExtra("r_day",0);
@@ -82,6 +83,9 @@ public class ChangdeokSpecial2Activity extends AppCompatActivity {
                 changdeok_special_layout3.setVisibility(View.GONE);
 
                 ticket_title = "궁궐 통합 관람권";
+                r_year = i.getIntExtra("r_year",0);
+                r_month = i.getIntExtra("r_month",0);
+                r_day = i.getIntExtra("r_day",0);
                 r_month = r_month+3;
                 ticket_end = r_year+"."+r_month+"."+r_day;
             }
@@ -100,6 +104,9 @@ public class ChangdeokSpecial2Activity extends AppCompatActivity {
                 changdeok_special_layout3.setVisibility(View.GONE);
 
                 ticket_title="상시 관람권";
+                r_year = i.getIntExtra("r_year",0);
+                r_month = i.getIntExtra("r_month",0);
+                r_day = i.getIntExtra("r_day",0);
                 r_month = r_month+1;
                 ticket_end = r_year+"."+r_month+"."+r_day;
                 ticket_special = 1;
@@ -119,6 +126,9 @@ public class ChangdeokSpecial2Activity extends AppCompatActivity {
                 changdeok_special_layout3.setVisibility(View.VISIBLE);
 
                 ticket_title = "점심시간 관람권";
+                r_year = i.getIntExtra("r_year",0);
+                r_month = i.getIntExtra("r_month",0);
+                r_day = i.getIntExtra("r_day",0);
                 r_month = r_month+3;
                 ticket_end = r_year+"."+r_month+"."+r_day;
             }
