@@ -1,15 +1,15 @@
-package com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.booking_pages;
+package com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.booking_special;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.jinyoungkim.teamgung.R;
 
-public class BookingDuksuActivity extends AppCompatActivity {
+public class DuksuSpecial2Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_booking_duksu);
+        setContentView(R.layout.activity_duksu_special2);
     }
 }

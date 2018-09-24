@@ -12,53 +12,98 @@
     android:orientation="vertical"
     tools:context=".ui.gung_ticket.TicketMainActivity">
 
-
-    <RelativeLayout
+    <com.sothree.slidinguppanel.SlidingUpPanelLayout
+        xmlns:sothree="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/sliding_layout_reservation"
+        android:gravity="bottom"
+        sothree:umanoPanelHeight="60dp"
+        sothree:umanoShadowHeight="4dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-        <!--앱 바-->
-        <include
-            android:id="@+id/appbar_ticket"
-            android:layout_height="60dp"
+        <!-- 슬라이딩 패널 상단 메뉴 시작 -->
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            layout="@layout/actionbar_detail"/>
+            android:layout_height="match_parent">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <!-- 예매정보/궁궐정보 화면전환 스위치 -->
-        <Switch
-            android:id="@+id/switch_ticket"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="20dp"
-            android:layout_alignParentLeft="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+                <!--앱 바-->
+                <include
+                    android:id="@+id/appbar_ticket"
+                    android:layout_height="60dp"
+                    android:layout_width="match_parent"
+                    layout="@layout/actionbar_detail"/>
+
+                <!-- 예매정보/궁궐정보 화면전환 스위치 -->
+                <Switch
+                    android:id="@+id/switch_ticket"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <!-- 프로필 -->
+                <ImageView
+                    android:layout_marginRight="20dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:src="@mipmap/ic_launcher_round"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp" />
 
 
-    </RelativeLayout>
+            </RelativeLayout>
+
+            <!-- 1. 탭 레이아웃 -->
+            <android.support.design.widget.TabLayout
+                android:layout_marginTop="1dp"
+                android:id="@+id/tab_ticket"
+                android:background="#ffffff"
+                app:tabIndicatorColor="@color/tabindicator1"
+                app:tabIndicatorHeight="5.5dp"
+                android:layout_alignParentTop="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </android.support.design.widget.TabLayout>
+
+            <!-- 2. 뷰페이저 -->
+            <android.support.v4.view.ViewPager
+                android:layout_marginTop="1dp"
+                android:id="@+id/viewpager_ticket"
+                android:layout_below="@+id/tab_ticket"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></android.support.v4.view.ViewPager>
 
 
+        </LinearLayout>
 
-    <!-- 1. 탭 레이아웃 -->
-<android.support.design.widget.TabLayout
-    android:layout_marginTop="1dp"
-    android:id="@+id/tab_ticket"
-    android:background="#ffffff"
-    app:tabIndicatorColor="@color/tabindicator1"
-    app:tabIndicatorHeight="5.5dp"
-    android:layout_alignParentTop="true"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
 
-</android.support.design.widget.TabLayout>
+        <!-- 슬라이딩 패널 하단 메뉴 시작 -->
+        <!-- 슬라이딩 패널 하단 레이아웃 시작 -->
+        <LinearLayout
+            android:id="@+id/special_reservation_layout"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:textSize="@dimen/textSize"
+                android:layout_gravity="top|center_horizontal"
+                android:text="선착순 특별관람 예매하기"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
-    <!-- 2. 뷰페이저 -->
-<android.support.v4.view.ViewPager
-    android:layout_marginTop="1dp"
-    android:id="@+id/viewpager_ticket"
-    android:layout_below="@+id/tab_ticket"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"></android.support.v4.view.ViewPager>
+        </LinearLayout>
+
+
+    </com.sothree.slidinguppanel.SlidingUpPanelLayout>
 
 
 </LinearLayout>
