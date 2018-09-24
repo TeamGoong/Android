@@ -39,24 +39,33 @@
       <android.support.v4.view.ViewPager
           android:id="@+id/viewpager_column_tourlooking"
           android:layout_width="match_parent"
-          android:layout_height="250dp"></android.support.v4.view.ViewPager>
-      <com.pm10.library.CircleIndicator
-          android:layout_gravity="center"
-          android:id="@+id/indicator_column_tourlooking"
+          android:layout_height="272dp"></android.support.v4.view.ViewPager>
+      <RelativeLayout
+          android:background="#ffffff"
+          android:gravity="center_horizontal"
+          android:paddingTop="10dp"
+          android:paddingBottom="13dp"
           android:layout_width="match_parent"
-          android:layout_height="50dp" />
+          android:layout_height="43dp">
+        <com.pm10.library.CircleIndicator
+
+            android:id="@+id/indicator_column_tourlooking"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+      </RelativeLayout>
+
 
       <LinearLayout
-          android:layout_marginTop="15dp"
-          android:layout_marginRight="10dp"
-          android:layout_marginBottom="15dp"
+
           android:orientation="horizontal"
           android:layout_width="match_parent"
-          android:layout_height="wrap_content">
+          android:layout_height="60dp">
 
 
         <TextView
             android:textStyle="bold"
+            android:layout_marginTop="17dp"
+            android:layout_marginBottom="17dp"
             android:textColor="#000000"
             android:layout_marginLeft="15dp"
             android:layout_gravity="center_vertical"
@@ -66,16 +75,31 @@
             android:layout_height="wrap_content" />
 
       </LinearLayout>
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rcv_reviews_lookingpalace"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"></android.support.v7.widget.RecyclerView>
-      <FrameLayout
-          android:id="@+id/frame_review_lookingpalace"
+      <LinearLayout
+          android:background="#ffffff"
           android:layout_width="match_parent"
-          android:layout_height="400dp"
-         ></FrameLayout>
+          android:layout_height="match_parent"
+
+          android:orientation="vertical">
+        <android.support.v7.widget.RecyclerView
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="18dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:id="@+id/rcv_reviews_lookingpalace"
+
+            android:layout_width="match_parent"
+
+            android:layout_height="90dp"></android.support.v7.widget.RecyclerView>
+        <FrameLayout
+            android:background="#ffffff"
+            android:id="@+id/frame_review_lookingpalace"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            ></FrameLayout>
+      </LinearLayout>
+
+
       </LinearLayout>
   </android.support.v4.widget.NestedScrollView>
 

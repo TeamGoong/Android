@@ -25,21 +25,20 @@
        <!-- TODO: Update blank fragment layout -->
 
 
-       <!-- 안내 문구 -->
+
        <LinearLayout
            android:layout_marginTop="15dp"
            android:layout_marginRight="10dp"
-           android:layout_marginLeft="10dp"
+           android:layout_marginBottom="15dp"
            android:orientation="horizontal"
            android:layout_width="match_parent"
            android:layout_height="wrap_content">
 
 
            <TextView
-               android:layout_marginTop="3dp"
                android:textStyle="bold"
                android:textColor="#000000"
-               android:layout_marginLeft="20dp"
+               android:layout_marginLeft="15dp"
                android:layout_gravity="center_vertical"
                android:text="내부 코스"
                android:textSize="@dimen/textSize"
@@ -48,10 +47,9 @@
 
        </LinearLayout>
 
-
        <!-- 뷰페이저 -->
        <android.support.v4.view.ViewPager
-           android:layout_marginTop="20dp"
+           android:paddingTop="20dp"
            android:background="#ffffff"
            android:id="@+id/viewpager_going_palace"
            android:layout_width="match_parent"
