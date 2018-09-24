@@ -27,6 +27,8 @@ public class SessionCallback implements ISessionCallback {
     // 로그인에 성공한 상태
     @Override
     public void onSessionOpened() {
+
+        Log.e("로그인 성공","success");
         requestMe();
     }
 

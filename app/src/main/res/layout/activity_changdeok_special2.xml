@@ -77,10 +77,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                 <ImageView
+                    android:id="@+id/adult_minus_changdeok_special"
                     android:src="@drawable/minus_button"
                     android:layout_width="50dp"
                     android:layout_height="50dp" />
                 <TextView
+                    android:id="@+id/adult_number_changdeok_special"
                     android:layout_margin="10dp"
                     android:textStyle="bold"
                     android:textSize="@dimen/reservation_info"
@@ -88,6 +90,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <ImageView
+                    android:id="@+id/adult_plus_changdeok_special"
                     android:src="@drawable/plus_button"
                     android:layout_width="50dp"
                     android:layout_height="50dp" />
@@ -124,16 +127,19 @@
         android:layout_width="match_parent"
         android:layout_height="100dp">
         <ImageView
+            android:id="@+id/changdeok_special_btn1"
             android:layout_marginLeft="20dp"
-            android:src="@drawable/changdeokgung_booking_every_no"
+            android:src="@drawable/changdeokgung_booking_every_yes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <ImageView
+            android:id="@+id/changdeok_special_btn2"
         android:layout_marginLeft="20dp"
         android:src="@drawable/changdeokgung_booking_always_no"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
         <ImageView
+            android:id="@+id/changdeok_special_btn3"
             android:layout_marginLeft="20dp"
             android:src="@drawable/changdeokgung_booking_lunch_no"
             android:layout_width="wrap_content"
@@ -146,7 +152,7 @@
 
         <!--하단 설명1-->
         <LinearLayout
-            android:visibility="gone"
+            android:id="@+id/changdeok_special_layout1"
             android:background="#ffffff"
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -206,6 +212,7 @@
 
         <!--하단 설명2-->
         <LinearLayout
+            android:id="@+id/changdeok_special_layout2"
             android:visibility="gone"
             android:background="#ffffff"
             android:orientation="vertical"
@@ -266,6 +273,8 @@
 
         <!--하단 설명3-->
         <LinearLayout
+            android:id="@+id/changdeok_special_layout3"
+            android:visibility="gone"
             android:background="#ffffff"
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -322,6 +331,7 @@
         </LinearLayout>
 
         <RelativeLayout
+            android:id="@+id/payment_changdeok_special"
             android:gravity="center"
             android:layout_alignParentBottom="true"
             android:background="@color/changduk"

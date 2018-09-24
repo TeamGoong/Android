@@ -34,6 +34,8 @@ public class MakeReservationFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_make_reservation, container, false);
 
+
+
 //        뷰 초기화
         viewPager = (ViewPager)view.findViewById(R.id.viewpager_make_ticket);
         viewPager.setAdapter(new pagerAdapter(getFragmentManager()));

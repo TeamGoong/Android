@@ -9,6 +9,8 @@ import android.widget.ImageView;
 
 import com.example.jinyoungkim.teamgung.R;
 import com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.booking_normal.ChangdeokNormalActivity;
+import com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.booking_special.ChangdeokSpecial1Activity;
+import com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.booking_special.ChanggyeongSpecial1Activity;
 
 public class BookingChangdeokActivity extends AppCompatActivity {
 
@@ -47,7 +49,7 @@ public class BookingChangdeokActivity extends AppCompatActivity {
             public void onClick(View v) {
                 btn_special_changdeok.setImageResource(R.drawable.changdeokgung_special_o);
                 btn_normal_changdeok.setImageResource(R.drawable.changdeokgung_normal_x);
-
+                startActivity(new Intent(getApplicationContext(), ChangdeokSpecial1Activity.class));
             }
         });
 

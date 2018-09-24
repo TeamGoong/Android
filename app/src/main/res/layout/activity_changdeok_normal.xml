@@ -14,6 +14,7 @@
 
         <!--앱 바-->
         <include
+            android:id="@+id/appbar_reservation"
             android:layout_height="60dp"
             android:layout_width="match_parent"
             layout="@layout/actionbar_reservarion"/>
@@ -53,7 +54,7 @@
     </LinearLayout>
 
     <ScrollView
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="55dp"
         android:layout_below="@+id/c2"
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
@@ -117,10 +118,12 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
                             <ImageView
+                                android:id="@+id/adult_minus_changdeok_palace"
                                 android:src="@drawable/minus_button"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp" />
                             <TextView
+                                android:id="@+id/adult_number_changdeok_palace"
                                 android:layout_margin="10dp"
                                 android:textStyle="bold"
                                 android:textSize="@dimen/reservation_info"
@@ -128,6 +131,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" />
                             <ImageView
+                                android:id="@+id/adult_plus_changdeok_palace"
                                 android:src="@drawable/plus_button"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp" />
@@ -163,17 +167,20 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
                             <ImageView
+                                android:id="@+id/jongro_minus_changdeok_palace"
                                 android:src="@drawable/minus_button"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp" />
                             <TextView
+                                android:id="@+id/jongro_number_changdeok_palace"
                                 android:layout_margin="10dp"
                                 android:textStyle="bold"
                                 android:textSize="@dimen/reservation_info"
-                                android:text="3"
+                                android:text="0"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" />
                             <ImageView
+                                android:id="@+id/jongro_plus_changdeok_palace"
                                 android:src="@drawable/plus_button"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp" />
@@ -267,10 +274,12 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
                             <ImageView
+                                android:id="@+id/student1_minus_changdeok_garden"
                                 android:src="@drawable/minus_button"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp" />
                             <TextView
+                                android:id="@+id/student1_number_changdeok_garden"
                                 android:layout_margin="10dp"
                                 android:textStyle="bold"
                                 android:textSize="@dimen/reservation_info"
@@ -278,6 +287,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" />
                             <ImageView
+                                android:id="@+id/student1_plus_changdeok_garden"
                                 android:src="@drawable/plus_button"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp" />
@@ -313,10 +323,12 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
                             <ImageView
+                                android:id="@+id/jongro1_minus_changdeok_garden"
                                 android:src="@drawable/minus_button"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp" />
                             <TextView
+                                android:id="@+id/jongro1_number_changdeok_garden"
                                 android:layout_margin="10dp"
                                 android:textStyle="bold"
                                 android:textSize="@dimen/reservation_info"
@@ -324,6 +336,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" />
                             <ImageView
+                                android:id="@+id/jongro1_plus_changdeok_garden"
                                 android:src="@drawable/plus_button"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp" />
@@ -372,10 +385,12 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
                             <ImageView
+                                android:id="@+id/student2_minus_changdeok_garden"
                                 android:src="@drawable/minus_button"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp" />
                             <TextView
+                                android:id="@+id/student2_number_changdeok_garden"
                                 android:layout_margin="10dp"
                                 android:textStyle="bold"
                                 android:textSize="@dimen/reservation_info"
@@ -383,6 +398,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" />
                             <ImageView
+                                android:id="@+id/student2_plus_changdeok_garden"
                                 android:src="@drawable/plus_button"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp" />
@@ -418,10 +434,12 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
                             <ImageView
+                                android:id="@+id/jongro2_minus_changdeok_garden"
                                 android:src="@drawable/minus_button"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp" />
                             <TextView
+                                android:id="@+id/jongro2_number_changdeok_garden"
                                 android:layout_margin="10dp"
                                 android:textStyle="bold"
                                 android:textSize="@dimen/reservation_info"
@@ -429,6 +447,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" />
                             <ImageView
+                                android:id="@+id/jongro2_plus_changdeok_garden"
                                 android:src="@drawable/plus_button"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp" />
@@ -477,10 +496,12 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
                             <ImageView
+                                android:id="@+id/adult_minus_changdeok_garden"
                                 android:src="@drawable/minus_button"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp" />
                             <TextView
+                                android:id="@+id/adult_number_changdeok_garden"
                                 android:layout_margin="10dp"
                                 android:textStyle="bold"
                                 android:textSize="@dimen/reservation_info"
@@ -488,6 +509,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" />
                             <ImageView
+                                android:id="@+id/adult_plus_changdeok_garden"
                                 android:src="@drawable/plus_button"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp" />
@@ -523,10 +545,12 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
                             <ImageView
+                                android:id="@+id/jongro3_minus_changdeok_garden"
                                 android:src="@drawable/minus_button"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp" />
                             <TextView
+                                android:id="@+id/jongro3_number_changdeok_garden"
                                 android:layout_margin="10dp"
                                 android:textStyle="bold"
                                 android:textSize="@dimen/reservation_info"
@@ -534,6 +558,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" />
                             <ImageView
+                                android:id="@+id/jongro3_plus_changdeok_garden"
                                 android:src="@drawable/plus_button"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp" />
@@ -583,10 +608,12 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
                             <ImageView
+                                android:id="@+id/old_minus_changdeok_garden"
                                 android:src="@drawable/minus_button"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp" />
                             <TextView
+                                android:id="@+id/old_number_changdeok_garden"
                                 android:layout_margin="10dp"
                                 android:textStyle="bold"
                                 android:textSize="@dimen/reservation_info"
@@ -594,6 +621,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" />
                             <ImageView
+                                android:id="@+id/old_plus_changdeok_garden"
                                 android:src="@drawable/plus_button"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp" />
@@ -629,17 +657,20 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
                             <ImageView
+                                android:id="@+id/jongro4_minus_changdeok_garden"
                                 android:src="@drawable/minus_button"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp" />
                             <TextView
+                                android:id="@+id/jongro4_number_changdeok_garden"
                                 android:layout_margin="10dp"
                                 android:textStyle="bold"
                                 android:textSize="@dimen/reservation_info"
-                                android:text="3"
+                                android:text="0"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" />
                             <ImageView
+                                android:id="@+id/jongro4_plus_changdeok_garden"
                                 android:src="@drawable/plus_button"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp" />
@@ -675,6 +706,7 @@
 
     </ScrollView>
     <RelativeLayout
+        android:id="@+id/payment_changdeok_normal"
         android:gravity="center"
         android:layout_alignParentBottom="true"
         android:background="@color/changduk"
