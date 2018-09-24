@@ -339,8 +339,8 @@
 
         <!--하단 설명4-->
         <LinearLayout
-            android:id="@+id/gyeongbok_special_layout4"
             android:visibility="gone"
+            android:id="@+id/gyeongbok_special_layout4"
             android:background="#ffffff"
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -389,7 +389,6 @@
 
                 <LinearLayout
                     android:orientation="horizontal"
-                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <ImageView
