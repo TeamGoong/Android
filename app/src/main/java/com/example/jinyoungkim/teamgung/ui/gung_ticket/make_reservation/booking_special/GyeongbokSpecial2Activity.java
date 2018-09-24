@@ -70,7 +70,7 @@ public class GyeongbokSpecial2Activity extends AppCompatActivity {
 
         payment_gyeongbok_special = (RelativeLayout)findViewById(R.id.payment_gyeongbok_special);
 
-        // 1. 궁궐 통합 관람권
+        /// 1. 궁궐 통합 관람권
         gyeongbok_special_btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
