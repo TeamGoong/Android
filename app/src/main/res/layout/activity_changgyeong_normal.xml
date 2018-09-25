@@ -64,7 +64,7 @@
             android:layout_height="match_parent">
             <CalendarView
                 android:background="#ffffff"
-                android:id="@+id/calendar_gyeongbok"
+                android:id="@+id/calendar_changgyeong"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 ></CalendarView>
@@ -116,10 +116,12 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content">
                                 <ImageView
+                                    android:id="@+id/adult_minus_changgyeong_palace"
                                     android:src="@drawable/minus_button"
                                     android:layout_width="50dp"
                                     android:layout_height="50dp" />
                                 <TextView
+                                    android:id="@+id/adult_number_changgyeong_palace"
                                     android:layout_margin="10dp"
                                     android:textStyle="bold"
                                     android:textSize="@dimen/reservation_info"
@@ -127,6 +129,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content" />
                                 <ImageView
+                                    android:id="@+id/adult_plus_changgyeong_palace"
                                     android:src="@drawable/plus_button"
                                     android:layout_width="50dp"
                                     android:layout_height="50dp" />
@@ -162,10 +165,12 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content">
                                 <ImageView
+                                    android:id="@+id/jongro_minus_changgyeong_palace"
                                     android:src="@drawable/minus_button"
                                     android:layout_width="50dp"
                                     android:layout_height="50dp" />
                                 <TextView
+                                    android:id="@+id/jongro_number_changgyeong_palace"
                                     android:layout_margin="10dp"
                                     android:textStyle="bold"
                                     android:textSize="@dimen/reservation_info"
@@ -173,6 +178,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content" />
                                 <ImageView
+                                    android:id="@+id/jongro_plus_changgyeong_palace"
                                     android:src="@drawable/plus_button"
                                     android:layout_width="50dp"
                                     android:layout_height="50dp" />
@@ -219,6 +225,7 @@
 
     </ScrollView>
     <RelativeLayout
+        android:id="@+id/payment_changgyeong_normal"
         android:gravity="center"
         android:layout_alignParentBottom="true"
         android:background="@color/changgyeong"

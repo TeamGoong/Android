@@ -18,13 +18,27 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.jinyoungkim.teamgung.R;
+import com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.PayResultActivity;
 import com.example.jinyoungkim.teamgung.ui.gung_tour.TourMainActivity;
 
 import org.w3c.dom.Text;
 
+import java.util.Calendar;
+
 // 창덕궁 일반권 예매 페이지
 
 public class ChangdeokNormalActivity extends AppCompatActivity {
+
+    //  통신에 넘길 데이터
+    int palace_id; // 궁 아이디(0 : 경복궁, 1 : 창덕궁, 2 : 창경궁, 3 : 덕수궁, 4 : 종묘 )
+    String ticket_title; // 티켓 이름
+    String ticket_start; // 티켓 시작 날짜
+    String ticket_end; // 티켓 끝나는 날짜
+    String ticket_people=""; // 사람 정보
+    int ticket_special; // 특별권 여부
+    int ticket_jongro; // 종로인 구분
+    Calendar calendar;
+
     LinearLayout yesselect_palace_changdeok, yesselect_garden_changdeok; // 궁궐전각/왕실후원 탭 (선택)
     ImageView noselect_palace_changdeok, noselect_garden_changdeok; // 궁궐전각/왕실후원 탭 (미선택)
     CalendarView calendar_changdeok; // 캘린더
@@ -75,7 +89,13 @@ public class ChangdeokNormalActivity extends AppCompatActivity {
         }
 
         // 초기화
-
+        // 날짜 default
+        calendar = Calendar.getInstance();
+        r_year= calendar.get(Calendar.YEAR);
+        r_month = calendar.get(Calendar.MONTH)+1;
+        r_day = calendar.get(Calendar.DAY_OF_MONTH);
+        ticket_start=r_year+"."+r_month+"."+r_day;
+        ticket_end=r_year+"."+r_month+"."+r_day;
 
         // 1. 하단 메뉴 설정
         yesselect_garden_changdeok = (LinearLayout)findViewById(R.id.yesselect_garden_changdeok);
@@ -205,6 +225,7 @@ public class ChangdeokNormalActivity extends AppCompatActivity {
                 if(jongro_number_changdeok_palace_i>0){
                     jongro_number_changdeok_palace_i --;
                     jongro_number_changdeok_palace.setText(String.valueOf(jongro_number_changdeok_palace_i));
+                    ticket_jongro = 1;
                 }
             }
         });
@@ -213,6 +234,7 @@ public class ChangdeokNormalActivity extends AppCompatActivity {
             public void onClick(View v) {
                     jongro_number_changdeok_palace_i ++;
                     jongro_number_changdeok_palace.setText(String.valueOf(jongro_number_changdeok_palace_i));
+                ticket_jongro = 1;
             }
         });
 
@@ -244,6 +266,7 @@ public class ChangdeokNormalActivity extends AppCompatActivity {
                 if(jongro1_number_changdeok_garden_i>0){
                     jongro1_number_changdeok_garden_i --;
                     jongro1_number_changdeok_garden.setText(String.valueOf(jongro1_number_changdeok_garden_i));
+                    ticket_jongro = 1;
                 }
             }
         });
@@ -253,6 +276,7 @@ public class ChangdeokNormalActivity extends AppCompatActivity {
             public void onClick(View v) {
                     jongro1_number_changdeok_garden_i ++;
                     jongro1_number_changdeok_garden.setText(String.valueOf(jongro1_number_changdeok_garden_i));
+                ticket_jongro = 1;
             }
         });
 
@@ -283,6 +307,7 @@ public class ChangdeokNormalActivity extends AppCompatActivity {
                 if(jongro2_number_changdeok_garden_i>0){
                     jongro2_number_changdeok_garden_i --;
                     jongro2_number_changdeok_garden.setText(String.valueOf(jongro2_number_changdeok_garden_i));
+                    ticket_jongro = 1;
                 }
             }
         });
@@ -291,6 +316,7 @@ public class ChangdeokNormalActivity extends AppCompatActivity {
             public void onClick(View v) {
                     jongro2_number_changdeok_garden_i ++;
                     jongro2_number_changdeok_garden.setText(String.valueOf(jongro2_number_changdeok_garden_i));
+                ticket_jongro = 1;
             }
         });
 
@@ -321,6 +347,7 @@ public class ChangdeokNormalActivity extends AppCompatActivity {
                 if(jongro3_number_changdeok_garden_i>0){
                     jongro3_number_changdeok_garden_i --;
                     jongro3_number_changdeok_garden.setText(String.valueOf(jongro3_number_changdeok_garden_i));
+                    ticket_jongro = 1;
                 }
             }
         });
@@ -329,6 +356,7 @@ public class ChangdeokNormalActivity extends AppCompatActivity {
             public void onClick(View v) {
                 jongro3_number_changdeok_garden_i ++;
                 jongro3_number_changdeok_garden.setText(String.valueOf(jongro3_number_changdeok_garden_i));
+                ticket_jongro = 1;
             }
         });
 
@@ -359,6 +387,7 @@ public class ChangdeokNormalActivity extends AppCompatActivity {
                 if(jongro4_number_changdeok_garden_i>0){
                     jongro4_number_changdeok_garden_i --;
                     jongro4_number_changdeok_garden.setText(String.valueOf(jongro4_number_changdeok_garden_i));
+                    ticket_jongro = 1;
                 }
             }
         });
@@ -367,6 +396,7 @@ public class ChangdeokNormalActivity extends AppCompatActivity {
             public void onClick(View v) {
                 jongro4_number_changdeok_garden_i ++;
                 jongro4_number_changdeok_garden.setText(String.valueOf(jongro4_number_changdeok_garden_i));
+                ticket_jongro = 1;
             }
         });
 
@@ -379,29 +409,72 @@ public class ChangdeokNormalActivity extends AppCompatActivity {
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 Log.e("날짜", String.valueOf(year)+"년 "+String.valueOf(month)+"월 "+String.valueOf(dayOfMonth)+"일");
                 r_year = year;
-                r_month = month;
+                r_month = month+1;
                 r_day = dayOfMonth;
+                ticket_start = ticket_end = r_year+"."+r_month+"."+r_day;
             }
         });
+
 
         // 결제하기 버튼 클릭
         payment_changdeok_normal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.e("궁궐전각) 대인", String.valueOf(adult_number_changdeok_palace_i));
-                Log.e("궁궐전각) 종로구민 50% 할인", String.valueOf(jongro_number_changdeok_palace_i));
-                Log.e("왕실정원) 청소년(2500원)",String.valueOf(student1_number_changdeok_garden_i));
-                Log.e("왕실정원) 종로구민 50% 할인", String.valueOf(jongro1_number_changdeok_garden_i));
-                Log.e("왕실정원) 청년 (5000원)", String.valueOf(student2_number_changdeok_garden_i));
-                Log.e("왕실정원) 종로구민 50% 할인", String.valueOf(jongro2_number_changdeok_garden_i));
-                Log.e("왕실정원) 성인 (8000원)", String.valueOf(adult_number_changdeok_garden_i));
-                Log.e("왕실정원) 종로구민 50% 할인", String.valueOf(jongro3_number_changdeok_garden_i));
-                Log.e("왕실정원) 경로 (5000원)", String.valueOf(old_number_changdeok_garden_i));
-                Log.e("왕실정원) 종로구민 50% 할인", String.valueOf(jongro4_number_changdeok_garden_i));
-                Log.e("예매날짜)", String.valueOf(r_year+"년 "+r_month+"월 "+r_day+"일"));
+
+
+
+                palace_id = 1; // 창덕궁 아이디
+                ticket_title = "창덕궁 일반권";
+                ticket_special = 0; //특별권 구분
+
+                Log.e("궁아이디) ",String.valueOf(palace_id));
+                Log.e("티켓종류) ", ticket_title);
+                Log.e("티켓 시작일) ", ticket_start);
+                Log.e("티켓 종료일) ", ticket_end);
+
+                /** 사람정보 **/
+                if(adult_number_changdeok_palace_i!=0){
+                    ticket_people+="궁궐전각 대인"+adult_number_changdeok_palace_i;
+                }
+                if(jongro_number_changdeok_palace_i!=0){
+                    ticket_people+=" 궁궐전각 대인 (종로구민)"+adult_number_changdeok_palace_i;
+                }
+                if(student1_number_changdeok_garden_i!=0){
+                    ticket_people+=" 왕실정원 청소년"+student1_number_changdeok_garden_i;
+                }
+                if(jongro1_number_changdeok_garden_i!=0){
+                    ticket_people+=" 왕실정원 청소년 (종로구민)"+jongro1_number_changdeok_garden_i;
+                }
+                if(student2_number_changdeok_garden_i!=0){
+                    ticket_people+=" 왕실정원 청년 "+student2_number_changdeok_garden_i;
+                }
+                if(jongro2_number_changdeok_garden_i!=0){
+                    ticket_people+=" 왕실정원 청년 (종로구민)"+jongro2_number_changdeok_garden_i;
+                }
+                if(adult_number_changdeok_garden_i!=0){
+                    ticket_people+=" 왕실정원 성인"+adult_number_changdeok_garden_i;
+                }
+                if(jongro3_number_changdeok_garden_i!=0){
+                    ticket_people+=" 왕실정원 성인 (종로구민)"+jongro3_number_changdeok_garden_i;
+                }
+                if(old_number_changdeok_garden_i!=0){
+                    ticket_people+=" 경로"+old_number_changdeok_garden_i;
+                }
+                if(jongro4_number_changdeok_garden_i!=0){
+                    ticket_people+=" 경로 (종로구민)"+jongro4_number_changdeok_garden_i;
+                }
+
+
+                Log.e("사람정보 )",ticket_people);
+                Log.e("특별권 구분) ", String.valueOf(ticket_special));
+
+                Intent i = new Intent(getApplicationContext(), PayResultActivity.class);
+                i.putExtra("palace_type","changdeok");
+                startActivity(i);
+                finish();
+
             }
         });
-
 
 
     }

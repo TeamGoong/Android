@@ -48,7 +48,9 @@
         <activity android:name=".ui.gung_ticket.make_reservation.booking_normal.DuksuNormalActivity" />
         <activity android:name=".ui.gung_ticket.make_reservation.booking_special.DuksuSpecial1Activity" />
         <activity android:name=".ui.gung_ticket.make_reservation.booking_special.DuksuSpecial2Activity" />
-        <activity android:name=".ui.gung_ticket.make_reservation.booking_normal.JongmyoNormalActivity"></activity>
+        <activity android:name=".ui.gung_ticket.make_reservation.booking_normal.JongmyoNormalActivity" />
+        <activity android:name=".ui.gung_ticket.SpecialLookingActivity" />
+        <activity android:name=".ui.gung_ticket.make_reservation.PayResultActivity"></activity>
     </application>
 
 </manifest>

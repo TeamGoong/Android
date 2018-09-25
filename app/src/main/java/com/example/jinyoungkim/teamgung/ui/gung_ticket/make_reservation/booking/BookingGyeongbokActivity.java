@@ -1,7 +1,9 @@
 package com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.booking;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,7 +18,7 @@ import com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.booking_
 
 public class BookingGyeongbokActivity extends AppCompatActivity {
 
-    ImageView btn_normal_gyeongbok, btn_special_gyeongbok;
+    ImageView btn_normal_gyeongbok, btn_special_gyeongbok, profile_booking_gyeongbok;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,11 @@ public class BookingGyeongbokActivity extends AppCompatActivity {
         // 초기화
         btn_normal_gyeongbok = (ImageView) findViewById(R.id.btn_normal_gyeongbok);
         btn_special_gyeongbok = (ImageView)findViewById(R.id.btn_special_gyeongbok);
+        profile_booking_gyeongbok = (ImageView)findViewById(R.id.profile_booking_gyeongbok);
+
+        // 프로필 사진
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String profile = preferences.getString("profile","");
 
 
         // 버튼 리스너
@@ -42,6 +49,7 @@ public class BookingGyeongbokActivity extends AppCompatActivity {
                 btn_special_gyeongbok.setImageResource(R.drawable.gyeongbokgung_booking_special_noselect);
                 btn_normal_gyeongbok.setImageResource(R.drawable.gyeongbokgung_booking_normal_select);
                 startActivity(new Intent(getApplicationContext(), GyeongbokNormalActivity.class));
+                finish();
             }
         });
 
@@ -52,6 +60,7 @@ public class BookingGyeongbokActivity extends AppCompatActivity {
                 btn_special_gyeongbok.setImageResource(R.drawable.gyeongbokgung_booking_special_select);
                 btn_normal_gyeongbok.setImageResource(R.drawable.gyeongbokgung_booking_normal_noselect);
                 startActivity(new Intent(getApplicationContext(), GyeongbokSpecial1Activity.class));
+                finish();
             }
         });
 

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
+    android:background="@color/background"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.gung_ticket.make_reservation.booking_special.DuksuSpecial1Activity">
-
+    tools:context=".ui.gung_ticket.make_reservation.PayResultActivity">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -43,38 +43,53 @@
             android:textStyle="bold"
             android:textColor="#000000"
             android:layout_gravity="center_vertical"
-            android:text="날짜 선택하기"
+            android:text="결제 완료"
             android:textSize="@dimen/textSize_sub"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
     </LinearLayout>
 
-    <CalendarView
-        android:layout_marginTop="10dp"
-        android:background="#ffffff"
-        android:id="@+id/calendar_duksu_special"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        ></CalendarView>
-
     <RelativeLayout
+        android:background="#ffffff"
+        android:gravity="center"
+        android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <RelativeLayout
-            android:id="@+id/next_btn_duksu"
-            android:gravity="center"
-            android:layout_alignParentBottom="true"
-            android:background="@color/duksu"
+        <LinearLayout
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="55dp">
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_marginRight="10dp"
+                android:src="@drawable/king"
+                android:layout_width="200dp"
+                android:layout_height="200dp" />
             <TextView
-                android:text="다음 단계"
-                android:textStyle="bold"
-                android:textColor="#ffffff"
-                android:textSize="@dimen/textSize_sub"
+                android:layout_marginTop="20dp"
+                android:text="결제가 완료되었습니다"
+                android:textSize="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-        </RelativeLayout>
+
+            <TextView
+                android:id="@+id/goto_confirm_reservation"
+                android:layout_marginTop="10dp"
+                android:text="예매내역 확인하기"
+                android:textSize="15sp"
+                android:padding="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/goto_home"
+                android:text="홈으로 돌아가기"
+                android:textSize="15sp"
+                android:padding="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
     </RelativeLayout>
+
+
 </LinearLayout>

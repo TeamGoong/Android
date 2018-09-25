@@ -39,6 +39,7 @@
 
                 <!-- 예매정보/궁궐정보 화면전환 스위치 -->
                 <Switch
+                    android:track="@drawable/change_button_blue"
                     android:id="@+id/switch_ticket"
                     android:layout_centerVertical="true"
                     android:layout_centerHorizontal="true"
@@ -90,15 +91,98 @@
             android:id="@+id/special_reservation_layout"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="497dp">
             <TextView
                 android:layout_marginTop="10dp"
                 android:textStyle="bold"
                 android:textSize="@dimen/textSize"
                 android:layout_gravity="top|center_horizontal"
-                android:text="선착순 특별관람 예매하기"
+                android:text="특별관람 예매하기"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
+            <!--특별관람 예매하기 뷰-->
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="447dp">
+
+                <!--첫번째 줄-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/menu1"
+                        android:layout_weight="1"
+                        android:src="@drawable/booking_special_menu_gyeongbokgung"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                    <ImageView
+                        android:id="@+id/menu2"
+                        android:layout_weight="1"
+                        android:src="@drawable/booing_special_menu_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                    <ImageView
+                        android:id="@+id/menu3"
+                        android:layout_weight="1"
+                        android:src="@drawable/booing_special_menu_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </LinearLayout>
+
+                <!--두번째 줄-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/menu4"
+                        android:layout_weight="1"
+                        android:src="@drawable/booing_special_menu_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                    <ImageView
+                        android:id="@+id/menu5"
+                        android:layout_weight="1"
+                        android:src="@drawable/booing_special_menu_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                    <ImageView
+                        android:id="@+id/menu6"
+                        android:layout_weight="1"
+                        android:src="@drawable/booing_special_menu_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </LinearLayout>
+
+                <!--세번째 줄-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/menu7"
+                        android:layout_weight="1"
+                        android:src="@drawable/booing_special_menu_6"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                    <ImageView
+                        android:id="@+id/menu8"
+                        android:layout_weight="1"
+                        android:src="@drawable/booing_special_menu_7"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                    <ImageView
+                        android:id="@+id/menu9"
+                        android:layout_weight="1"
+                        android:src="@drawable/booing_special_menu_8"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </LinearLayout>
+
+
+            </LinearLayout>
 
         </LinearLayout>
 

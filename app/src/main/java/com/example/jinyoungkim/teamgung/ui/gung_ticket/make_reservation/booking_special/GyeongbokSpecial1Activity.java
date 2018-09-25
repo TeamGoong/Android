@@ -12,11 +12,14 @@ import android.widget.RelativeLayout;
 
 import com.example.jinyoungkim.teamgung.R;
 
+import java.util.Calendar;
+
 public class GyeongbokSpecial1Activity extends AppCompatActivity {
 
     CalendarView calendarView;
     RelativeLayout next_btn_gyeonbok;
     int r_year, r_month, r_day;
+    Calendar calendar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,11 +36,17 @@ public class GyeongbokSpecial1Activity extends AppCompatActivity {
         calendarView = (CalendarView)findViewById(R.id.calendar_gyeongbok_special);
         next_btn_gyeonbok = (RelativeLayout)findViewById(R.id.next_btn_gyeonbok);
 
+        // 날짜 default
+        calendar = Calendar.getInstance();
+        r_year= calendar.get(Calendar.YEAR);
+        r_month = calendar.get(Calendar.MONTH)+1;
+        r_day = calendar.get(Calendar.DAY_OF_MONTH);
+
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 r_year = year;
-                r_month = month;
+                r_month = month+1;
                 r_day = dayOfMonth;
             }
         });
@@ -52,6 +61,7 @@ public class GyeongbokSpecial1Activity extends AppCompatActivity {
                 i.putExtra("r_month",r_month);
                 i.putExtra("r_day",r_day);
                 startActivity(i);
+                finish();
             }
         });
 

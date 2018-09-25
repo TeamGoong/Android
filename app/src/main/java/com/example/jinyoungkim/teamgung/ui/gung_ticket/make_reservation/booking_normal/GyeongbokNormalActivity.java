@@ -1,5 +1,6 @@
 package com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.booking_normal;
 
+import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -12,10 +13,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.jinyoungkim.teamgung.R;
+import com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.PayResultActivity;
+
+import java.util.Calendar;
 
 public class GyeongbokNormalActivity extends AppCompatActivity {
 
     CalendarView calendarView; // 캘린더
+    Calendar calendar;
     ImageView adult_minus_gyeongbok_palace, adult_plus_gyeongbok_palace; // 성인 가감버튼
     TextView adult_number_gyeongbok_palace;
 
@@ -62,6 +67,13 @@ public class GyeongbokNormalActivity extends AppCompatActivity {
 
         payment_gyeongbok_normal = (RelativeLayout)findViewById(R.id.payment_gyeongbok_normal);
 
+       // 날짜 default
+       calendar = Calendar.getInstance();
+       r_year= calendar.get(Calendar.YEAR);
+       r_month = calendar.get(Calendar.MONTH)+1;
+       r_day = calendar.get(Calendar.DAY_OF_MONTH);
+       ticket_start=r_year+"."+r_month+"."+r_day;
+       ticket_end=r_year+"."+r_month+"."+r_day;
 
         // 1. 대인 가감버튼 동작
         adult_minus_gyeongbok_palace.setOnClickListener(new View.OnClickListener() {
@@ -72,7 +84,7 @@ public class GyeongbokNormalActivity extends AppCompatActivity {
                     adult_number_gyeongbok_palace.setText(String.valueOf(adult_number_gyeongbok_palace_i));
                 }
 
-                ticket_people_adult = "대인 "+adult_number_gyeongbok_palace_i;
+                ticket_people_adult = "대인 "+String.valueOf(adult_number_gyeongbok_palace_i);
                 Log.e("대인",ticket_people_adult);
             }
         });
@@ -82,7 +94,7 @@ public class GyeongbokNormalActivity extends AppCompatActivity {
             public void onClick(View v) {
                 adult_number_gyeongbok_palace_i ++;
                 adult_number_gyeongbok_palace.setText(String.valueOf(adult_number_gyeongbok_palace_i));
-                ticket_people_adult = "대인 "+adult_number_gyeongbok_palace_i;
+                ticket_people_adult = "대인 "+String.valueOf(adult_number_gyeongbok_palace_i);
                 Log.e("대인",ticket_people_adult);
             }
         });
@@ -95,7 +107,7 @@ public class GyeongbokNormalActivity extends AppCompatActivity {
                     jongro_number_gyeongbok_palace_i --;
                     jongro_number_gyeongbok_palace.setText(String.valueOf(jongro_number_gyeongbok_palace_i));
                 }
-                ticket_people_jongro = "종로구민 "+jongro_number_gyeongbok_palace_i;
+                ticket_people_jongro = "종로구민 "+String.valueOf(jongro_number_gyeongbok_palace_i);
                 Log.e("종로구민",ticket_people_jongro);
             }
         });
@@ -105,7 +117,7 @@ public class GyeongbokNormalActivity extends AppCompatActivity {
             public void onClick(View v) {
                 jongro_number_gyeongbok_palace_i ++;
                 jongro_number_gyeongbok_palace.setText(String.valueOf(jongro_number_gyeongbok_palace_i));
-                ticket_people_jongro = "종로구민 "+jongro_number_gyeongbok_palace_i;
+                ticket_people_jongro = "종로구민 "+String.valueOf(jongro_number_gyeongbok_palace_i);
                 Log.e("종로구민",ticket_people_jongro);
             }
         });
@@ -115,7 +127,7 @@ public class GyeongbokNormalActivity extends AppCompatActivity {
            @Override
            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                r_year = year;
-               r_month = month;
+               r_month = month+1;
                r_day = dayOfMonth;
                Log.e("date",String.valueOf(r_year));
                ticket_start=r_year+"."+r_month+"."+r_day;
@@ -125,7 +137,6 @@ public class GyeongbokNormalActivity extends AppCompatActivity {
 
         palace_id = 0; // 경복궁 아이디
         ticket_title = "경복궁 일반권";
-        ticket_people = ticket_people_adult+", "+ticket_people_jongro;
         ticket_special = 0;
 
 
@@ -137,8 +148,14 @@ public class GyeongbokNormalActivity extends AppCompatActivity {
                Log.e("티켓종류) ", ticket_title);
                Log.e("티켓 시작일) ", ticket_start);
                Log.e("티켓 종료일) ", ticket_end);
-               Log.e("사람 종류) ", ticket_people_adult);
+               ticket_people = ticket_people_adult+" "+ticket_people_jongro;
+               Log.e("사람 종류) ", ticket_people);
                Log.e("특별권 구분) ", String.valueOf(ticket_special));
+
+               Intent i = new Intent(getApplicationContext(), PayResultActivity.class);
+               i.putExtra("palace_type","gyeongbok");
+               startActivity(i);
+               finish();
            }
        });
 
