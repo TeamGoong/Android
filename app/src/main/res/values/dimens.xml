@@ -6,4 +6,6 @@
     <dimen name="textSize">20sp</dimen>
     <dimen name="textSize_sub">18sp</dimen>
     <dimen name="reservation_info">15sp</dimen>
+
+    <dimen name="learning_gung">14sp</dimen>
 </resources>

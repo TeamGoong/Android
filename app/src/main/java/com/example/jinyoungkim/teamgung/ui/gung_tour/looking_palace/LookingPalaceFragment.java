@@ -73,11 +73,11 @@ public class LookingPalaceFragment extends Fragment {
 
         ArrayList<PalaceData> palaceDataArrayList = new ArrayList<>();
 
-        palaceDataArrayList.add(new PalaceData(R.drawable.ic_launcher_foreground,0));
-        palaceDataArrayList.add(new PalaceData(R.drawable.ic_launcher_background,1));
-        palaceDataArrayList.add(new PalaceData(R.drawable.ic_launcher_background,2));
-        palaceDataArrayList.add(new PalaceData(R.drawable.ic_launcher_background,3));
-        palaceDataArrayList.add(new PalaceData(R.drawable.ic_launcher_background,4));
+        palaceDataArrayList.add(new PalaceData(R.drawable.gyeongbokgung_review_big,0));
+        palaceDataArrayList.add(new PalaceData(R.drawable.changdeokgung_review_white,1));
+        palaceDataArrayList.add(new PalaceData(R.drawable.changyeonggung_review_white,2));
+        palaceDataArrayList.add(new PalaceData(R.drawable.deoksugung_review_white,3));
+        palaceDataArrayList.add(new PalaceData(R.drawable.jongmyo_review_white,4));
 
         ShowingReviewsAdapter showingReviewsAdapter = new ShowingReviewsAdapter(palaceDataArrayList,v,fm);
         mRecyclerView.setAdapter(showingReviewsAdapter);
