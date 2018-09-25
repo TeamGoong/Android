@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.example.jinyoungkim.teamgung.R;
 import com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.booking.BookingChangdeokActivity;
@@ -65,20 +66,20 @@ public class Changgyong extends Fragment {
 
                     Log.e("세선 진입","session");
                     token = Session.getCurrentSession().getAccessToken();
-                    // 토큰 저장
-                    Log.e("token",token);
-                    editor.putString("token",token);
-                    editor.commit();
 
-                    startActivity(new Intent(getActivity().getApplicationContext(), BookingChanggyeongActivity.class));
-                } else
-                {
-                    Log.e("else","else");
+                    if(pref.getString("token","").equals(token)){
+                        Toast.makeText(getActivity().getApplicationContext(),"카카오톡 자동로그인 되었습니다:)",Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getActivity().getApplicationContext(), BookingChanggyeongActivity.class));
+                    } else {
+                        // 토큰 저장
+                        editor.putString("token",token);
+                        editor.commit();
+                        startActivity(new Intent(getActivity().getApplicationContext(), BookingChanggyeongActivity.class));
+                    }
                 }
-
             }
         });
-
+        Log.e("token",pref.getString("token",""));
 
         return v;
     }

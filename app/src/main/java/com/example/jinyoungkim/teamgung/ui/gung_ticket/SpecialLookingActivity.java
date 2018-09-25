@@ -10,8 +10,11 @@ import android.widget.CalendarView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.jinyoungkim.teamgung.R;
+
+import java.util.Calendar;
 
 public class SpecialLookingActivity extends AppCompatActivity {
 
@@ -23,6 +26,7 @@ public class SpecialLookingActivity extends AppCompatActivity {
     RelativeLayout payment_special;
     int adult_number_special_i;
     int r_year, r_month, r_day;
+    Calendar calendar; // 달력을 클릭 안 했을 때 날짜 default 값을 오늘 날짜로 하기위해 사용
 
     //  통신에 넘길 데이터
     int palace_id; // 궁 아이디(0 : 경복궁, 1 : 창덕궁, 2 : 창경궁, 3 : 덕수궁, 4 : 종묘 )
@@ -52,12 +56,21 @@ public class SpecialLookingActivity extends AppCompatActivity {
         adult_minus_special = (ImageView)findViewById(R.id.adult_minus_special);
         adult_plus_special = (ImageView)findViewById(R.id.adult_plus_special);
         adult_number_special = (TextView)findViewById(R.id.adult_number_special);
+        adult_number_special.setText("0");
 
         btn_time1 = (ImageView)findViewById(R.id.btn_time1);
         btn_time2 = (ImageView)findViewById(R.id.btn_time2);
         btn_time3 = (ImageView)findViewById(R.id.btn_time3);
 
         payment_special = (RelativeLayout)findViewById(R.id.payment_special);
+
+        // 날짜 default
+        calendar = Calendar.getInstance();
+        r_year= calendar.get(Calendar.YEAR);
+        r_month = calendar.get(Calendar.MONTH)+1;
+        r_day = calendar.get(Calendar.DAY_OF_MONTH);
+        ticket_start=r_year+"."+r_month+"."+r_day;
+        ticket_end=r_year+"."+r_month+"."+r_day;
 
         // 1. 가감 버튼
         adult_minus_special.setOnClickListener(new View.OnClickListener() {
@@ -151,19 +164,26 @@ public class SpecialLookingActivity extends AppCompatActivity {
         payment_special.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                palace_id=0; // 현재 특별관람은 경복궁 밖에 없음
-                ticket_jongro=0;
-                ticket_special=0;
-                ticket_title="경복궁 특별관람권";
-                Log.e("궁 아이디", String.valueOf(palace_id));
-                Log.e("티켓 종류) ",ticket_title);
-                Log.e("티켓 시작날짜) ",ticket_start);
-                Log.e("티켓 끝나날짜) ", ticket_end);
-                ticket_people = "대인 " + String.valueOf(adult_number_special_i);
-                Log.e("사람정보) ", ticket_people);
-                ticket_special=1;
-                Log.e("특별권 구분) ", String.valueOf(ticket_special));
-                Log.e("종로 구분) ",String.valueOf(ticket_jongro));
+
+                if(adult_number_special_i==0){
+                    Toast.makeText(getApplicationContext(),"인원수를 선택해주세요:)",Toast.LENGTH_SHORT).show();
+                }else{
+                    palace_id=0; // 현재 특별관람은 경복궁 밖에 없음
+                    ticket_jongro=0;
+                    ticket_special=0;
+                    ticket_title="경복궁 특별관람권";
+                    Log.e("궁 아이디", String.valueOf(palace_id));
+                    Log.e("티켓 종류) ",ticket_title);
+                    Log.e("티켓 시작날짜) ",ticket_start);
+                    Log.e("티켓 끝나날짜) ", ticket_end);
+                    ticket_people = "대인 " + String.valueOf(adult_number_special_i);
+                    Log.e("사람정보) ", ticket_people);
+                    ticket_special=1;
+                    Log.e("특별권 구분) ", String.valueOf(ticket_special));
+                    Log.e("종로 구분) ",String.valueOf(ticket_jongro));
+                }
+
+
 
             }
         });

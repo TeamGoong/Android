@@ -13,9 +13,12 @@ import android.widget.TextView;
 
 import com.example.jinyoungkim.teamgung.R;
 
+import java.util.Calendar;
+
 public class JongmyoNormalActivity extends AppCompatActivity {
 
     CalendarView calendarView; // 캘린더
+    Calendar calendar;
     ImageView adult_minus_jongmyo_palace, adult_plus_jongmyo_palace; // 성인 가감버튼
     TextView adult_number_jongmyo_palace;
 
@@ -62,6 +65,14 @@ public class JongmyoNormalActivity extends AppCompatActivity {
         junggu_number_jongmyo_palace.setText("0");
 
         payment_jongmyo_normal = (RelativeLayout)findViewById(R.id.payment_jongmyo_normal);
+
+        // 날짜 default
+        calendar = Calendar.getInstance();
+        r_year= calendar.get(Calendar.YEAR);
+        r_month = calendar.get(Calendar.MONTH)+1;
+        r_day = calendar.get(Calendar.DAY_OF_MONTH);
+        ticket_start=r_year+"."+r_month+"."+r_day;
+        ticket_end=r_year+"."+r_month+"."+r_day;
 
         // 1. 대인 가감버튼 동작
         adult_minus_jongmyo_palace.setOnClickListener(new View.OnClickListener() {

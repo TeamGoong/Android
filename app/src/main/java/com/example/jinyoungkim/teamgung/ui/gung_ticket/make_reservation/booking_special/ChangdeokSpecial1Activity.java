@@ -12,9 +12,12 @@ import android.widget.RelativeLayout;
 
 import com.example.jinyoungkim.teamgung.R;
 
+import java.util.Calendar;
+
 public class ChangdeokSpecial1Activity extends AppCompatActivity {
 
     CalendarView calendarView;
+    Calendar calendar;
     RelativeLayout next_btn_changdeok;
     int r_year, r_month, r_day;
 
@@ -31,6 +34,12 @@ public class ChangdeokSpecial1Activity extends AppCompatActivity {
 
         calendarView = (CalendarView)findViewById(R.id.calendar_changdeok_special);
         next_btn_changdeok = (RelativeLayout)findViewById(R.id.next_btn_changdeok);
+
+        // 날짜 default
+        calendar = Calendar.getInstance();
+        r_year= calendar.get(Calendar.YEAR);
+        r_month = calendar.get(Calendar.MONTH)+1;
+        r_day = calendar.get(Calendar.DAY_OF_MONTH);
 
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override

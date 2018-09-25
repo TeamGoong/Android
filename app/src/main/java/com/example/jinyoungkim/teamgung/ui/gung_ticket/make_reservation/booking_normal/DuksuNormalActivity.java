@@ -13,11 +13,14 @@ import android.widget.TextView;
 
 import com.example.jinyoungkim.teamgung.R;
 
+import java.util.Calendar;
+
 public class DuksuNormalActivity extends AppCompatActivity {
 
     CalendarView calendarView; // 캘린더
     ImageView adult_minus_duksu_palace, adult_plus_duksu_palace; // 성인 가감버튼
     TextView adult_number_duksu_palace;
+    Calendar calendar;
 
     ImageView junggu_minus_duksu_palace, junggu_plus_duksu_palace; // 중구민 가감버튼
     TextView junggu_number_duksu_palace;
@@ -61,6 +64,13 @@ public class DuksuNormalActivity extends AppCompatActivity {
 
         payment_duksu_normal = (RelativeLayout)findViewById(R.id.payment_duksu_normal);
 
+        // 날짜 default
+        calendar = Calendar.getInstance();
+        r_year= calendar.get(Calendar.YEAR);
+        r_month = calendar.get(Calendar.MONTH)+1;
+        r_day = calendar.get(Calendar.DAY_OF_MONTH);
+        ticket_start=r_year+"."+r_month+"."+r_day;
+        ticket_end=r_year+"."+r_month+"."+r_day;
 
         // 1. 대인 가감버튼 동작
         adult_minus_duksu_palace.setOnClickListener(new View.OnClickListener() {

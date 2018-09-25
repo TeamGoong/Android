@@ -50,6 +50,7 @@ public class Changdeok extends Fragment {
         editor = pref.edit(); // sharePreference Editor 선언
 
 
+
 //        여기 추후에 로그인 여부에 따라 넘어가는 화면 바꿔야댐
         goto_reservation.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,24 +61,26 @@ public class Changdeok extends Fragment {
                 session.addCallback(new SessionCallback());
                 session.open(AuthType.KAKAO_LOGIN_ALL,Changdeok.this);
 
+
                 if (Session.getCurrentSession().getTokenInfo() != null) {
 
                     Log.e("세선 진입","session");
                     token = Session.getCurrentSession().getAccessToken();
-                    // 토큰 저장
-                    editor.putString("token",token);
-                    editor.commit();
 
-                    startActivity(new Intent(getActivity().getApplicationContext(), BookingChangdeokActivity.class));
-                } else
-                {
-                    Log.e("else","else");
+                    if(pref.getString("token","").equals(token)){
+                        Toast.makeText(getActivity().getApplicationContext(),"카카오톡 자동로그인 되었습니다:)",Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getActivity().getApplicationContext(), BookingChangdeokActivity.class));
+                    } else {
+                        // 토큰 저장
+                        editor.putString("token",token);
+                        editor.commit();
+                        startActivity(new Intent(getActivity().getApplicationContext(), BookingChangdeokActivity.class));
+                    }
                 }
-
             }
         });
 
-
+        Log.e("token",pref.getString("token",""));
         return view;
     }
 

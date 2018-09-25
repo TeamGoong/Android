@@ -22,6 +22,8 @@ import com.example.jinyoungkim.teamgung.ui.gung_tour.TourMainActivity;
 
 import org.w3c.dom.Text;
 
+import java.util.Calendar;
+
 // 창덕궁 일반권 예매 페이지
 
 public class ChangdeokNormalActivity extends AppCompatActivity {
@@ -34,6 +36,7 @@ public class ChangdeokNormalActivity extends AppCompatActivity {
     String ticket_people=""; // 사람 정보
     int ticket_special; // 특별권 여부
     int ticket_jongro; // 종로인 구분
+    Calendar calendar;
 
     LinearLayout yesselect_palace_changdeok, yesselect_garden_changdeok; // 궁궐전각/왕실후원 탭 (선택)
     ImageView noselect_palace_changdeok, noselect_garden_changdeok; // 궁궐전각/왕실후원 탭 (미선택)
@@ -85,7 +88,13 @@ public class ChangdeokNormalActivity extends AppCompatActivity {
         }
 
         // 초기화
-
+        // 날짜 default
+        calendar = Calendar.getInstance();
+        r_year= calendar.get(Calendar.YEAR);
+        r_month = calendar.get(Calendar.MONTH)+1;
+        r_day = calendar.get(Calendar.DAY_OF_MONTH);
+        ticket_start=r_year+"."+r_month+"."+r_day;
+        ticket_end=r_year+"."+r_month+"."+r_day;
 
         // 1. 하단 메뉴 설정
         yesselect_garden_changdeok = (LinearLayout)findViewById(R.id.yesselect_garden_changdeok);

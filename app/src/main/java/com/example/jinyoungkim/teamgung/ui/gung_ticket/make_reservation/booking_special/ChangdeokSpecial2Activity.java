@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.jinyoungkim.teamgung.R;
 
@@ -161,15 +162,21 @@ public class ChangdeokSpecial2Activity extends AppCompatActivity {
         payment_changdeok_special.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.e("궁 아이디", String.valueOf(palace_id));
-                Log.e("특별권 종류) ",ticket_title);
-                Log.e("티켓 시작날짜) ",ticket_start);
-                Log.e("티켓 끝나날짜) ", ticket_end);
-                ticket_people = "대인 " + adult_number_changdeok_special_i;
-                Log.e("사람정보) ", ticket_people);
-                ticket_special=1;
-                Log.e("특별권 구분) ", String.valueOf(ticket_special));
-                Log.e("종로 구분) ",String.valueOf(ticket_jongro));
+
+                if(adult_number_changdeok_special_i==0){
+                    Toast.makeText(getApplicationContext(),"인원수를 선택해주세요:)",Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Log.e("궁 아이디", String.valueOf(palace_id));
+                    Log.e("특별권 종류) ",ticket_title);
+                    Log.e("티켓 시작날짜) ",ticket_start);
+                    Log.e("티켓 끝나날짜) ", ticket_end);
+                    ticket_people = "대인 " + adult_number_changdeok_special_i;
+                    Log.e("사람정보) ", ticket_people);
+                    ticket_special=1;
+                    Log.e("특별권 구분) ", String.valueOf(ticket_special));
+                    Log.e("종로 구분) ",String.valueOf(ticket_jongro));
+                }
 
             }
         });
