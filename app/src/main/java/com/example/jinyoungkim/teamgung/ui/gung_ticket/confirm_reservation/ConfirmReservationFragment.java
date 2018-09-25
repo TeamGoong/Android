@@ -78,8 +78,8 @@ public class ConfirmReservationFragment extends Fragment {
             }
         }
 
-        ReservationConfirmAdapter reservationConfirmAdapter_finish = new ReservationConfirmAdapter(finishTicket);
-        ReservationConfirmAdapter reservationConfirmAdapter_coming = new ReservationConfirmAdapter(comingTicket);
+        ReservationConfirmAdapter reservationConfirmAdapter_finish = new ReservationConfirmAdapter(finishTicket,view);
+        ReservationConfirmAdapter reservationConfirmAdapter_coming = new ReservationConfirmAdapter(comingTicket,view);
 
         finish_rcv.setAdapter(reservationConfirmAdapter_finish);
         coming_rcv.setAdapter(reservationConfirmAdapter_coming);
