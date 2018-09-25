@@ -5,8 +5,8 @@
     android:layout_height="wrap_content">
     <ImageView
         android:id="@+id/img_changdeok_goingpalace"
-        android:layout_width="270dp"
+        android:layout_width="300dp"
         android:layout_height="370dp"
-        android:src="@drawable/changdeokgung_illust"/>
+        android:background="@drawable/changdeokgung_illust"/>
 
 </RelativeLayout>

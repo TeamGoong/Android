@@ -2,9 +2,11 @@ package com.example.jinyoungkim.teamgung.ui.gung_ticket.confirm_reservation.adap
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -12,7 +14,13 @@ import android.widget.TextView;
 
 import com.example.jinyoungkim.teamgung.R;
 import com.example.jinyoungkim.teamgung.ui.gung_ticket.confirm_reservation.data.TicketData;
+import com.example.jinyoungkim.teamgung.ui.gung_ticket.confirm_reservation.review_write_dialog.ReviewWriteDialog;
 import com.example.jinyoungkim.teamgung.ui.gung_tour.looking_palace.data.PalaceData;
+import com.example.jinyoungkim.teamgung.ui.main.foreign_dialog.ChangdeokDialog;
+import com.example.jinyoungkim.teamgung.ui.main.foreign_dialog.ChanggyeongDialog;
+import com.example.jinyoungkim.teamgung.ui.main.foreign_dialog.DuksuDialog;
+import com.example.jinyoungkim.teamgung.ui.main.foreign_dialog.GyeongbokDialog;
+import com.example.jinyoungkim.teamgung.ui.main.foreign_dialog.JongmyoDialog;
 
 import java.util.ArrayList;
 
@@ -31,9 +39,10 @@ public class ReservationConfirmAdapter extends RecyclerView.Adapter {
         }
     }
     private ArrayList<TicketData> ticketArrayList;
-
-    public ReservationConfirmAdapter( ArrayList<TicketData> ticketArrayList){
+    public View view;
+    public ReservationConfirmAdapter( ArrayList<TicketData> ticketArrayList,View view){
         this.ticketArrayList = ticketArrayList;
+        this.view = view;
     }
 
     @NonNull
@@ -111,9 +120,23 @@ public class ReservationConfirmAdapter extends RecyclerView.Adapter {
                     reservationConfirmViewHolder.review_fin.setVisibility(View.INVISIBLE);
                 }
                 break;
+
+
         }
+        final ReviewWriteDialog rwd = new ReviewWriteDialog(view.getContext());
 
+        WindowManager.LayoutParams wm = rwd.getWindow().getAttributes();  //다이얼로그의 높이 너비 설정하기위해
+        wm.copyFrom(rwd.getWindow().getAttributes());  //여기서 설정한값을 그대로 다이얼로그에 넣겠다는의미
 
+        if(review_flag==0){ //후기작성 버튼 활성화 시 눌렀을때 -> 얼굴모양 선택 다이얼로그 띄우기
+            reservationConfirmViewHolder.review_btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    rwd.show();
+
+                }
+            });
+        }
 
     }
 
