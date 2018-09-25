@@ -50,4 +50,7 @@ dependencies {
 
 //   3. 카카오 로그인
     implementation group: project.KAKAO_SDK_GROUP, name: 'usermgmt', version: project.KAKAO_SDK_VERSION
+
+//   4. 카카오 페이 (부트 페이)
+    implementation 'com.github.bootpay:client_android_java:2.0.103'
 }

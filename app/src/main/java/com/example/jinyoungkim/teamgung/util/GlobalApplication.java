@@ -2,33 +2,37 @@ package com.example.jinyoungkim.teamgung.util;
 
 import android.app.Activity;
 import android.app.Application;
+import android.util.Log;
 
 import com.kakao.auth.KakaoSDK;
 
 public class GlobalApplication extends Application {
-    private static GlobalApplication instance;
+    private static GlobalApplication mInstance;
+    private static volatile Activity currentActivity = null;
 
+    public static Activity getCurrentActivity() {
+        Log.e("TAG", "++ currentActivity : " + (currentActivity != null ? currentActivity.getClass().getSimpleName() : ""));
+        return currentActivity;
+    }
+
+    public static void setCurrentActivity(Activity currentActivity) {
+        GlobalApplication.currentActivity = currentActivity;
+    }
+
+    /**
+     * singleton
+     * @return singleton
+     */
     public static GlobalApplication getGlobalApplicationContext() {
-        if (instance == null) {
-            throw new IllegalStateException("This Application does not inherit com.kakao.GlobalApplication");
-        }
-
-        return instance;
-
+        if(mInstance == null)
+            throw new IllegalStateException("this application does not inherit GlobalApplication");
+        return mInstance;
     }
 
     @Override
     public void onCreate() {
         super.onCreate();
-        instance = this;
-
-        // Kakao Sdk 초기화
+        mInstance = this;
         KakaoSDK.init(new KakaoSDKAdapter());
-    }
-
-    @Override
-    public void onTerminate() {
-        super.onTerminate();
-        instance = null;
     }
 }
