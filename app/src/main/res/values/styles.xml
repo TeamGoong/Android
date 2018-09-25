@@ -40,4 +40,10 @@
         <item name="colorPrimaryDark">@color/jongmyo</item>
     </style>
 
+    <style name="special" parent="AppTheme" >
+        <item name="colorPrimary">@color/special</item>
+        <item name="colorAccent">@color/special</item>
+        <item name="colorPrimaryDark">@color/special</item>
+    </style>
+
 </resources>

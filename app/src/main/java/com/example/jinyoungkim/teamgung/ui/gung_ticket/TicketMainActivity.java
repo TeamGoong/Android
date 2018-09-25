@@ -1,7 +1,5 @@
 package com.example.jinyoungkim.teamgung.ui.gung_ticket;
 
-import android.annotation.SuppressLint;
-import android.app.ActionBar;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
@@ -12,13 +10,12 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import com.example.jinyoungkim.teamgung.R;
 import com.example.jinyoungkim.teamgung.ui.gung_ticket.confirm_reservation.ConfirmReservationFragment;
@@ -27,12 +24,13 @@ import com.example.jinyoungkim.teamgung.ui.gung_tour.TourMainActivity;
 
 // 예매하기, 예매 확인 메인 액티비티
 
-public class TicketMainActivity extends AppCompatActivity {
+public class TicketMainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private Switch switch_ticket;
     private LinearLayout special_reservation_layout;
+    private ImageView menu1, menu2, menu3, menu4, menu5, menu6, menu7, menu8, menu9;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +48,18 @@ public class TicketMainActivity extends AppCompatActivity {
         viewPager = (ViewPager)findViewById(R.id.viewpager_ticket); // 뷰페이저
         switch_ticket = (Switch)findViewById(R.id.switch_ticket); // 화면전환 스위치
         special_reservation_layout= (LinearLayout)findViewById(R.id.special_reservation_layout); // 특별관람 예매하기 하단 레이아웃
+
+        //특별관람 메뉴
+        menu1=(ImageView)findViewById(R.id.menu1);
+        menu2=(ImageView)findViewById(R.id.menu2);
+        menu3=(ImageView)findViewById(R.id.menu3);
+        menu4=(ImageView)findViewById(R.id.menu4);
+        menu5=(ImageView)findViewById(R.id.menu5);
+        menu6=(ImageView)findViewById(R.id.menu6);
+        menu7=(ImageView)findViewById(R.id.menu7);
+        menu8=(ImageView)findViewById(R.id.menu8);
+        menu9=(ImageView)findViewById(R.id.menu9);
+
 
 
 //        스위치
@@ -97,6 +107,30 @@ public class TicketMainActivity extends AppCompatActivity {
             }
         });
 
+        /************* 특별관람 예매 *************/
+        menu2.setOnClickListener(this);
+        menu3.setOnClickListener(this);
+        menu4.setOnClickListener(this);
+        menu5.setOnClickListener(this);
+        menu6.setOnClickListener(this);
+        menu7.setOnClickListener(this);
+        menu8.setOnClickListener(this);
+
+        // 경복궁 특별관람
+
+        menu1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),SpecialLookingActivity.class));
+            }
+        });
+
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        Toast.makeText(getApplicationContext(), "서비스 준비중입니다 :)", Toast.LENGTH_SHORT).show();
     }
 
 //  탭 리스너 추가 하기

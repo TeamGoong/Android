@@ -114,7 +114,7 @@ public class DuksuNormalActivity extends AppCompatActivity {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 r_year = year;
-                r_month = month;
+                r_month = month+1;
                 r_day = dayOfMonth;
                 Log.e("date",String.valueOf(r_year));
                 ticket_start=r_year+"."+r_month+"."+r_day;

@@ -37,7 +37,7 @@ public class DuksuSpecial1Activity extends AppCompatActivity {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 r_year = year;
-                r_month = month;
+                r_month = month+1;
                 r_day = dayOfMonth;
             }
         });

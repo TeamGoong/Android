@@ -31,7 +31,7 @@ public class DuksuSpecial2Activity extends AppCompatActivity {
     String ticket_end; // 티켓 끝나는 날짜
     String ticket_people; // 사람 정보
     int ticket_special; // 특별권 여부
-    int ticket_junggu; // 중구인 구분
+    int ticket_jongro; // 종로인 구분
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -183,7 +183,7 @@ public class DuksuSpecial2Activity extends AppCompatActivity {
 
 
         palace_id = 4; // 덕수궁 아이디
-        ticket_junggu = 0;
+        ticket_jongro = 0;
 
         // 5. 결제하기 버튼
         payment_duksu_special.setOnClickListener(new View.OnClickListener() {
@@ -197,7 +197,7 @@ public class DuksuSpecial2Activity extends AppCompatActivity {
                 Log.e("사람정보) ", ticket_people);
                 ticket_special=1;
                 Log.e("특별권 구분) ", String.valueOf(ticket_special));
-                Log.e("종로 구분) ",String.valueOf(ticket_junggu));
+                Log.e("종로 구분) ",String.valueOf(ticket_jongro));
 
             }
         });

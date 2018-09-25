@@ -399,7 +399,7 @@ public class ChangdeokNormalActivity extends AppCompatActivity {
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 Log.e("날짜", String.valueOf(year)+"년 "+String.valueOf(month)+"월 "+String.valueOf(dayOfMonth)+"일");
                 r_year = year;
-                r_month = month;
+                r_month = month+1;
                 r_day = dayOfMonth;
                 ticket_start = ticket_end = r_year+"."+r_month+"."+r_day;
             }
