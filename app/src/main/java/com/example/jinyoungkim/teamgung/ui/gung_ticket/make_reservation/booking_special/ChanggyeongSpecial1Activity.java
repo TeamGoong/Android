@@ -61,6 +61,7 @@ public class ChanggyeongSpecial1Activity extends AppCompatActivity {
                 i.putExtra("r_month",r_month);
                 i.putExtra("r_day",r_day);
                 startActivity(i);
+                finish();
             }
         });
     }

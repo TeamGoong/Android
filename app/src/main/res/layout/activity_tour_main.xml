@@ -22,6 +22,7 @@
 
         <!-- 예매정보/궁궐정보 화면전환 스위치 -->
         <Switch
+            android:track="@drawable/change_button_blue"
             android:id="@+id/switch_tour"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"

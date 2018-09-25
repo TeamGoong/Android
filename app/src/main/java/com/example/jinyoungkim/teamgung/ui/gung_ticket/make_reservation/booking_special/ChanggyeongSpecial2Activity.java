@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.jinyoungkim.teamgung.R;
+import com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.PayResultActivity;
 
 public class ChanggyeongSpecial2Activity extends AppCompatActivity {
 
@@ -205,6 +206,11 @@ public class ChanggyeongSpecial2Activity extends AppCompatActivity {
                     Log.e("사람정보) ", ticket_people);
                     Log.e("특별권 구분) ", String.valueOf(ticket_special));
                     Log.e("종로 구분) ",String.valueOf(ticket_jongro));
+
+                    Intent i = new Intent(getApplicationContext(), PayResultActivity.class);
+                    i.putExtra("palace_type","changgyeong");
+                    startActivity(i);
+                    finish();
                 }
 
 

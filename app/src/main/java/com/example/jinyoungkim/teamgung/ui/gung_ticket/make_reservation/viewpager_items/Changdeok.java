@@ -1,8 +1,6 @@
 package com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.viewpager_items;
 
 
-import android.app.Application;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -18,11 +16,9 @@ import android.widget.Toast;
 
 import com.example.jinyoungkim.teamgung.R;
 import com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.booking.BookingChangdeokActivity;
-import com.example.jinyoungkim.teamgung.util.KakaoDialog;
 import com.example.jinyoungkim.teamgung.util.SessionCallback;
 import com.kakao.auth.AuthType;
 import com.kakao.auth.Session;
-import com.kakao.usermgmt.LoginButton;
 
 public class Changdeok extends Fragment {
 
@@ -58,7 +54,7 @@ public class Changdeok extends Fragment {
 
                 Log.e("버튼클릭","click");
                 Session session = Session.getCurrentSession();
-                session.addCallback(new SessionCallback());
+                session.addCallback(new SessionCallback(getContext()));
                 session.open(AuthType.KAKAO_LOGIN_ALL,Changdeok.this);
 
 

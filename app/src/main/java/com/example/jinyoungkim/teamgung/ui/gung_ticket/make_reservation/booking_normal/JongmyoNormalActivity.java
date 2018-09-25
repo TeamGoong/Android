@@ -1,5 +1,6 @@
 package com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.booking_normal;
 
+import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.jinyoungkim.teamgung.R;
+import com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.PayResultActivity;
 
 import java.util.Calendar;
 
@@ -151,6 +153,11 @@ public class JongmyoNormalActivity extends AppCompatActivity {
                 Log.e("사람 종류) ", ticket_people);
                 Log.e("특별권 구분) ", String.valueOf(ticket_special));
                 Log.e("종로인 구문) ",String.valueOf(ticket_jongro));
+
+                Intent i = new Intent(getApplicationContext(), PayResultActivity.class);
+                i.putExtra("palace_type","jongmyo");
+                startActivity(i);
+                finish();
             }
         });
     }

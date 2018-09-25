@@ -23,6 +23,7 @@
 
         <!-- 프로필 -->
         <ImageView
+            android:id="@+id/profile_booking_duksu"
             android:layout_marginRight="20dp"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"

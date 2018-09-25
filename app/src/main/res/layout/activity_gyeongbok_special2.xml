@@ -128,25 +128,25 @@
         android:layout_height="100dp">
         <ImageView
             android:id="@+id/gyeongbok_special_btn1"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:src="@drawable/gyeongbokgung_every_x"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <ImageView
             android:id="@+id/gyeongbok_special_btn2"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:src="@drawable/gyeongbokgung_always_x"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <ImageView
             android:id="@+id/gyeongbok_special_btn3"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:src="@drawable/gyeongbokgung_lunch_x"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <ImageView
             android:id="@+id/gyeongbok_special_btn4"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:src="@drawable/gyeongbokgung_time_x"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -156,279 +156,294 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!--하단 설명1-->
-        <LinearLayout
-            android:id="@+id/gyeongbok_special_layout1"
-            android:visibility="gone"
-            android:background="#ffffff"
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
-            <LinearLayout
-                android:layout_marginTop="10dp"
-                android:gravity="center_vertical"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:src="@drawable/gyeongbokgung_booking_circle_icon"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp" />
-                <TextView
-                    android:textStyle="bold"
-                    android:textColor="#000000"
-                    android:textSize="@dimen/reservation_info"
-                    android:layout_marginLeft="10dp"
-                    android:text="대인 10000원 (4000원 절약)"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
 
-            </LinearLayout>
-            <LinearLayout
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="20dp"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:textSize="10sp"
-                    android:text="※ 구매일로부터 3개월 사용가능하고, 각 궁 별로 1회 사용가능 합니다."
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:layout_marginTop="10dp"
-                    android:textSize="10sp"
-                    android:text="※ 한군데라도 방문 시, 환불이 불가능합니다."
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:layout_marginTop="10dp"
-                    android:textSize="10sp"
-                    android:text="※ 경복궁 후원 특별관람의 경우, 선착순 교환이 필요합니다."
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <!--하단 설명2-->
-        <LinearLayout
-            android:id="@+id/gyeongbok_special_layout2"
-            android:visibility="gone"
-            android:background="#ffffff"
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <LinearLayout
-                android:layout_marginTop="10dp"
-                android:gravity="center_vertical"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:src="@drawable/gyeongbokgung_booking_circle_icon"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp" />
-                <TextView
-                    android:textStyle="bold"
-                    android:textColor="#000000"
-                    android:textSize="@dimen/reservation_info"
-                    android:layout_marginLeft="10dp"
-                    android:text="대인 10000원 (4000원 절약)"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="20dp"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:textSize="10sp"
-                    android:text="※ 구매일로부터 1개월 사용가능합니다."
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:layout_marginTop="10dp"
-                    android:textSize="10sp"
-                    android:text="※ 한군데라도 방문 시, 환불이 불가능합니다."
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:layout_marginTop="10dp"
-                    android:textSize="10sp"
-                    android:text="※ 경복궁만 상시입장이 가능한 관람권 입니다."
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <!--하단 설명3-->
-        <LinearLayout
-            android:id="@+id/gyeongbok_special_layout3"
-            android:visibility="gone"
-            android:background="#ffffff"
-            android:orientation="vertical"
+        <ScrollView
+            android:layout_marginBottom="60dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <LinearLayout
-                android:layout_marginTop="10dp"
-                android:gravity="center_vertical"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:src="@drawable/gyeongbokgung_booking_circle_icon"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp" />
-                <TextView
-                    android:textStyle="bold"
-                    android:textColor="#000000"
-                    android:textSize="@dimen/reservation_info"
-                    android:layout_marginLeft="10dp"
-                    android:text="대인 5000원"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="20dp"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <TextView
-                    android:textSize="10sp"
-                    android:text="※ 구매일로부터 3개월 사용가능합니다. (10회 한정)"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
 
-                <TextView
-                    android:layout_marginTop="10dp"
-                    android:textSize="10sp"
-                    android:text="※ 점심시간중에만 사용이 가능합니다. (12:00-14:00)"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:layout_marginTop="10dp"
-                    android:textSize="10sp"
-                    android:text="※ 경궁만 상시입장이 가능한 관람권 입니다."
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <!--하단 설명4-->
-        <LinearLayout
-            android:visibility="gone"
-            android:id="@+id/gyeongbok_special_layout4"
-            android:background="#ffffff"
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <LinearLayout
-                android:layout_marginTop="10dp"
-                android:gravity="center_vertical"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:textStyle="bold"
-                    android:textColor="#000000"
-                    android:textSize="@dimen/reservation_info"
-                    android:text="50,000원"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <ImageView
-                    android:layout_marginTop="10dp"
-                    android:src="@drawable/gyeongbokgung_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
+                <!--하단 설명1-->
                 <LinearLayout
-                    android:layout_marginTop="20dp"
-                    android:orientation="horizontal"
+                    android:id="@+id/gyeongbok_special_layout1"
+                    android:visibility="gone"
+                    android:background="#ffffff"
+                    android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:textStyle="bold"
-                        android:textColor="#000000"
-                        android:textSize="@dimen/reservation_info"
-                        android:text="100,000원"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                    <TextView
-                        android:layout_marginLeft="10dp"
-                        android:textSize="10sp"
-                        android:text="※ 동반 1인 무료"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_marginTop="10dp"
+                        android:gravity="center_vertical"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:src="@drawable/gyeongbokgung_booking_circle_icon"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp" />
+                        <TextView
+                            android:textStyle="bold"
+                            android:textColor="#000000"
+                            android:textSize="@dimen/reservation_info"
+                            android:layout_marginLeft="10dp"
+                            android:text="대인 10000원 (4000원 절약)"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="20dp"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:textSize="10sp"
+                            android:text="※ 구매일로부터 3개월 사용가능하고, 각 궁 별로 1회 사용가능 합니다."
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:layout_marginTop="10dp"
+                            android:textSize="10sp"
+                            android:text="※ 한군데라도 방문 시, 환불이 불가능합니다."
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:layout_marginTop="10dp"
+                            android:textSize="10sp"
+                            android:text="※ 경복궁 후원 특별관람의 경우, 선착순 교환이 필요합니다."
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
                 </LinearLayout>
 
+                <!--하단 설명2-->
                 <LinearLayout
-                    android:orientation="horizontal"
+                    android:id="@+id/gyeongbok_special_layout2"
+                    android:visibility="gone"
+                    android:background="#ffffff"
+                    android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <ImageView
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
                         android:layout_marginTop="10dp"
-                        android:src="@drawable/gyeongbokgung_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                    <ImageView
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:src="@drawable/deoksugung_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                    <ImageView
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="10dp"
-                        android:src="@drawable/changgyeonggung_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                    <ImageView
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="10dp"
-                        android:src="@drawable/noong_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:gravity="center_vertical"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:src="@drawable/gyeongbokgung_booking_circle_icon"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp" />
+                        <TextView
+                            android:textStyle="bold"
+                            android:textColor="#000000"
+                            android:textSize="@dimen/reservation_info"
+                            android:layout_marginLeft="10dp"
+                            android:text="대인 10000원 (4000원 절약)"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="20dp"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:textSize="10sp"
+                            android:text="※ 구매일로부터 1개월 사용가능합니다."
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:layout_marginTop="10dp"
+                            android:textSize="10sp"
+                            android:text="※ 한군데라도 방문 시, 환불이 불가능합니다."
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:layout_marginTop="10dp"
+                            android:textSize="10sp"
+                            android:text="※ 경복궁만 상시입장이 가능한 관람권 입니다."
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
                 </LinearLayout>
-                <TextView
-                    android:layout_marginTop="20dp"
-                    android:textSize="10sp"
-                    android:text="※ 점심시간중에만 사용이 가능합니다. (12:00-13:00)"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <TextView
-                    android:layout_marginTop="10dp"
-                    android:textSize="10sp"
-                    android:text="※ 구매일로부터 1년간 사용가능합니다. "
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+
+                <!--하단 설명3-->
+                <LinearLayout
+                    android:id="@+id/gyeongbok_special_layout3"
+                    android:visibility="gone"
+                    android:background="#ffffff"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <LinearLayout
+                        android:layout_marginTop="10dp"
+                        android:gravity="center_vertical"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:src="@drawable/gyeongbokgung_booking_circle_icon"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp" />
+                        <TextView
+                            android:textStyle="bold"
+                            android:textColor="#000000"
+                            android:textSize="@dimen/reservation_info"
+                            android:layout_marginLeft="10dp"
+                            android:text="대인 5000원"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="20dp"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:textSize="10sp"
+                            android:text="※ 구매일로부터 3개월 사용가능합니다. (10회 한정)"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:layout_marginTop="10dp"
+                            android:textSize="10sp"
+                            android:text="※ 점심시간중에만 사용이 가능합니다. (12:00-14:00)"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:layout_marginTop="10dp"
+                            android:textSize="10sp"
+                            android:text="※ 경궁만 상시입장이 가능한 관람권 입니다."
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!--하단 설명4-->
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/gyeongbok_special_layout4"
+                    android:background="#ffffff"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <LinearLayout
+                        android:layout_marginTop="10dp"
+                        android:gravity="center_vertical"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:textStyle="bold"
+                            android:textColor="#000000"
+                            android:textSize="@dimen/reservation_info"
+                            android:text="50,000원"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <ImageView
+                            android:layout_marginTop="10dp"
+                            android:src="@drawable/gyeongbokgung_button"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content" />
+
+                        <LinearLayout
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:textStyle="bold"
+                                android:textColor="#000000"
+                                android:textSize="@dimen/reservation_info"
+                                android:text="100,000원"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                            <TextView
+                                android:layout_marginLeft="10dp"
+                                android:textSize="10sp"
+                                android:text="※ 동반 1인 무료"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <ImageView
+                                android:layout_marginTop="10dp"
+                                android:src="@drawable/gyeongbokgung_button"
+                                android:layout_width="50dp"
+                                android:layout_height="wrap_content" />
+                            <ImageView
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginTop="10dp"
+                                android:src="@drawable/deoksugung_button"
+                                android:layout_width="50dp"
+                                android:layout_height="wrap_content" />
+                            <ImageView
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginTop="10dp"
+                                android:src="@drawable/changgyeonggung_button"
+                                android:layout_width="50dp"
+                                android:layout_height="wrap_content" />
+                            <ImageView
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginTop="10dp"
+                                android:src="@drawable/noong_button"
+                                android:layout_width="50dp"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
+                        <TextView
+                            android:layout_marginTop="20dp"
+                            android:textSize="10sp"
+                            android:text="※ 점심시간중에만 사용이 가능합니다. (12:00-13:00)"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:layout_marginTop="10dp"
+                            android:textSize="10sp"
+                            android:text="※ 구매일로부터 1년간 사용가능합니다. "
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                </LinearLayout>
+
             </LinearLayout>
-        </LinearLayout>
+        </ScrollView>
+
 
         <RelativeLayout
             android:id="@+id/payment_gyeongbok_special"

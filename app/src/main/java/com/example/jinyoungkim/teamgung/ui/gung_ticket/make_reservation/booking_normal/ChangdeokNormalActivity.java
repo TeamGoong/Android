@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.jinyoungkim.teamgung.R;
+import com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.PayResultActivity;
 import com.example.jinyoungkim.teamgung.ui.gung_tour.TourMainActivity;
 
 import org.w3c.dom.Text;
@@ -466,6 +467,11 @@ public class ChangdeokNormalActivity extends AppCompatActivity {
 
                 Log.e("사람정보 )",ticket_people);
                 Log.e("특별권 구분) ", String.valueOf(ticket_special));
+
+                Intent i = new Intent(getApplicationContext(), PayResultActivity.class);
+                i.putExtra("palace_type","changdeok");
+                startActivity(i);
+                finish();
 
             }
         });

@@ -39,6 +39,7 @@
 
                 <!-- 예매정보/궁궐정보 화면전환 스위치 -->
                 <Switch
+                    android:track="@drawable/change_button_blue"
                     android:id="@+id/switch_ticket"
                     android:layout_centerVertical="true"
                     android:layout_centerHorizontal="true"
@@ -90,7 +91,7 @@
             android:id="@+id/special_reservation_layout"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="497dp">
             <TextView
                 android:layout_marginTop="10dp"
                 android:textStyle="bold"
@@ -102,15 +103,13 @@
 
             <!--특별관람 예매하기 뷰-->
             <LinearLayout
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="447dp">
 
                 <!--첫번째 줄-->
                 <LinearLayout
-                    android:background="@color/jongmyo"
-                    android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <ImageView
@@ -136,8 +135,6 @@
 
                 <!--두번째 줄-->
                 <LinearLayout
-                    android:background="@color/jongmyo"
-                    android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <ImageView
@@ -162,8 +159,6 @@
 
                 <!--세번째 줄-->
                 <LinearLayout
-                    android:background="@color/jongmyo"
-                    android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <ImageView

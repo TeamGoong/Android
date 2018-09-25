@@ -1,7 +1,9 @@
 package com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.booking;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,7 +17,7 @@ import com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.booking_
 
 public class BookingDuksuActivity extends AppCompatActivity {
 
-    ImageView btn_normal_duksu, btn_special_duksu;
+    ImageView btn_normal_duksu, btn_special_duksu, profile_booking_duksu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,11 @@ public class BookingDuksuActivity extends AppCompatActivity {
         // 초기화
         btn_normal_duksu = (ImageView) findViewById(R.id.btn_normal_duksu);
         btn_special_duksu = (ImageView)findViewById(R.id.btn_special_duksu);
+        profile_booking_duksu = (ImageView)findViewById(R.id.profile_booking_duksu);
+
+        // 프로필 사진
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String profile = preferences.getString("profile","");
 
 
         // 버튼 리스너
@@ -42,6 +49,7 @@ public class BookingDuksuActivity extends AppCompatActivity {
                 btn_special_duksu.setImageResource(R.drawable.deoksugung_special_x);
                 btn_normal_duksu.setImageResource(R.drawable.deoksugung_normal_o);
                 startActivity(new Intent(getApplicationContext(), DuksuNormalActivity.class));
+                finish();
             }
         });
 
@@ -52,6 +60,7 @@ public class BookingDuksuActivity extends AppCompatActivity {
                 btn_special_duksu.setImageResource(R.drawable.deoksugung_special_o);
                 btn_normal_duksu.setImageResource(R.drawable.deoksugung_normal_x);
                 startActivity(new Intent(getApplicationContext(), DuksuSpecial1Activity.class));
+                finish();
             }
         });
 

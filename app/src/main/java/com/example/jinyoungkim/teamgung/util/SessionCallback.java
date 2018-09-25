@@ -3,6 +3,7 @@ package com.example.jinyoungkim.teamgung.util;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -19,10 +20,12 @@ public class SessionCallback implements ISessionCallback {
 
     String token; //서버로 넘겨줄 토큰
     Context context;
+    SharedPreferences pref;
+    SharedPreferences.Editor editor;
 
-    public void setContext(Context context) {
-        this.context = context;
-    }
+   public SessionCallback(Context context){
+       this.context = context;
+   }
 
     // 로그인에 성공한 상태
     @Override
@@ -58,8 +61,11 @@ public class SessionCallback implements ISessionCallback {
             // 3. 사용자정보 요청에 성공한 경우
             @Override
             public void onSuccess(UserProfile userProfile) {
-                Log.e("SessionCallback :: ", "onSuccess");
 
+                pref = PreferenceManager.getDefaultSharedPreferences(context);
+                editor = pref.edit();
+
+                Log.e("SessionCallback :: ", "onSuccess");
                 String nickname = userProfile.getNickname(); //사용자 닉네임
                 String profileImagePath = userProfile.getProfileImagePath(); //사용자 프사
                 String thumnailPath = userProfile.getThumbnailImagePath(); // 썸네일이미지
@@ -72,9 +78,12 @@ public class SessionCallback implements ISessionCallback {
                 Log.e("Profile : ", UUID + "");
                 Log.e("Profile : ", id + "");
 
+                editor.putString("profile",profileImagePath);
+                editor.commit();
+
             }
 
-            // 4. 사용자 정보 요청 실패
+            // 4. 사용자 정보 요청
             @Override
             public void onFailure(ErrorResult errorResult) {
                 Log.e("SessionCallback :: ", "onFailure : " + errorResult.getErrorMessage());

@@ -1,7 +1,9 @@
 package com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.booking;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,7 +14,7 @@ import com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.booking_
 
 public class BookingJongmyoActivity extends AppCompatActivity {
 
-    ImageView btn_normal_jongmyo;
+    ImageView btn_normal_jongmyo,profile_booking_jongmyo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,12 +29,19 @@ public class BookingJongmyoActivity extends AppCompatActivity {
 
         // 초기화
         btn_normal_jongmyo = (ImageView)findViewById(R.id.btn_normal_jongmyo);
+        profile_booking_jongmyo = (ImageView)findViewById(R.id.profile_booking_jongmyo);
+
+        // 프로필 사진
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String profile = preferences.getString("profile","");
+
 
         btn_normal_jongmyo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 btn_normal_jongmyo.setImageResource(R.drawable.jongmyo_normal_o);
                 startActivity(new Intent(getApplicationContext(), JongmyoNormalActivity.class));
+                finish();
             }
         });
     }

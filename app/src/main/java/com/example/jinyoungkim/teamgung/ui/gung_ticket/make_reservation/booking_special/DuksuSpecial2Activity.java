@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.jinyoungkim.teamgung.R;
+import com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.PayResultActivity;
 
 public class DuksuSpecial2Activity extends AppCompatActivity {
 
@@ -204,6 +205,11 @@ public class DuksuSpecial2Activity extends AppCompatActivity {
                     ticket_special=1;
                     Log.e("특별권 구분) ", String.valueOf(ticket_special));
                     Log.e("종로 구분) ",String.valueOf(ticket_jongro));
+
+                    Intent i = new Intent(getApplicationContext(), PayResultActivity.class);
+                    i.putExtra("palace_type","duksu");
+                    startActivity(i);
+                    finish();
 
                 }
 

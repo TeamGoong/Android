@@ -48,7 +48,7 @@ public class Gyeongbok extends Fragment {
 
                 Log.e("버튼클릭","click");
                 Session session = Session.getCurrentSession();
-                session.addCallback(new SessionCallback());
+                session.addCallback(new SessionCallback(getContext()));
                 session.open(AuthType.KAKAO_LOGIN_ALL,Gyeongbok.this);
                 if (Session.getCurrentSession().getTokenInfo() != null) {
 

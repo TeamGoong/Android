@@ -1,7 +1,9 @@
 package com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.booking;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,7 +16,7 @@ import com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.booking_
 
 public class BookingChangdeokActivity extends AppCompatActivity {
 
-    private ImageView btn_normal_changdeok, btn_special_changdeok; // 일반권, 특별권 버튼
+    private ImageView btn_normal_changdeok, btn_special_changdeok,profile_booking_changdeok; // 일반권, 특별권 버튼, 프로필사진
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,11 @@ public class BookingChangdeokActivity extends AppCompatActivity {
         // 초기화
         btn_normal_changdeok = (ImageView)findViewById(R.id.btn_normal_changdeok);
         btn_special_changdeok = (ImageView)findViewById(R.id.btn_special_changdeok);
+        profile_booking_changdeok = (ImageView)findViewById(R.id.profile_booking_changdeok);
+
+        // 프로필 사진
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String profile = preferences.getString("profile","");
 
 
         // 버튼 리스너
@@ -40,6 +47,7 @@ public class BookingChangdeokActivity extends AppCompatActivity {
                 btn_special_changdeok.setImageResource(R.drawable.changdeokgung_special_x);
                 btn_normal_changdeok.setImageResource(R.drawable.changdeokgung_normal_o);
                 startActivity(new Intent(getApplicationContext(), ChangdeokNormalActivity.class));
+                finish();
             }
         });
 
@@ -50,6 +58,7 @@ public class BookingChangdeokActivity extends AppCompatActivity {
                 btn_special_changdeok.setImageResource(R.drawable.changdeokgung_special_o);
                 btn_normal_changdeok.setImageResource(R.drawable.changdeokgung_normal_x);
                 startActivity(new Intent(getApplicationContext(), ChangdeokSpecial1Activity.class));
+                finish();
             }
         });
 
