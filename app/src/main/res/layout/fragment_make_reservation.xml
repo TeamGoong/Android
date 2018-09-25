@@ -43,7 +43,7 @@
         android:layout_marginTop="10dp"
         android:id="@+id/viewpager_make_ticket"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="300dp"
         android:layout_gravity="center"
         android:layout_marginBottom="8dp"
         android:clipToPadding="false"
@@ -60,7 +60,7 @@
         android:layout_height="wrap_content">
 
         <com.pm10.library.CircleIndicator
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:id="@+id/indicator_make_reservation"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
