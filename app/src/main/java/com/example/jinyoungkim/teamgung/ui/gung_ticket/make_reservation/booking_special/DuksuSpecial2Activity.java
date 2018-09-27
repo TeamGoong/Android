@@ -14,7 +14,26 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.jinyoungkim.teamgung.R;
+import com.example.jinyoungkim.teamgung.model.PayPost;
+import com.example.jinyoungkim.teamgung.model.PayResult;
+import com.example.jinyoungkim.teamgung.network.NetworkService;
 import com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.PayResultActivity;
+import com.example.jinyoungkim.teamgung.util.GlobalApplication;
+import com.example.jinyoungkim.teamgung.util.SharePreferenceController;
+
+import kr.co.bootpay.Bootpay;
+import kr.co.bootpay.BootpayAnalytics;
+import kr.co.bootpay.CancelListener;
+import kr.co.bootpay.CloseListener;
+import kr.co.bootpay.ConfirmListener;
+import kr.co.bootpay.DoneListener;
+import kr.co.bootpay.ErrorListener;
+import kr.co.bootpay.ReadyListener;
+import kr.co.bootpay.enums.Method;
+import kr.co.bootpay.enums.PG;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import kr.co.bootpay.Bootpay;
 import kr.co.bootpay.BootpayAnalytics;
@@ -28,6 +47,9 @@ import kr.co.bootpay.enums.Method;
 import kr.co.bootpay.enums.PG;
 
 public class DuksuSpecial2Activity extends AppCompatActivity {
+
+    private NetworkService networkService;
+    private PayPost payPost;
 
     ImageView duksu_special_btn1,duksu_special_btn2,duksu_special_btn3,duksu_special_btn4; // 하단 정보 보기 버튼
     ImageView adult_minus_duksu_special,adult_plus_duksu_special; // 인원 수
@@ -58,6 +80,8 @@ public class DuksuSpecial2Activity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(0xff394E7E);
         }
+
+        networkService = GlobalApplication.getGlobalApplicationContext().getNetworkService();
 
         // Special1Activity에서 받은 예매 날짜
         i=getIntent();
@@ -202,7 +226,7 @@ public class DuksuSpecial2Activity extends AppCompatActivity {
         });
 
 
-        palace_id = 4; // 덕수궁 아이디
+        palace_id = 3; // 덕수궁 아이디
         ticket_jongro = 0;
 
         // 5. 결제하기 버튼
@@ -223,6 +247,8 @@ public class DuksuSpecial2Activity extends AppCompatActivity {
                     ticket_special=1;
                     Log.e("특별권 구분) ", String.valueOf(ticket_special));
                     Log.e("종로 구분) ",String.valueOf(ticket_jongro));
+
+                    pay();
 
                     Bootpay.init(getFragmentManager())
                             .setApplicationId("5baa746eb6d49c5a2452ee7f") // 해당 프로젝트(안드로이드)의 application id 값
@@ -288,5 +314,24 @@ public class DuksuSpecial2Activity extends AppCompatActivity {
             }
         });
 
+    }
+
+    //    네트워킹
+    public void pay() {
+        payPost = new PayPost(palace_id,ticket_title,ticket_start,ticket_end,ticket_people,ticket_special,ticket_jongro);
+        Call<PayResult> payResultCall = networkService.pay(SharePreferenceController.getTokenHeader(getApplicationContext()),payPost);
+        payResultCall.enqueue(new Callback<PayResult>() {
+            @Override
+            public void onResponse(Call<PayResult> call, Response<PayResult> response) {
+                if(response.isSuccessful()){
+                    Log.e("SERVER IN","success");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<PayResult> call, Throwable t) {
+                GlobalApplication.getGlobalApplicationContext().makeToast("네트워크 상태를 확인해 주세요 :)");
+            }
+        });
     }
 }

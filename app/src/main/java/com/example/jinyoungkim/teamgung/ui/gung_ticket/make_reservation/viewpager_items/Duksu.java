@@ -1,6 +1,5 @@
 package com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.viewpager_items;
 
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -30,9 +29,6 @@ import com.kakao.util.exception.KakaoException;
 
 public class Duksu extends Fragment {
     private FrameLayout goto_reservation;
-    private String token;
-    private SharedPreferences pref;
-    private SharedPreferences.Editor editor;
 
     private String userName;
     private String profileUrl;
@@ -48,8 +44,6 @@ public class Duksu extends Fragment {
         View view = inflater.inflate(R.layout.vpitem_duksu, container, false);
 
         goto_reservation = (FrameLayout)view.findViewById(R.id.duksu);
-        pref = PreferenceManager.getDefaultSharedPreferences(getContext()); // sharedPreference 선언
-        editor = pref.edit(); // sharePreference Editor 선언
 
 
         //        여기 추후에 로그인 여부에 따라 넘어가는 화면 바꿔야댐
@@ -67,11 +61,13 @@ public class Duksu extends Fragment {
                     editor.commit();
                     kakaoLogin();
                 }
+                Intent i = new Intent(getContext(),LoadingActivity.class);
+                i.putExtra("fragment_type","duksu");
+                startActivity(i);
 
             }
         });
 
-        Log.e("token",pref.getString("token",""));
         return view;
     }
     private void kakaoLogin(){

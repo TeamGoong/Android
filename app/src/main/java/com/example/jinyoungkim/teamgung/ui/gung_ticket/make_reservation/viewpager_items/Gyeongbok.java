@@ -30,9 +30,7 @@ import com.kakao.util.exception.KakaoException;
 
 public class Gyeongbok extends Fragment {
     private FrameLayout goto_reservation;
-    private String token;
-    private SharedPreferences pref;
-    private SharedPreferences.Editor editor;
+
 
     private String userName;
     private String profileUrl;
@@ -48,8 +46,6 @@ public class Gyeongbok extends Fragment {
         View view = inflater.inflate(R.layout.vpitem_gyeongbok, container, false);
 
         goto_reservation = (FrameLayout)view.findViewById(R.id.gyeongbok);
-        pref = PreferenceManager.getDefaultSharedPreferences(getContext()); // sharedPreference 선언
-        editor = pref.edit(); // sharePreference Editor 선언
 
 
         //        여기 추후에 로그인 여부에 따라 넘어가는 화면 바꿔야댐
@@ -60,6 +56,9 @@ public class Gyeongbok extends Fragment {
                 if(pref.getString("token","").equals(token)){
                     Toast.makeText(getActivity().getApplicationContext(),"카카오톡 자동로그인 되었습니다:)",Toast.LENGTH_SHORT).show();
                     kakaoLogin();
+                Intent i = new Intent(getContext(),LoadingActivity.class);
+                i.putExtra("fragment_type","gyeongbok");
+                startActivity(i);
 
                 } else {
                     // 토큰 저장
@@ -71,7 +70,6 @@ public class Gyeongbok extends Fragment {
         });
 
 
-        Log.e("token",pref.getString("token",""));
         return view;
     }
 

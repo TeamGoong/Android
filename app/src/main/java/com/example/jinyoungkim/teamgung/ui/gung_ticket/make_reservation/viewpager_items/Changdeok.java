@@ -2,17 +2,12 @@ package com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.viewpag
 
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.Toast;
 
 import com.example.jinyoungkim.teamgung.R;
 import com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.booking.BookingChangdeokActivity;
@@ -29,9 +24,6 @@ import com.kakao.util.exception.KakaoException;
 public class Changdeok extends Fragment {
 
     private FrameLayout goto_reservation;
-    private String token;
-    private SharedPreferences pref;
-    private SharedPreferences.Editor editor;
 
     private String userName;
     private String profileUrl;
@@ -40,8 +32,6 @@ public class Changdeok extends Fragment {
     public Changdeok() {
     }
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sessionCallback = new SessionCallback();
         Session.getCurrentSession().addCallback(sessionCallback);
@@ -54,9 +44,6 @@ public class Changdeok extends Fragment {
         View view = inflater.inflate(R.layout.vpitem_changdeok, container, false);
 //        초기화
         goto_reservation = (FrameLayout)view.findViewById(R.id.changdeok);
-        pref = PreferenceManager.getDefaultSharedPreferences(getContext()); // sharedPreference 선언
-        editor = pref.edit(); // sharePreference Editor 선언
-
 
 
 //        여기 추후에 로그인 여부에 따라 넘어가는 화면 바꿔야댐
@@ -74,10 +61,13 @@ public class Changdeok extends Fragment {
                         editor.commit();
                         kakaoLogin();
                     }
+                Intent i = new Intent(getContext(),LoadingActivity.class);
+                i.putExtra("fragment_type","changdeok");
+                startActivity(i);
+
             }
         });
 
-        Log.e("token",pref.getString("token",""));
         return view;
     }
 

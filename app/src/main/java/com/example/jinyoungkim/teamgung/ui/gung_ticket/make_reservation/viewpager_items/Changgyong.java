@@ -13,9 +13,13 @@ import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.example.jinyoungkim.teamgung.R;
+import com.example.jinyoungkim.teamgung.model.UserInfoPost;
+import com.example.jinyoungkim.teamgung.network.NetworkService;
 import com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.booking.BookingChangdeokActivity;
 import com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.booking.BookingChanggyeongActivity;
+import com.example.jinyoungkim.teamgung.util.GlobalApplication;
 import com.example.jinyoungkim.teamgung.util.SessionCallback;
+import com.example.jinyoungkim.teamgung.util.SharePreferenceController;
 import com.kakao.auth.AuthType;
 import com.kakao.auth.ISessionCallback;
 import com.kakao.auth.Session;
@@ -40,15 +44,6 @@ public class Changgyong extends Fragment {
     }
 
 
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        {
-        super.onCreate(savedInstanceState);
-
-        }
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -57,16 +52,12 @@ public class Changgyong extends Fragment {
         View v = inflater.inflate(R.layout.vpitem_changgyong, container, false);
 
         goto_reservation = (FrameLayout)v.findViewById(R.id.changgyeong);
-        pref = PreferenceManager.getDefaultSharedPreferences(getContext()); // sharedPreference 선언
-        editor = pref.edit(); // sharePreference Editor 선언
-
 
         //        여기 추후에 로그인 여부에 따라 넘어가는 화면 바꿔야댐
         goto_reservation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (pref.getString("token", "").equals(token)) {
                     Toast.makeText(getActivity().getApplicationContext(), "카카오톡 자동로그인 되었습니다:)", Toast.LENGTH_SHORT).show();
                     kakaoLogin();
 
@@ -76,9 +67,12 @@ public class Changgyong extends Fragment {
                     editor.commit();
                     kakaoLogin();
                 }
+                Intent i = new Intent(getContext(),LoadingActivity.class);
+                i.putExtra("fragment_type","changgyeong");
+                startActivity(i);
+
             }
         });
-        Log.e("token",pref.getString("token",""));
 
         return v;
     }
@@ -153,6 +147,7 @@ public class Changgyong extends Fragment {
             }
         });
     }
+}
 
 
 }
