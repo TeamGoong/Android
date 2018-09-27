@@ -3,11 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.jinyoungkim.teamgung">
 
+    <uses-sdk tools:overrideLibrary="kr.co.bootpay" />
+
     <!-- 권한 설정 -->
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- 부트페이 연동 -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-sdk tools:overrideLibrary="kr.co.bootpay"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name=".util.GlobalApplication"
@@ -18,15 +19,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.splash.SplashActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.account.LoginActivity" />
-        <activity android:name=".ui.account.SignupActivity" />
         <activity android:name=".ui.main.MainActivity" />
         <activity android:name=".ui.gung_ticket.TicketMainActivity" />
         <activity android:name=".ui.gung_tour.TourMainActivity" />
@@ -54,7 +52,9 @@
         <activity android:name=".ui.gung_ticket.make_reservation.booking_special.DuksuSpecial2Activity" />
         <activity android:name=".ui.gung_ticket.make_reservation.booking_normal.JongmyoNormalActivity" />
         <activity android:name=".ui.gung_ticket.SpecialLookingActivity" />
-        <activity android:name=".ui.gung_ticket.make_reservation.PayResultActivity"></activity>
+        <activity android:name=".ui.gung_ticket.make_reservation.PayResultActivity" />
+        <activity android:name=".ui.gung_ticket.make_reservation.viewpager_items.LoadingActivity" />
+        <activity android:name=".ui.gung_ticket.make_reservation.viewpager_items.Loading2Activity"></activity>
     </application>
 
 </manifest>

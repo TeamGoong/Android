@@ -14,7 +14,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.jinyoungkim.teamgung.R;
+import com.example.jinyoungkim.teamgung.model.PayPost;
+import com.example.jinyoungkim.teamgung.model.PayResult;
+import com.example.jinyoungkim.teamgung.network.NetworkService;
 import com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.PayResultActivity;
+import com.example.jinyoungkim.teamgung.util.GlobalApplication;
+import com.example.jinyoungkim.teamgung.util.SharePreferenceController;
 
 import java.util.Calendar;
 
@@ -28,8 +33,14 @@ import kr.co.bootpay.ErrorListener;
 import kr.co.bootpay.ReadyListener;
 import kr.co.bootpay.enums.Method;
 import kr.co.bootpay.enums.PG;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class GyeongbokNormalActivity extends AppCompatActivity {
+
+    private NetworkService networkService;
+    private PayPost payPost;
 
     CalendarView calendarView; // 캘린더
     Calendar calendar;
@@ -66,6 +77,8 @@ public class GyeongbokNormalActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(0xffB54141);
         }
+
+        networkService = GlobalApplication.getGlobalApplicationContext().getNetworkService();
 
         // 초기화
         calendarView = (CalendarView)findViewById(R.id.calendar_gyeongbok);
@@ -169,6 +182,8 @@ public class GyeongbokNormalActivity extends AppCompatActivity {
                Log.e("사람 종류) ", ticket_people);
                Log.e("특별권 구분) ", String.valueOf(ticket_special));
 
+               pay();
+
                Bootpay.init(getFragmentManager())
                        .setApplicationId("5baa746eb6d49c5a2452ee7f") // 해당 프로젝트(안드로이드)의 application id 값
                        .setPG(PG.KAKAO) // 결제할 PG 사
@@ -230,5 +245,24 @@ public class GyeongbokNormalActivity extends AppCompatActivity {
            }
        });
 
+    }
+
+    //    네트워킹
+    public void pay() {
+        payPost = new PayPost(palace_id,ticket_title,ticket_start,ticket_end,ticket_people,ticket_special,ticket_jongro);
+        Call<PayResult> payResultCall = networkService.pay(SharePreferenceController.getTokenHeader(getApplicationContext()),payPost);
+        payResultCall.enqueue(new Callback<PayResult>() {
+            @Override
+            public void onResponse(Call<PayResult> call, Response<PayResult> response) {
+                if(response.isSuccessful()){
+                    Log.e("SERVER IN","success");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<PayResult> call, Throwable t) {
+                GlobalApplication.getGlobalApplicationContext().makeToast("네트워크 상태를 확인해 주세요 :)");
+            }
+        });
     }
 }
