@@ -549,7 +549,7 @@ public class ChangdeokNormalActivity extends AppCompatActivity {
                         })
                         .show();
 
-
+                    finish();
 
             }
         });

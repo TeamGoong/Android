@@ -15,8 +15,14 @@ import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.example.jinyoungkim.teamgung.R;
+import com.example.jinyoungkim.teamgung.model.UserData;
+import com.example.jinyoungkim.teamgung.model.UserInfoPost;
+import com.example.jinyoungkim.teamgung.network.ApplicationController;
+import com.example.jinyoungkim.teamgung.network.NetworkService;
 import com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.booking.BookingChangdeokActivity;
+import com.example.jinyoungkim.teamgung.util.GlobalApplication;
 import com.example.jinyoungkim.teamgung.util.SessionCallback;
+import com.example.jinyoungkim.teamgung.util.SharePreferenceController;
 import com.kakao.auth.AuthType;
 import com.kakao.auth.ISessionCallback;
 import com.kakao.auth.Session;
@@ -26,26 +32,17 @@ import com.kakao.usermgmt.callback.MeResponseCallback;
 import com.kakao.usermgmt.response.model.UserProfile;
 import com.kakao.util.exception.KakaoException;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class Changdeok extends Fragment {
 
     private FrameLayout goto_reservation;
-    private String token;
-    private SharedPreferences pref;
-    private SharedPreferences.Editor editor;
-
-    private String userName;
-    private String profileUrl;
-    private SessionCallback sessionCallback;
 
     public Changdeok() {
     }
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        sessionCallback = new SessionCallback();
-        Session.getCurrentSession().addCallback(sessionCallback);
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -54,102 +51,22 @@ public class Changdeok extends Fragment {
         View view = inflater.inflate(R.layout.vpitem_changdeok, container, false);
 //        초기화
         goto_reservation = (FrameLayout)view.findViewById(R.id.changdeok);
-        pref = PreferenceManager.getDefaultSharedPreferences(getContext()); // sharedPreference 선언
-        editor = pref.edit(); // sharePreference Editor 선언
-
 
 
 //        여기 추후에 로그인 여부에 따라 넘어가는 화면 바꿔야댐
         goto_reservation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//
-                    if(pref.getString("token","").equals(token)){
-                        Toast.makeText(getActivity().getApplicationContext(),"카카오톡 자동로그인 되었습니다:)",Toast.LENGTH_SHORT).show();
-                        kakaoLogin();
 
-                    } else {
-                        // 토큰 저장
-                        editor.putString("token",token);
-                        editor.commit();
-                        kakaoLogin();
-                    }
+                Intent i = new Intent(getContext(),LoadingActivity.class);
+                i.putExtra("fragment_type","changdeok");
+                startActivity(i);
+
             }
         });
 
-        Log.e("token",pref.getString("token",""));
         return view;
     }
 
-    private void kakaoLogin(){
-
-        Session.getCurrentSession().checkAndImplicitOpen();
-        Session.getCurrentSession().open(AuthType.KAKAO_LOGIN_ALL,getActivity());
-        Log.e("kakaoLogin()","in");
-
-
-    }
-
-    private class SessionCallback implements ISessionCallback {
-        @Override
-        public void onSessionOpened() {
-            Log.e("TAG" , "세션 오픈됨");
-            // 사용자 정보를 가져옴, 회원가입 미가입시 자동가입 시킴
-            KakaorequestMe();
-        }
-
-        @Override
-        public void onSessionOpenFailed(KakaoException exception) {
-            if(exception != null) {
-                Log.e("TAG" , exception.getMessage());
-            }
-        }
-    }
-    /**
-     * 사용자의 상태를 알아 보기 위해 me API 호출을 한다.
-     */
-    protected void KakaorequestMe() {
-        UserManagement.requestMe(new MeResponseCallback() {
-
-            @Override
-            public void onFailure(ErrorResult errorResult) {
-                int ErrorCode = errorResult.getErrorCode();
-                int ClientErrorCode = -777;
-
-                if (ErrorCode == ClientErrorCode) {
-                    Toast.makeText(getContext(), "카카오톡 서버의 네트워크가 불안정합니다. 잠시 후 다시 시도해주세요.", Toast.LENGTH_SHORT).show();
-                } else {
-                    Log.d("TAG" , "오류로 카카오로그인 실패 ");
-                }
-            }
-
-            @Override
-            public void onSessionClosed(ErrorResult errorResult) {
-                Log.e("TAG" , "오류로 카카오로그인 실패 ");
-            }
-
-            @Override
-            public void onSuccess(UserProfile userProfile) {
-
-
-                profileUrl = userProfile.getProfileImagePath();
-                userName = userProfile.getNickname();
-                token = Session.getCurrentSession().getAccessToken();
-
-                Log.e("유저 이름 ) ",userName);
-                Log.e("토큰 ) ",token);
-                Toast.makeText(getContext(),"카카오 로그인이 되었습니다 :)",Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getActivity().getApplicationContext(), BookingChangdeokActivity.class));
-
-            }
-
-            @Override
-            public void onNotSignedUp() {
-                // 자동가입이 아닐경우 동의창
-                Log.e("here","here");
-
-            }
-        });
-    }
 
 }
