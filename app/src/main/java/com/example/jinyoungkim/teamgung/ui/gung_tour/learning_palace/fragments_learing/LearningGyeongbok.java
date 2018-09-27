@@ -6,6 +6,7 @@ import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,16 +31,28 @@ import javax.xml.parsers.DocumentBuilderFactory;
 public class LearningGyeongbok extends Fragment {
     View view;
     Document doc;
-    TextView status1;
+    TextView explain_gyeongbok;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_gyeongbok_learning,container,false);
-        status1 = (TextView)view.findViewById(R.id.test);
+        explain_gyeongbok = (TextView)view.findViewById(R.id.explain_gyeongbok);
 
         new GetXMLTask().execute();
+
         return view;
     }
+
+
+
+
+
+
+
+
+
+//    공공 API 정보 가져오는 부분
     private class GetXMLTask extends AsyncTask<String, Void, Document> {
         @Override
         protected Document doInBackground(String... urls) {
@@ -63,29 +76,19 @@ public class LearningGyeongbok extends Fragment {
             String s = "";
             NodeList nodeList = doc.getElementsByTagName("list");
 
-//            for(int i = 0; i< nodeList.getLength(); i++){
-//
-//                Node node = nodeList.item(i);
-//                Element fstElmnt = (Element) node;
-//
-//                NodeList idx = fstElmnt.getElementsByTagName("contents_kor");
-//                s =idx.item(0).getChildNodes().item(0).getNodeValue() +"\n";
-//
-//
-//            }
 
-
-            Node node = nodeList.item(0);
+            Node node = nodeList.item(113);
             Element fstElmnt = (Element) node;
 
-            NodeList idx = fstElmnt.getElementsByTagName("contents_kor");
+            NodeList idx = fstElmnt.getElementsByTagName("explanation_kor");
             s =idx.item(0).getChildNodes().item(0).getNodeValue() +"\n";
+            s=s.replace("<br />","");
 
-
-            status1.setText(s);
+            explain_gyeongbok.setText(s);
 
             super.onPostExecute(doc);
         }
     }
+
 
 }

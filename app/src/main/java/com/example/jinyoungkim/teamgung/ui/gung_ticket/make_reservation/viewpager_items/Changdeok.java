@@ -2,39 +2,14 @@ package com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.viewpag
 
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.Toast;
 
 import com.example.jinyoungkim.teamgung.R;
-import com.example.jinyoungkim.teamgung.model.UserData;
-import com.example.jinyoungkim.teamgung.model.UserInfoPost;
-import com.example.jinyoungkim.teamgung.network.ApplicationController;
-import com.example.jinyoungkim.teamgung.network.NetworkService;
-import com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.booking.BookingChangdeokActivity;
-import com.example.jinyoungkim.teamgung.util.GlobalApplication;
-import com.example.jinyoungkim.teamgung.util.SessionCallback;
-import com.example.jinyoungkim.teamgung.util.SharePreferenceController;
-import com.kakao.auth.AuthType;
-import com.kakao.auth.ISessionCallback;
-import com.kakao.auth.Session;
-import com.kakao.network.ErrorResult;
-import com.kakao.usermgmt.UserManagement;
-import com.kakao.usermgmt.callback.MeResponseCallback;
-import com.kakao.usermgmt.response.model.UserProfile;
-import com.kakao.util.exception.KakaoException;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class Changdeok extends Fragment {
 
