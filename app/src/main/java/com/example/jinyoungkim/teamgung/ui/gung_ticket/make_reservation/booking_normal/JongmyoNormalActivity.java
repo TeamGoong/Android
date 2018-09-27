@@ -33,6 +33,7 @@ import kr.co.bootpay.ErrorListener;
 import kr.co.bootpay.ReadyListener;
 import kr.co.bootpay.enums.Method;
 import kr.co.bootpay.enums.PG;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -184,7 +185,6 @@ public class JongmyoNormalActivity extends AppCompatActivity {
                 Log.e("사람 종류) ", ticket_people);
                 Log.e("특별권 구분) ", String.valueOf(ticket_special));
                 Log.e("종로인 구문) ",String.valueOf(ticket_jongro));
-
                 pay();
 
                 Bootpay.init(getFragmentManager())
@@ -245,6 +245,7 @@ public class JongmyoNormalActivity extends AppCompatActivity {
                             }
                         })
                         .show();
+
             }
         });
     }

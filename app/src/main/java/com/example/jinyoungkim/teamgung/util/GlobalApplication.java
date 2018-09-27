@@ -3,7 +3,6 @@ package com.example.jinyoungkim.teamgung.util;
 import android.app.Activity;
 import android.app.Application;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.example.jinyoungkim.teamgung.network.NetworkService;
 import com.kakao.auth.KakaoSDK;
@@ -14,11 +13,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class GlobalApplication extends Application {
     private static GlobalApplication mInstance;
     private static volatile Activity currentActivity = null;
-    private static String baseUrl = "http://52.79.47.145:3000";
     private NetworkService networkService;
     public NetworkService getNetworkService(){
         return networkService;
-    }
 
     public static Activity getCurrentActivity() {
         Log.e("TAG", "++ currentActivity : " + (currentActivity != null ? currentActivity.getClass().getSimpleName() : ""));

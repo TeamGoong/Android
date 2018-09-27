@@ -503,7 +503,6 @@ public class ChangdeokNormalActivity extends AppCompatActivity {
                 Log.e("사람정보 )",ticket_people);
                 Log.e("특별권 구분) ", String.valueOf(ticket_special));
 
-
                 pay();  // 네트워킹
 
                 Bootpay.init(getFragmentManager())
@@ -564,7 +563,6 @@ public class ChangdeokNormalActivity extends AppCompatActivity {
                             }
                         })
                         .show();
-
 
             }
         });

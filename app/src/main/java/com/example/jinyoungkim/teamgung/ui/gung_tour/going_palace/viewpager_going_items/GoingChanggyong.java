@@ -1,10 +1,10 @@
 package com.example.jinyoungkim.teamgung.ui.gung_tour.going_palace.viewpager_going_items;
 
-import android.app.Dialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +18,6 @@ import com.example.jinyoungkim.teamgung.ui.gung_tour.going_palace.going_dialog.G
 
 public class GoingChanggyong extends Fragment {
     public View view;
-    GoingChanggyonDialog cd;
     ImageView changgyong;
     @Nullable
     @Override
@@ -29,16 +28,14 @@ public class GoingChanggyong extends Fragment {
         int height = dm.heightPixels; //디바이스 화면 높이
 
         changgyong = (ImageView)view.findViewById(R.id.img_changgyong_goingpalace);
-        cd = new  GoingChanggyonDialog(this.getContext());
 
-        WindowManager.LayoutParams wm = cd.getWindow().getAttributes();  //다이얼로그의 높이 너비 설정하기위해
-        wm.copyFrom(cd.getWindow().getAttributes());  //여기서 설정한값을 그대로 다이얼로그에 넣겠다는의미
-        wm.width = width / 2;  //화면 너비의 절반
-        wm.height = height / 2;  //화면 높이의 절반
         changgyong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cd.show();  //다이얼로그
+                FragmentManager fm = getFragmentManager();
+                GoingChanggyonDialog dialogFragment = new GoingChanggyonDialog();
+
+                dialogFragment.show(fm,"dd");
             }
         });
         return view;
