@@ -50,6 +50,7 @@
 
                 <!-- 프로필 -->
                 <ImageView
+                    android:id="@+id/profile_ticket_main"
                     android:layout_marginRight="20dp"
                     android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"

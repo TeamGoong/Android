@@ -1,6 +1,7 @@
 package com.example.jinyoungkim.teamgung.ui.gung_ticket;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.design.widget.TabLayout;
@@ -10,21 +11,33 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.Toast;
+import android.app.AlertDialog;
 
+//import com.bumptech.glide.Glide;
+//import com.bumptech.glide.request.RequestOptions;
 import com.example.jinyoungkim.teamgung.R;
 import com.example.jinyoungkim.teamgung.ui.gung_ticket.confirm_reservation.ConfirmReservationFragment;
 import com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.MakeReservationFragment;
 import com.example.jinyoungkim.teamgung.ui.gung_tour.TourMainActivity;
+import com.example.jinyoungkim.teamgung.util.GlobalApplication;
+import com.example.jinyoungkim.teamgung.util.SharePreferenceController;
+import com.kakao.usermgmt.UserManagement;
+import com.kakao.usermgmt.callback.LogoutResponseCallback;
+
+
 
 // 예매하기, 예매 확인 메인 액티비티
 
 public class TicketMainActivity extends AppCompatActivity implements View.OnClickListener{
+
+    ImageView profile_ticket_main; // 프로필 사진
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
@@ -48,6 +61,7 @@ public class TicketMainActivity extends AppCompatActivity implements View.OnClic
         viewPager = (ViewPager)findViewById(R.id.viewpager_ticket); // 뷰페이저
         switch_ticket = (Switch)findViewById(R.id.switch_ticket); // 화면전환 스위치
         special_reservation_layout= (LinearLayout)findViewById(R.id.special_reservation_layout); // 특별관람 예매하기 하단 레이아웃
+        profile_ticket_main = (ImageView)findViewById(R.id.profile_ticket_main); // 프로필 사진
 
         //특별관람 메뉴
         menu1=(ImageView)findViewById(R.id.menu1);
@@ -61,6 +75,23 @@ public class TicketMainActivity extends AppCompatActivity implements View.OnClic
         menu9=(ImageView)findViewById(R.id.menu9);
 
 
+
+
+      /*  Glide.with(this)
+                .load(R.drawable.kakao_default_profile_image)
+                .apply(new RequestOptions().centerCrop())
+                .apply(new RequestOptions().circleCrop())
+                .into(profile_ticket_main);*/ //d요기다 수정아
+
+        // 로그아웃
+        profile_ticket_main.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logout();
+                GlobalApplication.getGlobalApplicationContext().makeToast("로그아웃 되었습니다 :)");
+
+            }
+        });
 
 //        스위치
         switch_ticket.setChecked(false);
@@ -169,5 +200,16 @@ public class TicketMainActivity extends AppCompatActivity implements View.OnClic
         public int getCount() {
             return tabCount;
         }
+    }
+
+    private void logout(){
+        UserManagement.requestLogout(new LogoutResponseCallback() {
+            @Override
+            public void onCompleteLogout() {
+                Log.e("로그아웃","로그아웃");
+                SharePreferenceController.deleteTokenHeader(getApplicationContext());
+                SharePreferenceController.setLogin(getApplicationContext(),"");
+            }
+        });
     }
 }

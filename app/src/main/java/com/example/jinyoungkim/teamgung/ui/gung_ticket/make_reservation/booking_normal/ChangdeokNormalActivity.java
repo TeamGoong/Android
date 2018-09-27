@@ -19,8 +19,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.jinyoungkim.teamgung.R;
+import com.example.jinyoungkim.teamgung.model.PayPost;
+import com.example.jinyoungkim.teamgung.model.PayResult;
+import com.example.jinyoungkim.teamgung.network.NetworkService;
 import com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.PayResultActivity;
 import com.example.jinyoungkim.teamgung.ui.gung_tour.TourMainActivity;
+import com.example.jinyoungkim.teamgung.util.GlobalApplication;
+import com.example.jinyoungkim.teamgung.util.SharePreferenceController;
 
 import org.w3c.dom.Text;
 
@@ -36,12 +41,18 @@ import kr.co.bootpay.ErrorListener;
 import kr.co.bootpay.ReadyListener;
 import kr.co.bootpay.enums.Method;
 import kr.co.bootpay.enums.PG;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import static android.os.Build.ID;
 
 // 창덕궁 일반권 예매 페이지
 
 public class ChangdeokNormalActivity extends AppCompatActivity {
+
+    private NetworkService networkService;
+    private PayPost payPost;
 
     //  통신에 넘길 데이터
     int palace_id; // 궁 아이디(0 : 경복궁, 1 : 창덕궁, 2 : 창경궁, 3 : 덕수궁, 4 : 종묘 )
@@ -96,7 +107,6 @@ public class ChangdeokNormalActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setTheme(R.style.changdeok);
-
         setContentView(R.layout.activity_changdeok_normal);
 
 
@@ -116,6 +126,7 @@ public class ChangdeokNormalActivity extends AppCompatActivity {
 
         // 부트페이 초기 설정
         BootpayAnalytics.init(this,"5baa746eb6d49c5a2452ee7f");
+        networkService = GlobalApplication.getGlobalApplicationContext().getNetworkService();
 
         // 1. 하단 메뉴 설정
         yesselect_garden_changdeok = (LinearLayout)findViewById(R.id.yesselect_garden_changdeok);
@@ -485,10 +496,15 @@ public class ChangdeokNormalActivity extends AppCompatActivity {
                     ticket_people+=" 경로 (종로구민)"+jongro4_number_changdeok_garden_i;
                 }
 
+                if(ticket_people.length()>=14){
+                   ticket_people= ticket_people.substring(0,13)+"...";
+                }
 
                 Log.e("사람정보 )",ticket_people);
                 Log.e("특별권 구분) ", String.valueOf(ticket_special));
 
+
+                pay();  // 네트워킹
 
                 Bootpay.init(getFragmentManager())
                         .setApplicationId("5baa746eb6d49c5a2452ee7f") // 해당 프로젝트(안드로이드)의 application id 값
@@ -550,10 +566,26 @@ public class ChangdeokNormalActivity extends AppCompatActivity {
                         .show();
 
 
-
             }
         });
 
+    }
+//    네트워킹
+    public void pay() {
+        payPost = new PayPost(palace_id,ticket_title,ticket_start,ticket_end,ticket_people,ticket_special,ticket_jongro);
+        Call<PayResult> payResultCall = networkService.pay(SharePreferenceController.getTokenHeader(getApplicationContext()),payPost);
+        payResultCall.enqueue(new Callback<PayResult>() {
+            @Override
+            public void onResponse(Call<PayResult> call, Response<PayResult> response) {
+                if(response.isSuccessful()){
+                    Log.e("SERVER IN","success");
+                }
+            }
 
+            @Override
+            public void onFailure(Call<PayResult> call, Throwable t) {
+                GlobalApplication.getGlobalApplicationContext().makeToast("네트워크 상태를 확인해 주세요 :)");
+            }
+        });
     }
 }

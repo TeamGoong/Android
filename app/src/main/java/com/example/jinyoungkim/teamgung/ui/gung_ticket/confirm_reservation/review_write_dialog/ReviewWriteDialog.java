@@ -10,8 +10,18 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.jinyoungkim.teamgung.R;
+import com.example.jinyoungkim.teamgung.model.ReviewWrite;
+import com.example.jinyoungkim.teamgung.model.ReviewWriteResult;
+import com.example.jinyoungkim.teamgung.network.NetworkService;
+import com.example.jinyoungkim.teamgung.util.GlobalApplication;
+import com.example.jinyoungkim.teamgung.util.SharePreferenceController;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ReviewWriteDialog extends Dialog {
         ImageView good_tr;
@@ -26,12 +36,25 @@ public class ReviewWriteDialog extends Dialog {
         ImageView bad_con;
         ImageView bad_see;
 
-    public ReviewWriteDialog(@NonNull Context context) {
+        float traffic_score;
+        float congestion_score;
+        float see_score;
+
+        int click_flag;
+
+        //네트워킹
+    NetworkService networkService;
+    ReviewWrite reviewWrite;
+
+    public ReviewWriteDialog(@NonNull final Context context) {
         super(context);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         //다이얼로그의 타이틀바를 없애주는 옵션입니다.
         getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));  //다이얼로그의 배경을 투명으로 만듭니다.
         setContentView(R.layout.dialog_review_write);     //다이얼로그에서 사용할 레이아웃입니다.
+
+        //네트워킹
+        networkService = GlobalApplication.getGlobalApplicationContext().getNetworkService();
 
         TextView finish = (TextView)findViewById(R.id.btn_finish_review);
 
@@ -52,7 +75,35 @@ public class ReviewWriteDialog extends Dialog {
         finish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dismiss();
+
+                if(click_flag!=3){
+                    Toast.makeText(context.getApplicationContext(),"얼굴을 다 눌러주세요:)",Toast.LENGTH_SHORT).show();
+                }else{
+                    int palace_id = SharePreferenceController.getPalaceId(context);
+                    int ticket_id = SharePreferenceController.getTicketID(context);
+                    reviewWrite = new ReviewWrite(palace_id,traffic_score,congestion_score,see_score,ticket_id);
+
+
+
+                    Call<ReviewWriteResult>reviewWriteResultCall = networkService.review("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6NzcsInVzZXJfaWQiOjkyNTExMTA0MywiaWF0IjoxNTM3OTcyMzAwLCJleHAiOjE1NDA1NjQzMDB9.G2YwvjIT74v8d9HmoxRghPRW3f3Sns3pdWbzm5ZHgZQ"
+                            ,reviewWrite);
+                    reviewWriteResultCall.enqueue(new Callback<ReviewWriteResult>() {
+                        @Override
+                        public void onResponse(Call<ReviewWriteResult> call, Response<ReviewWriteResult> response) {
+                            if(response.isSuccessful()){
+                                Toast.makeText(context.getApplicationContext(),"성공",Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<ReviewWriteResult> call, Throwable t) {
+
+                        }
+                    });
+
+                    dismiss();
+                }
+
             }
         });
 
@@ -62,8 +113,12 @@ public class ReviewWriteDialog extends Dialog {
             public void onClick(View view) {
                 clearSelected_traffic();
                 if(good_tr.isSelected()==false){
+                    traffic_score = 10;
+                    click_flag += 1;
                     good_tr.setSelected(true);
                 }else{
+                    traffic_score = 0;
+                    click_flag -= 1;
                     good_tr.setSelected(false);
                 }
 
@@ -74,8 +129,12 @@ public class ReviewWriteDialog extends Dialog {
             public void onClick(View view) {
                 clearSelected_congestion();
                 if(good_con.isSelected()==false){
+                    congestion_score = 10;
+                    click_flag += 1;
                     good_con.setSelected(true);
                 }else{
+                    congestion_score = 0;
+                    click_flag -= 1;
                     good_con.setSelected(false);
                 }
 
@@ -86,8 +145,12 @@ public class ReviewWriteDialog extends Dialog {
             public void onClick(View view) {
                 clearSelected_see();
                 if(good_see.isSelected()==false){
+                    see_score = 10;
+                    click_flag += 1;
                     good_see.setSelected(true);
                 }else{
+                    see_score = 0;
+                    click_flag -= 1;
                     good_see.setSelected(false);
                 }
 
@@ -98,8 +161,13 @@ public class ReviewWriteDialog extends Dialog {
             public void onClick(View view) {
                 clearSelected_traffic();
                 if(soso_tr.isSelected()==false){
+                    traffic_score = 5;
+                    click_flag += 1;
+
                     soso_tr.setSelected(true);
                 }else{
+                    traffic_score = 0;
+                    click_flag -= 1;
                     soso_tr.setSelected(false);
                 }
 
@@ -110,8 +178,12 @@ public class ReviewWriteDialog extends Dialog {
             public void onClick(View view) {
                 clearSelected_congestion();
                 if(soso_con.isSelected()==false){
+                    congestion_score = 5;
+                    click_flag += 1;
                     soso_con.setSelected(true);
                 }else{
+                    congestion_score = 0;
+                    click_flag -= 1;
                    soso_con.setSelected(false);
                 }
 
@@ -122,8 +194,12 @@ public class ReviewWriteDialog extends Dialog {
             public void onClick(View view) {
                 clearSelected_see();
                 if(soso_see.isSelected()==false){
+                    see_score = 5;
+                    click_flag += 1;
                     soso_see.setSelected(true);
                 }else{
+                    see_score = 0;
+                    click_flag -= 1;
                    soso_see.setSelected(false);
                 }
 
@@ -134,8 +210,12 @@ public class ReviewWriteDialog extends Dialog {
             public void onClick(View view) {
                 clearSelected_traffic();
                 if(bad_tr.isSelected()==false){
+                    traffic_score = 0;
+                    click_flag += 1;
                    bad_tr.setSelected(true);
                 }else{
+                    traffic_score = 0;
+                    click_flag -= 1;
                    bad_tr.setSelected(false);
                 }
 
@@ -146,8 +226,12 @@ public class ReviewWriteDialog extends Dialog {
             public void onClick(View view) {
                 clearSelected_congestion();
                 if(bad_con.isSelected()==false){
+                    congestion_score = 0;
+                    click_flag += 1;
                    bad_con.setSelected(true);
                 }else{
+                    congestion_score = 0;
+                    click_flag -= 1;
                    bad_con.setSelected(false);
                 }
 
@@ -158,27 +242,36 @@ public class ReviewWriteDialog extends Dialog {
             public void onClick(View view) {
                 clearSelected_see();
                 if(bad_see.isSelected()==false){
+                    see_score = 0;
+                    click_flag += 1;
                     bad_see.setSelected(true);
                 }else{
+                    see_score = 0;
+                    click_flag -= 1;
                     bad_see.setSelected(false);
                 }
 
             }
         });
 
+
+
     }
 
     public void clearSelected_traffic(){
+        traffic_score = 0;
         good_tr.setSelected(false);
        soso_tr.setSelected(false);
         bad_tr.setSelected(false);
     }
     public void clearSelected_congestion(){
+       congestion_score = 0;
         good_con.setSelected(false);
         soso_con.setSelected(false);
         bad_con.setSelected(false);
     }
     public void clearSelected_see(){
+        see_score = 0;
         good_see .setSelected(false);
         soso_see.setSelected(false);
         bad_see.setSelected(false);
