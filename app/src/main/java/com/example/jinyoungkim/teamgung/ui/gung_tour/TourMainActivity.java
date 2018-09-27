@@ -17,6 +17,8 @@ import android.widget.Switch;
 
 //import com.bumptech.glide.Glide;
 //import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.jinyoungkim.teamgung.R;
 import com.example.jinyoungkim.teamgung.ui.gung_ticket.TicketMainActivity;
 import com.example.jinyoungkim.teamgung.ui.gung_tour.going_palace.GoingPalaceFragment;
@@ -46,11 +48,11 @@ public class TourMainActivity extends AppCompatActivity {
         switch_tour = (Switch)findViewById(R.id.switch_tour);
         profile_tour_main = (ImageView)findViewById(R.id.profile_tour_main);
 
-        /*Glide.with(this)
+        Glide.with(this)
                 .load(R.drawable.kakao_default_profile_image)
                 .apply(new RequestOptions().centerCrop())
                 .apply(new RequestOptions().circleCrop())
-                .into(profile_tour_main);*/ //요기다 수정아
+                .into(profile_tour_main);
 
 
         //로그아웃

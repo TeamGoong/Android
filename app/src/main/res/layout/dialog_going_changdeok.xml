@@ -33,10 +33,6 @@
         android:layout_marginBottom="30dp"
         android:id="@+id/vp_changdeok_swipe"
         android:layout_gravity="center"
-        android:clipToPadding="false"
-        android:gravity="center"
-        android:paddingLeft="70dp"
-        android:paddingRight="70dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></android.support.v4.view.ViewPager>
 

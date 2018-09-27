@@ -10,10 +10,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.jinyoungkim.teamgung.R;
+import com.example.jinyoungkim.teamgung.model.ShowPhotoData;
+import com.example.jinyoungkim.teamgung.model.ShowPhotoGet;
+import com.example.jinyoungkim.teamgung.network.NetworkService;
+import com.example.jinyoungkim.teamgung.util.GlobalApplication;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -24,20 +31,69 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.net.URL;
+import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LearningGyeongbok extends Fragment {
     View view;
     Document doc;
     TextView explain_gyeongbok;
+    ImageView first;
+    ImageView second;
+    ImageView third;
+
+    String[] images;
+    NetworkService networkService;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_gyeongbok_learning,container,false);
         explain_gyeongbok = (TextView)view.findViewById(R.id.explain_gyeongbok);
+
+        networkService = GlobalApplication.getGlobalApplicationContext().getNetworkService();
+
+        first = (ImageView)view.findViewById(R.id.first_img_gyeongbok);
+        second = (ImageView)view.findViewById(R.id.second_img_gyeongbok);
+        third = (ImageView)view.findViewById(R.id.third_img_gyeongbok);
+
+        Call<ShowPhotoGet>showPhotoGetCall = networkService.showPhoto("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6NzcsInVzZXJfaWQiOjkyNTExMTA0MywiaWF0IjoxNTM3OTcyMzAwLCJleHAiOjE1NDA1NjQzMDB9.G2YwvjIT74v8d9HmoxRghPRW3f3Sns3pdWbzm5ZHgZQ"
+                ,0);
+        showPhotoGetCall.enqueue(new Callback<ShowPhotoGet>() {
+            @Override
+            public void onResponse(Call<ShowPhotoGet> call, Response<ShowPhotoGet> response) {
+                if(response.isSuccessful()){
+                    Toast.makeText(getContext(),"ㅇㄹㄴㅇㄹㄴㅇㄹ",Toast.LENGTH_SHORT).show();
+                   images = new String[3];
+                   images = response.body().result.images;
+
+
+                    Glide.with(getContext())
+                            .load("https://s3.ap-northeast-2.amazonaws.com/goongs/gyeongbokgung_2.jpg")
+                            .into(first);
+//                    Glide.with(getContext())
+//                            .load(images.get(1))
+//                            .into(second);
+//                    Glide.with(getContext())
+//                            .load(images.get(2))
+//                            .into(third);
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ShowPhotoGet> call, Throwable t) {
+
+            }
+        });
+
+
 
         new GetXMLTask().execute();
 

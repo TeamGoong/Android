@@ -41,7 +41,6 @@ public class GoingChangdeokDialog extends DialogFragment {
         viewPager = (ViewPager)view.findViewById(R.id.vp_changdeok_swipe);
 //
             viewPager.setAdapter(new pagerAdapter(fm));
-            viewPager.setPageMargin(60);
             viewPager.setCurrentItem(0);
         return view;
     }
@@ -64,14 +63,16 @@ public class GoingChangdeokDialog extends DialogFragment {
 
             switch (position) {
                 case 0:
-                    ChangdeokNasi cdn = new ChangdeokNasi();
-                    return cdn;
-                case 1:
                     ChangdeokKing cdk = new ChangdeokKing();
                     return cdk;
-                case 2:
+
+                case 1:
                     ChangdeokPrincess cdp = new ChangdeokPrincess();
                     return cdp;
+                case 2:
+
+                    ChangdeokNasi cdn = new ChangdeokNasi();
+                    return cdn;
             }
 
             return null;
