@@ -1,25 +1,15 @@
 package com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.viewpager_items;
 
 import android.content.Intent;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.example.jinyoungkim.teamgung.R;
 import com.example.jinyoungkim.teamgung.model.UserData;
 import com.example.jinyoungkim.teamgung.model.UserInfoPost;
 import com.example.jinyoungkim.teamgung.network.NetworkService;
-import com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.booking.BookingChangdeokActivity;
-import com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.booking.BookingChanggyeongActivity;
-import com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.booking.BookingDuksuActivity;
-import com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.booking.BookingGyeongbokActivity;
-import com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.booking.BookingJongmyoActivity;
-import com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.booking_normal.ChangdeokNormalActivity;
-import com.example.jinyoungkim.teamgung.ui.main.MainActivity;
 import com.example.jinyoungkim.teamgung.util.GlobalApplication;
 import com.example.jinyoungkim.teamgung.util.SharePreferenceController;
 import com.kakao.auth.AuthType;
@@ -68,12 +58,6 @@ public class LoadingActivity extends AppCompatActivity {
 
         } else {
             Log.e("else","else");
-//            if (SharePreferenceController.getTokenCompare(getApplicationContext()).equals(token)){
-//                kakaoLogin();
-//            } else {
-//                SharePreferenceController.setTokenCompare(getApplicationContext(),token);
-//                kakaoLogin();
-//            }
             kakaoLogin();
             SharePreferenceController.setLogin(getApplicationContext(),"yes");
         }
@@ -133,14 +117,20 @@ public class LoadingActivity extends AppCompatActivity {
             @Override
             public void onSuccess(UserProfile userProfile) {
 
-
                 profileUrl = userProfile.getProfileImagePath();
                 userName = userProfile.getNickname();
                 token = Session.getCurrentSession().getAccessToken();
 
+                if(profileUrl!=null){
+                    SharePreferenceController.setProfile(getApplicationContext(),profileUrl);
+                    Log.e("프로필 사진 )",profileUrl);
+                }
+
+
                 Log.e("from: ",fragment_type);
                 Log.e("유저 이름 ) ",userName);
                 Log.e("토큰 ) ",token);
+
 
                 // 네트워킹
                 userInfoPost = new UserInfoPost(token);
@@ -151,9 +141,10 @@ public class LoadingActivity extends AppCompatActivity {
                         if(response.isSuccessful()){
                             SharePreferenceController.setTokenHeader(getApplicationContext(),response.body().result.token);
                             Toast.makeText(getApplicationContext(),"카카오 로그인이 되었습니다 :)",Toast.LENGTH_SHORT).show();
+                            SharePreferenceController.setProfile(getApplicationContext(),profileUrl);
                             Log.e("header",response.body().result.token);
                             Intent i2 = new Intent(getApplicationContext(),Loading2Activity.class);
-                            i2.putExtra("fagment_type2",fragment_type);
+                            i2.putExtra("fragment_type2",fragment_type);
                             startActivity(i2);
                             finish();
                         }

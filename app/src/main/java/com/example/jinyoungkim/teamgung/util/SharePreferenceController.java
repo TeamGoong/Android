@@ -2,6 +2,7 @@ package com.example.jinyoungkim.teamgung.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 public class SharePreferenceController {
     private static final String TOKEN_COMPARE = "token_compare"; // 이전 토큰값과 똑같은지 비교하기 위한 변수
@@ -37,6 +38,14 @@ public class SharePreferenceController {
         String tokenHeader = pref.getString(TOKEN_HEADER,"");
         return tokenHeader;
     }
+
+    public static void deleteTokenHeader (Context context){
+        SharedPreferences pref = context.getSharedPreferences(TOKEN_HEADER,context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.remove(TOKEN_HEADER);
+        Log.e("delete","delete");
+    }
+
 
     // 3. 이미지 url
     public static void setProfile(Context context, String profile){
