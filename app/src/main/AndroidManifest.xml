@@ -5,6 +5,9 @@
 
     <!-- 권한 설정 -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 부트페이 연동 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-sdk tools:overrideLibrary="kr.co.bootpay"/>
 
     <application
         android:name=".util.GlobalApplication"
@@ -15,6 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.splash.SplashActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

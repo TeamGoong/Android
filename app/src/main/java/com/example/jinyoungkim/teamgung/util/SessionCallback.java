@@ -18,7 +18,7 @@ import com.kakao.util.exception.KakaoException;
 
 public class SessionCallback implements ISessionCallback {
 
-    String token; //서버로 넘겨줄 토큰
+    public String token; //서버로 넘겨줄 토큰
     Context context;
     SharedPreferences pref;
     SharedPreferences.Editor editor;
@@ -62,6 +62,7 @@ public class SessionCallback implements ISessionCallback {
             @Override
             public void onSuccess(UserProfile userProfile) {
 
+
                 pref = PreferenceManager.getDefaultSharedPreferences(context);
                 editor = pref.edit();
 
@@ -77,6 +78,8 @@ public class SessionCallback implements ISessionCallback {
                 Log.e("Profile : ", thumnailPath + "");
                 Log.e("Profile : ", UUID + "");
                 Log.e("Profile : ", id + "");
+                Log.e("token",Session.getCurrentSession().getAccessToken());
+                token = Session.getCurrentSession().getAccessToken();
 
                 editor.putString("profile",profileImagePath);
                 editor.commit();

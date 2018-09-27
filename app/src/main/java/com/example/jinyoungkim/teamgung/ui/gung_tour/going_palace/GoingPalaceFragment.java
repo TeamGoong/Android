@@ -88,59 +88,6 @@ public class GoingPalaceFragment extends Fragment {
         });
 
 
-//
-//        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-//            @Override
-//            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-//            }
-//
-//            @Override
-//            public void onPageSelected(int position) {
-//                current_item_num = position;
-//                Log.d("되나염", String.valueOf(current_item_num));
-//
-//                switch (current_item_num){
-//                    case 0:
-//                        gyeongbok.view.findViewById(R.id.img_gyeongbok_goingpalace).setBackgroundColor(Color.RED);
-////                        changgyong.view.findViewById(R.id.img_changgyong_goingpalace).setBackgroundColor(Color.parseColor("#bcbcbc"));
-////                        duksu.view.findViewById(R.id.img_duksu_goingpalace).setBackgroundColor(Color.parseColor("#bcbcbc"));
-////                        changdeok.view.findViewById(R.id.img_changdeok_goingpalace).setBackgroundColor(Color.parseColor("#bcbcbc"));
-////                        jongmyo.view.findViewById(R.id.img_jongmyo_goingpalace).setBackgroundColor(Color.parseColor("#bcbcbc"));
-//                    case 1:
-//                        changgyong.view.findViewById(R.id.img_changgyong_goingpalace).setBackgroundColor(Color.RED);
-////                        gyeongbok.view.findViewById(R.id.img_gyeongbok_goingpalace).setBackgroundColor(Color.parseColor("#bcbcbc"));
-////                        duksu.view.findViewById(R.id.img_duksu_goingpalace).setBackgroundColor(Color.parseColor("#bcbcbc"));
-////                        changdeok.view.findViewById(R.id.img_changdeok_goingpalace).setBackgroundColor(Color.parseColor("#bcbcbc"));
-////                        jongmyo.view.findViewById(R.id.img_jongmyo_goingpalace).setBackgroundColor(Color.parseColor("#bcbcbc"));
-//                    case 2:
-//                        duksu.view.findViewById(R.id.img_duksu_goingpalace).setBackgroundColor(Color.RED);
-////                        changgyong.view.findViewById(R.id.img_changgyong_goingpalace).setBackgroundColor(Color.parseColor("#bcbcbc"));
-////                        gyeongbok.view.findViewById(R.id.img_gyeongbok_goingpalace).setBackgroundColor(Color.parseColor("#bcbcbc"));
-////                        changdeok.view.findViewById(R.id.img_changdeok_goingpalace).setBackgroundColor(Color.parseColor("#bcbcbc"));
-////                        jongmyo.view.findViewById(R.id.img_jongmyo_goingpalace).setBackgroundColor(Color.parseColor("#bcbcbc"));
-//
-//                    case 3:
-//                        changdeok.view.findViewById(R.id.img_changdeok_goingpalace).setBackgroundColor(Color.RED);
-//
-////                        changgyong.view.findViewById(R.id.img_changgyong_goingpalace).setBackgroundColor(Color.parseColor("#bcbcbc"));
-////                        gyeongbok.view.findViewById(R.id.img_gyeongbok_goingpalace).setBackgroundColor(Color.parseColor("#bcbcbc"));
-////                        duksu.view.findViewById(R.id.img_duksu_goingpalace).setBackgroundColor(Color.parseColor("#bcbcbc"));
-////                        jongmyo.view.findViewById(R.id.img_jongmyo_goingpalace).setBackgroundColor(Color.parseColor("#bcbcbc"));
-//                    case 4:
-//                        jongmyo.view.findViewById(R.id.img_jongmyo_goingpalace).setBackgroundColor(Color.RED);
-////                        changgyong.view.findViewById(R.id.img_changgyong_goingpalace).setBackgroundColor(Color.parseColor("#bcbcbc"));
-////                        gyeongbok.view.findViewById(R.id.img_gyeongbok_goingpalace).setBackgroundColor(Color.parseColor("#bcbcbc"));
-////                        duksu.view.findViewById(R.id.img_duksu_goingpalace).setBackgroundColor(Color.parseColor("#bcbcbc"));
-////                        changdeok.view.findViewById(R.id.img_changdeok_goingpalace).setBackgroundColor(Color.parseColor("#bcbcbc"));
-//                }
-//            }
-//
-//            @Override
-//            public void onPageScrollStateChanged(int state) {
-//
-//            }
-//        });
-
         viewPager.setAdapter(new pagerAdapter(getFragmentManager()));
         viewPager.setPageMargin(60);
         viewPager.setCurrentItem(2);

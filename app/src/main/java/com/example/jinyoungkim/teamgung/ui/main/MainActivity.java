@@ -11,15 +11,12 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.jinyoungkim.teamgung.R;
 import com.example.jinyoungkim.teamgung.ui.gung_ticket.TicketMainActivity;
 import com.example.jinyoungkim.teamgung.ui.gung_tour.TourMainActivity;
-import com.example.jinyoungkim.teamgung.ui.gung_tour.going_palace.going_dialog.GoingChangdeokDialog;
-import com.example.jinyoungkim.teamgung.ui.gung_tour.going_palace.going_dialog.GoingChanggyonDialog;
 import com.example.jinyoungkim.teamgung.ui.main.foreign_dialog.ChangdeokDialog;
 import com.example.jinyoungkim.teamgung.ui.main.foreign_dialog.ChanggyeongDialog;
 import com.example.jinyoungkim.teamgung.ui.main.foreign_dialog.DuksuDialog;

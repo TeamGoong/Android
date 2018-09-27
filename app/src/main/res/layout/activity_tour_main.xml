@@ -36,7 +36,7 @@
             android:layout_marginRight="20dp"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
-            android:src="@drawable/change_button_blue"
+            android:src="@drawable/kakao_default_profile_image"
             android:layout_width="30dp"
             android:layout_height="30dp" />
 

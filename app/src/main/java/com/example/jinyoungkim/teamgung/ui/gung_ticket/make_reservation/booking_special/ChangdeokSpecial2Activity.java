@@ -2,6 +2,7 @@ package com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.booking
 
 import android.content.Intent;
 import android.os.Build;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +15,17 @@ import android.widget.Toast;
 
 import com.example.jinyoungkim.teamgung.R;
 import com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.PayResultActivity;
+
+import kr.co.bootpay.Bootpay;
+import kr.co.bootpay.BootpayAnalytics;
+import kr.co.bootpay.CancelListener;
+import kr.co.bootpay.CloseListener;
+import kr.co.bootpay.ConfirmListener;
+import kr.co.bootpay.DoneListener;
+import kr.co.bootpay.ErrorListener;
+import kr.co.bootpay.ReadyListener;
+import kr.co.bootpay.enums.Method;
+import kr.co.bootpay.enums.PG;
 
 public class ChangdeokSpecial2Activity extends AppCompatActivity {
 
@@ -34,6 +46,9 @@ public class ChangdeokSpecial2Activity extends AppCompatActivity {
     String ticket_people; // 사람 정보
     int ticket_special; // 특별권 여부
     int ticket_jongro; // 종로인 구분
+
+    private int stuck = 10;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +83,10 @@ public class ChangdeokSpecial2Activity extends AppCompatActivity {
         changdeok_special_layout1 = (LinearLayout)findViewById(R.id.changdeok_special_layout1);
         changdeok_special_layout2 = (LinearLayout)findViewById(R.id.changdeok_special_layout2);
         changdeok_special_layout3 = (LinearLayout)findViewById(R.id.changdeok_special_layout3);
+
+        // 부트페이 초기 설정
+        BootpayAnalytics.init(this,"5baa746eb6d49c5a2452ee7f");
+
 
         payment_changdeok_special = (RelativeLayout)findViewById(R.id.payment_changdeok_special);
 
@@ -178,10 +197,64 @@ public class ChangdeokSpecial2Activity extends AppCompatActivity {
                     Log.e("특별권 구분) ", String.valueOf(ticket_special));
                     Log.e("종로 구분) ",String.valueOf(ticket_jongro));
 
-                    Intent i = new Intent(getApplicationContext(), PayResultActivity.class);
-                    i.putExtra("palace_type","changdeok");
-                    startActivity(i);
-                    finish();
+                    Bootpay.init(getFragmentManager())
+                            .setApplicationId("5baa746eb6d49c5a2452ee7f") // 해당 프로젝트(안드로이드)의 application id 값
+                            .setPG(PG.KAKAO) // 결제할 PG 사
+                            .setUserPhone("010-1234-5678") // 구매자 전화번호
+                            .setMethod(Method.EASY) // 결제수단
+                            .setName(ticket_title) // 결제할 상품명
+                            .setOrderId("1234") //고유 주문번호로, 생성하신 값을 보내주셔야 합니다.
+                            .setPrice(1000) // 결제할 금액
+                            //.setAccountExpireAt("2018-09-22") // 가상계좌 입금기간 제한 ( yyyy-mm-dd 포멧으로 입력해주세요. 가상계좌만 적용됩니다. 오늘 날짜보다 더 뒤(미래)여야 합니다 )
+                            .setQuotas(new int[] {0,2,3}) // 일시불, 2개월, 3개월 할부 허용, 할부는 최대 12개월까지 사용됨 (5만원 이상 구매시 할부허용 범위)
+                            .onConfirm(new ConfirmListener() { // 결제가 진행되기 바로 직전 호출되는 함수로, 주로 재고처리 등의 로직이 수행
+                                @Override
+                                public void onConfirm(@Nullable String message) {
+                                    if (0 < stuck) Bootpay.confirm(message); // 재고가 있을 경우.
+//                                else Bootpay.removePaymentWindow(); // 재고가 없어 중간에 결제창을 닫고 싶을 경우
+                                    Log.d("confirm", message);
+
+                                }
+                            })
+                            .onDone(new DoneListener() { // 결제완료시 호출, 아이템 지급 등 데이터 동기화 로직을 수행합니다
+                                @Override
+                                public void onDone(@Nullable String message) {
+                                    Log.d("done", message);
+                                    Intent i = new Intent(getApplicationContext(), PayResultActivity.class);
+                                    i.putExtra("palace_type","changdeok");
+                                    startActivity(i);
+                                    finish();
+                                }
+                            })
+                            .onReady(new ReadyListener() { // 가상계좌 입금 계좌번호가 발급되면 호출되는 함수입니다.
+                                @Override
+                                public void onReady(@Nullable String message) {
+                                    Log.d("ready", message);
+                                }
+                            })
+                            .onCancel(new CancelListener() { // 결제 취소시 호출
+                                @Override
+                                public void onCancel(@Nullable String message) {
+                                    Log.d("cancel", message);
+                                    Intent i = new Intent(getApplicationContext(), PayResultActivity.class);
+                                    i.putExtra("palace_type","changdeok");
+                                    startActivity(i);
+                                    finish();
+                                }
+                            })
+                            .onError(new ErrorListener() { // 에러가 났을때 호출되는 부분
+                                @Override
+                                public void onError(@Nullable String message) {
+                                    Log.d("error", message);
+                                }
+                            })
+                            .onClose(new CloseListener() { //결제창이 닫힐때 실행되는 부분
+                                @Override
+                                public void onClose(String message) {
+                                    Log.d("close", "close");
+                                }
+                            })
+                            .show();
                 }
 
             }
