@@ -4,23 +4,85 @@ import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.jinyoungkim.teamgung.R;
+import com.example.jinyoungkim.teamgung.ui.gung_tour.going_palace.going_dialog.vp_changdeok.ChangdeokKing;
+import com.example.jinyoungkim.teamgung.ui.gung_tour.going_palace.going_dialog.vp_changdeok.ChangdeokNasi;
+import com.example.jinyoungkim.teamgung.ui.gung_tour.going_palace.going_dialog.vp_changdeok.ChangdeokPrincess;
 
-public class GoingGyeongbokDialog extends Dialog {
+public class GoingGyeongbokDialog extends DialogFragment {
+    ViewPager viewPager;
 
 
-    public GoingGyeongbokDialog(@NonNull Context context) {
-        super(context);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        //다이얼로그의 타이틀바를 없애주는 옵션입니다.
-        getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));  //다이얼로그의 배경을 투명으로 만듭니다.
-        setContentView(R.layout.dialog_going_gyeongbok);     //다이얼로그에서 사용할 레이아웃입니다.
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.dialog_going_gyeongbok,container,false);
+        FragmentManager fm = getChildFragmentManager();
+        FragmentTransaction transaction = fm.beginTransaction();
+
+
+        getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+
+        viewPager = (ViewPager)view.findViewById(R.id.vp_gyeongbok_swipe);
+//
+        viewPager.setAdapter(new pagerAdapter(fm));
+        viewPager.setPageMargin(60);
+        viewPager.setCurrentItem(0);
+        return view;
+    }
+
+    @Override
+    public int show(FragmentTransaction transaction, String tag) {
+        return super.show(transaction, tag);
+    }
+
+    //    뷰페이저를 위한 어댑터
+    private class pagerAdapter extends FragmentStatePagerAdapter {
+
+        public pagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+
+        @Override
+        public Fragment getItem(int position) {
+
+            switch (position) {
+                case 0:
+                    ChangdeokNasi cdn = new ChangdeokNasi();
+                    return cdn;
+                case 1:
+                    ChangdeokKing cdk = new ChangdeokKing();
+                    return cdk;
+                case 2:
+                    ChangdeokPrincess cdp = new ChangdeokPrincess();
+                    return cdp;
+            }
+
+            return null;
+        }
+
+        @Override
+        public int getCount() {
+            return 3;
+        }
+
     }
 }

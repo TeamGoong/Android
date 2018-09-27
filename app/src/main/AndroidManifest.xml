@@ -7,6 +7,7 @@
     <!-- 권한 설정 -->
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- 부트페이 연동 -->
+
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
@@ -19,6 +20,7 @@
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
         <activity android:name=".ui.splash.SplashActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
