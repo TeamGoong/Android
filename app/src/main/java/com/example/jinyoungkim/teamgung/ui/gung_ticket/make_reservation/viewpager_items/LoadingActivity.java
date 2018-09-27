@@ -59,7 +59,7 @@ public class LoadingActivity extends AppCompatActivity {
         fragment_type = i.getStringExtra("fragment_type");
         Log.e("fragment_type",fragment_type);
         if(SharePreferenceController.getLogin(getApplicationContext()).equals("yes")){
-
+            Log.e("header",SharePreferenceController.getTokenHeader(getApplicationContext()));
             Intent i2 = new Intent(getApplicationContext(),Loading2Activity.class);
             i2.putExtra("fragment_type2",fragment_type);
             startActivity(i2);
@@ -151,7 +151,7 @@ public class LoadingActivity extends AppCompatActivity {
                         if(response.isSuccessful()){
                             SharePreferenceController.setTokenHeader(getApplicationContext(),response.body().result.token);
                             Toast.makeText(getApplicationContext(),"카카오 로그인이 되었습니다 :)",Toast.LENGTH_SHORT).show();
-
+                            Log.e("header",response.body().result.token);
                             Intent i2 = new Intent(getApplicationContext(),Loading2Activity.class);
                             i2.putExtra("fagment_type2",fragment_type);
                             startActivity(i2);

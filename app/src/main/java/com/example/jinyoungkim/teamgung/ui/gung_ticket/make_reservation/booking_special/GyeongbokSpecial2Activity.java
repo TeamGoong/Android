@@ -14,7 +14,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.jinyoungkim.teamgung.R;
+import com.example.jinyoungkim.teamgung.model.PayPost;
+import com.example.jinyoungkim.teamgung.model.PayResult;
+import com.example.jinyoungkim.teamgung.network.NetworkService;
 import com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.PayResultActivity;
+import com.example.jinyoungkim.teamgung.util.GlobalApplication;
+import com.example.jinyoungkim.teamgung.util.SharePreferenceController;
 
 import kr.co.bootpay.Bootpay;
 import kr.co.bootpay.BootpayAnalytics;
@@ -26,8 +31,14 @@ import kr.co.bootpay.ErrorListener;
 import kr.co.bootpay.ReadyListener;
 import kr.co.bootpay.enums.Method;
 import kr.co.bootpay.enums.PG;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class GyeongbokSpecial2Activity extends AppCompatActivity {
+
+    private NetworkService networkService;
+    private PayPost payPost;
 
     ImageView gyeongbok_special_btn1,gyeongbok_special_btn2,gyeongbok_special_btn3,gyeongbok_special_btn4; // 하단 정보 보기 버튼
     ImageView adult_minus_gyeongbok_special,adult_plus_gyeongbok_special; // 인원 수
@@ -59,6 +70,8 @@ public class GyeongbokSpecial2Activity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(0xffB54141);
         }
+
+        networkService = GlobalApplication.getGlobalApplicationContext().getNetworkService();
 
         // Special1Activity에서 받은 예매 날짜
         i=getIntent();
@@ -214,6 +227,7 @@ public class GyeongbokSpecial2Activity extends AppCompatActivity {
                 if(adult_number_gyeongbok_special_i==0){
                     Toast.makeText(getApplicationContext(),"인원수를 선택해주세요:)",Toast.LENGTH_SHORT).show();
                 }else{
+                    ticket_special=1;
                     Log.e("궁 아이디", String.valueOf(palace_id));
                     Log.e("특별권 종류) ",ticket_title);
                     Log.e("티켓 시작날짜) ",ticket_start);
@@ -222,6 +236,8 @@ public class GyeongbokSpecial2Activity extends AppCompatActivity {
                     Log.e("사람정보) ", ticket_people);
                     Log.e("특별권 구분) ", String.valueOf(ticket_special));
                     Log.e("종로 구분) ",String.valueOf(ticket_jongro));
+
+                    pay();
 
                     Bootpay.init(getFragmentManager())
                             .setApplicationId("5baa746eb6d49c5a2452ee7f") // 해당 프로젝트(안드로이드)의 application id 값
@@ -283,6 +299,25 @@ public class GyeongbokSpecial2Activity extends AppCompatActivity {
                             .show();
                 }
 
+            }
+        });
+    }
+
+    //    네트워킹
+    public void pay() {
+        payPost = new PayPost(palace_id,ticket_title,ticket_start,ticket_end,ticket_people,ticket_special,ticket_jongro);
+        Call<PayResult> payResultCall = networkService.pay(SharePreferenceController.getTokenHeader(getApplicationContext()),payPost);
+        payResultCall.enqueue(new Callback<PayResult>() {
+            @Override
+            public void onResponse(Call<PayResult> call, Response<PayResult> response) {
+                if(response.isSuccessful()){
+                    Log.e("SERVER IN","success");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<PayResult> call, Throwable t) {
+                GlobalApplication.getGlobalApplicationContext().makeToast("네트워크 상태를 확인해 주세요 :)");
             }
         });
     }
