@@ -63,26 +63,37 @@ public class LearningGyeongbok extends Fragment {
         second = (ImageView)view.findViewById(R.id.second_img_gyeongbok);
         third = (ImageView)view.findViewById(R.id.third_img_gyeongbok);
 
+        getPhoto();
+
+
+        new GetXMLTask().execute();
+
+        return view;
+    }
+
+
+    public void getPhoto(){
         Call<ShowPhotoGet>showPhotoGetCall = networkService.showPhoto("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6NzcsInVzZXJfaWQiOjkyNTExMTA0MywiaWF0IjoxNTM3OTcyMzAwLCJleHAiOjE1NDA1NjQzMDB9.G2YwvjIT74v8d9HmoxRghPRW3f3Sns3pdWbzm5ZHgZQ"
                 ,0);
         showPhotoGetCall.enqueue(new Callback<ShowPhotoGet>() {
             @Override
             public void onResponse(Call<ShowPhotoGet> call, Response<ShowPhotoGet> response) {
                 if(response.isSuccessful()){
-                    Toast.makeText(getContext(),"ㅇㄹㄴㅇㄹㄴㅇㄹ",Toast.LENGTH_SHORT).show();
-                   images = new String[3];
-                   images = response.body().result.images;
+                    images = response.body().result.images;
 
 
                     Glide.with(getContext())
-                            .load("https://s3.ap-northeast-2.amazonaws.com/goongs/gyeongbokgung_2.jpg")
+                            .load(images[0])
+                            .apply(new RequestOptions().centerCrop())
                             .into(first);
-//                    Glide.with(getContext())
-//                            .load(images.get(1))
-//                            .into(second);
-//                    Glide.with(getContext())
-//                            .load(images.get(2))
-//                            .into(third);
+                    Glide.with(getContext())
+                            .load(images[1])
+                            .apply(new RequestOptions().centerCrop())
+                            .into(second);
+                    Glide.with(getContext())
+                            .load(images[2])
+                            .apply(new RequestOptions().centerCrop())
+                            .into(third);
 
                 }
             }
@@ -93,15 +104,7 @@ public class LearningGyeongbok extends Fragment {
             }
         });
 
-
-
-        new GetXMLTask().execute();
-
-        return view;
     }
-
-
-
 
 
 

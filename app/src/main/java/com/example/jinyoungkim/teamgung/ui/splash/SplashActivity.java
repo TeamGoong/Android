@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.widget.ImageView;
 
 //import com.bumptech.glide.Glide;
+import com.bumptech.glide.Glide;
 import com.example.jinyoungkim.teamgung.R;
 import com.example.jinyoungkim.teamgung.ui.main.MainActivity;
 
@@ -22,7 +23,7 @@ public class SplashActivity extends AppCompatActivity {
 
         splash = (ImageView)findViewById(R.id.splash);
 
-      //  Glide.with(this).load(R.drawable.splash2).into(splash);
+        Glide.with(this).load(R.drawable.splash2).into(splash);
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {

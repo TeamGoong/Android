@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.widget.ImageView;
 
 //import com.bumptech.glide.Glide;
+import com.bumptech.glide.Glide;
 import com.example.jinyoungkim.teamgung.R;
 import com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.booking.BookingChangdeokActivity;
 import com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.booking.BookingChanggyeongActivity;
@@ -27,7 +28,7 @@ public class Loading2Activity extends AppCompatActivity {
         setContentView(R.layout.activity_loading2);
 
         loading = (ImageView)findViewById(R.id.loading);
-    //    Glide.with(this).load(R.drawable.loading_splash3).into(loading);
+        Glide.with(this).load(R.drawable.loading_splash3).into(loading);
 
         Intent i = getIntent();
         flag = i.getStringExtra("fragment_type2");
