@@ -32,6 +32,7 @@ public class Gyeongbok extends Fragment {
     private FrameLayout goto_reservation;
 
 
+
     public Gyeongbok() {
     }
 
@@ -48,6 +49,7 @@ public class Gyeongbok extends Fragment {
         goto_reservation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent i = new Intent(getContext(),LoadingActivity.class);
                 i.putExtra("fragment_type","gyeongbok");
                 startActivity(i);
@@ -58,6 +60,7 @@ public class Gyeongbok extends Fragment {
 
         return view;
     }
+
 
 
 }

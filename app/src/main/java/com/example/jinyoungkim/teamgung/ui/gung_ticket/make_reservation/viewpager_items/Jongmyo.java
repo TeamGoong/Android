@@ -32,6 +32,10 @@ public class Jongmyo extends Fragment {
     private FrameLayout goto_reservation;
 
 
+    private String userName;
+    private String profileUrl;
+    private SessionCallback sessionCallback;
+
     public Jongmyo() {
     }
 
@@ -48,6 +52,8 @@ public class Jongmyo extends Fragment {
         goto_reservation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 Intent i = new Intent(getContext(),LoadingActivity.class);
                 i.putExtra("fragment_type","jongmyo");
                 startActivity(i);

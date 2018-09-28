@@ -10,14 +10,27 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import com.example.jinyoungkim.teamgung.R;
+import com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.booking.BookingChangdeokActivity;
+import com.example.jinyoungkim.teamgung.util.SessionCallback;
+import com.kakao.auth.AuthType;
+import com.kakao.auth.ISessionCallback;
+import com.kakao.auth.Session;
+import com.kakao.network.ErrorResult;
+import com.kakao.usermgmt.UserManagement;
+import com.kakao.usermgmt.callback.MeResponseCallback;
+import com.kakao.usermgmt.response.model.UserProfile;
+import com.kakao.util.exception.KakaoException;
 
 public class Changdeok extends Fragment {
 
     private FrameLayout goto_reservation;
 
+    private String userName;
+    private String profileUrl;
+    private SessionCallback sessionCallback;
+
     public Changdeok() {
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -32,7 +45,7 @@ public class Changdeok extends Fragment {
         goto_reservation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+//
                 Intent i = new Intent(getContext(),LoadingActivity.class);
                 i.putExtra("fragment_type","changdeok");
                 startActivity(i);

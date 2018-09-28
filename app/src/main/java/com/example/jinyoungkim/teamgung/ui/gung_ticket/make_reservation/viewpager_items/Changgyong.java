@@ -33,6 +33,7 @@ public class Changgyong extends Fragment {
 
     private FrameLayout goto_reservation;
 
+
     public Changgyong() {
         // Required empty public constructor
     }
@@ -61,6 +62,7 @@ public class Changgyong extends Fragment {
 
         return v;
     }
+
 
 }
 

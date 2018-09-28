@@ -35,6 +35,17 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import kr.co.bootpay.Bootpay;
+import kr.co.bootpay.BootpayAnalytics;
+import kr.co.bootpay.CancelListener;
+import kr.co.bootpay.CloseListener;
+import kr.co.bootpay.ConfirmListener;
+import kr.co.bootpay.DoneListener;
+import kr.co.bootpay.ErrorListener;
+import kr.co.bootpay.ReadyListener;
+import kr.co.bootpay.enums.Method;
+import kr.co.bootpay.enums.PG;
+
 public class DuksuSpecial2Activity extends AppCompatActivity {
 
     private NetworkService networkService;

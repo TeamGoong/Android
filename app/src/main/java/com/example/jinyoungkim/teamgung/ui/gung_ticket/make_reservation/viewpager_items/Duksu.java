@@ -30,6 +30,10 @@ import com.kakao.util.exception.KakaoException;
 public class Duksu extends Fragment {
     private FrameLayout goto_reservation;
 
+    private String userName;
+    private String profileUrl;
+    private SessionCallback sessionCallback;
+
     public Duksu() {
     }
 
@@ -47,6 +51,7 @@ public class Duksu extends Fragment {
             @Override
             public void onClick(View v) {
 
+
                 Intent i = new Intent(getContext(),LoadingActivity.class);
                 i.putExtra("fragment_type","duksu");
                 startActivity(i);
@@ -56,5 +61,6 @@ public class Duksu extends Fragment {
 
         return view;
     }
+
 
 }
