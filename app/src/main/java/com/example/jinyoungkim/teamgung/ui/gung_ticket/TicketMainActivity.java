@@ -20,6 +20,8 @@ import android.widget.Switch;
 import android.widget.Toast;
 import android.app.AlertDialog;
 
+//import com.bumptech.glide.Glide;
+//import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.jinyoungkim.teamgung.R;
@@ -77,7 +79,7 @@ public class TicketMainActivity extends AppCompatActivity implements View.OnClic
 
 
 
-        Glide.with(this)
+       Glide.with(this)
                 .load(R.drawable.kakao_default_profile_image)
                 .apply(new RequestOptions().centerCrop())
                 .apply(new RequestOptions().circleCrop())

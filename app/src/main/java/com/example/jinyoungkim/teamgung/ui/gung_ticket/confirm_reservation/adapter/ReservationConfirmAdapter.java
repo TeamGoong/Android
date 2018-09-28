@@ -1,5 +1,6 @@
 package com.example.jinyoungkim.teamgung.ui.gung_ticket.confirm_reservation.adapter;
 
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
@@ -13,6 +14,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.jinyoungkim.teamgung.R;
+import com.example.jinyoungkim.teamgung.model.ConfirmTicketData;
 import com.example.jinyoungkim.teamgung.ui.gung_ticket.confirm_reservation.data.TicketData;
 import com.example.jinyoungkim.teamgung.ui.gung_ticket.confirm_reservation.review_write_dialog.ReviewWriteDialog;
 import com.example.jinyoungkim.teamgung.ui.gung_tour.looking_palace.data.PalaceData;
@@ -21,6 +23,7 @@ import com.example.jinyoungkim.teamgung.ui.main.foreign_dialog.ChanggyeongDialog
 import com.example.jinyoungkim.teamgung.ui.main.foreign_dialog.DuksuDialog;
 import com.example.jinyoungkim.teamgung.ui.main.foreign_dialog.GyeongbokDialog;
 import com.example.jinyoungkim.teamgung.ui.main.foreign_dialog.JongmyoDialog;
+import com.example.jinyoungkim.teamgung.util.SharePreferenceController;
 
 import java.util.ArrayList;
 
@@ -30,18 +33,26 @@ public class ReservationConfirmAdapter extends RecyclerView.Adapter {
         LinearLayout ticket_bgr;
         TextView review_btn;
 
+        TextView ticket_title;
+        TextView ticket_people;
+        TextView ticket_date;
+
         ImageView review_fin;//후기 작성 끝냈을 때
         public ReservationConfirmViewHolder(View itemView) {
                 super(itemView);
                 ticket_bgr = itemView.findViewById(R.id.img_ticket_confirm_reservation);
                 review_btn = itemView.findViewById(R.id.btn_review_confirm_reservation);
                 review_fin = itemView.findViewById(R.id.ticket_fin);
+
+                ticket_title = itemView.findViewById(R.id.ticket_title);
+                ticket_people = itemView.findViewById(R.id.ticket_people);
+                ticket_date = itemView.findViewById(R.id.ticket_date);
         }
     }
-    private ArrayList<TicketData> ticketArrayList;
+    private ArrayList<ConfirmTicketData> confirmTicketData;
     public View view;
-    public ReservationConfirmAdapter( ArrayList<TicketData> ticketArrayList,View view){
-        this.ticketArrayList = ticketArrayList;
+    public ReservationConfirmAdapter(ArrayList<ConfirmTicketData> confirmTicketData, View view){
+        this.confirmTicketData = confirmTicketData;
         this.view = view;
     }
 
@@ -53,12 +64,18 @@ public class ReservationConfirmAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
         final ReservationConfirmViewHolder reservationConfirmViewHolder = (ReservationConfirmViewHolder) holder;
 
-        int ticket_flag = ticketArrayList.get(position).ticket_flag;
-        int review_flag = ticketArrayList.get(position).review_flag;
-        int finish_flag = ticketArrayList.get(position).finish_flag;
+        int ticket_flag = confirmTicketData.get(position).ticket_flag; //0:일반 1:선착 2:특별
+        int review_flag = confirmTicketData.get(position).ticket_review;//1이면 리뷰작성함
+        int finish_flag = confirmTicketData.get(position).end_flag;// 1이면끝난예약
+
+        String date = confirmTicketData.get(position).ticket_start+"~"+confirmTicketData.get(position).ticket_end;
+
+        reservationConfirmViewHolder.ticket_title.setText(confirmTicketData.get(position).ticket_title);
+        reservationConfirmViewHolder.ticket_people.setText(confirmTicketData.get(position).ticket_people);
+        reservationConfirmViewHolder.ticket_date.setText(date);
 
         switch (ticket_flag){
             case 0://일반 - yellow
@@ -132,6 +149,8 @@ public class ReservationConfirmAdapter extends RecyclerView.Adapter {
             reservationConfirmViewHolder.review_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    SharePreferenceController.setPalaceID(view.getContext(),confirmTicketData.get(position).palace_name);
+                    SharePreferenceController.setTicketID(view.getContext(),confirmTicketData.get(position).ticket_id);
                     rwd.show();
 
                 }
@@ -142,6 +161,6 @@ public class ReservationConfirmAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return ticketArrayList.size();
+        return confirmTicketData.size();
     }
 }

@@ -9,6 +9,8 @@ public class SharePreferenceController {
     private static final String TOKEN_HEADER = "token_header"; // 서버로 부터 받은 토큰 값 (헤더에 넣어야 할)
     private static final String PROFILE = "profile"; // 사용자 프로필 이미지 url
     private static final String LOGIN = "login";
+    private static final String PALACE_ID = "palace_id";
+    private static final String TICKET_ID = "ticket_id";
 
 
     // 1. 토큰 값 비교
@@ -74,4 +76,53 @@ public class SharePreferenceController {
         String login = pref.getString(LOGIN,"");
         return login;
     }
+
+    //5.예매확인->후기등록하려할때 궁 Name 받아서 궁 id 로 변환
+    public static void setPalaceID(Context context,String palace_name){
+     SharedPreferences pref = context.getSharedPreferences(PALACE_ID,context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putString(PALACE_ID,palace_name);
+        editor.commit();
+
+    }
+
+    public static int getPalaceId(Context context){
+        SharedPreferences pref = context.getSharedPreferences(PALACE_ID,context.MODE_PRIVATE);
+        String palace_name = pref.getString(PALACE_ID,"");
+        int id = 0;
+        switch (palace_name){
+            case "경복궁":
+                id=0;
+                break;
+            case "창덕궁":
+                id=1;
+                break;
+            case "창경궁":
+                id = 2;
+                break;
+            case "덕수궁":
+                id = 3;
+                break;
+            case "종묘":
+                id = 4;
+                break;
+
+        }
+        return id;
+    }
+
+    //6.예매확인->후기등록 티켓아이디 저장
+    public static void setTicketID(Context context,int ticketID){
+        SharedPreferences pref = context.getSharedPreferences(TICKET_ID,context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putInt(TICKET_ID,ticketID);
+        editor.commit();
+    }
+    public static int getTicketID(Context context){
+        SharedPreferences pref = context.getSharedPreferences(TICKET_ID,context.MODE_PRIVATE);
+        int ticket_id = pref.getInt(TICKET_ID,0);
+        return ticket_id;
+    }
+
+
 }
