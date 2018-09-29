@@ -46,7 +46,7 @@ public class ReviewWriteDialog extends Dialog {
     NetworkService networkService;
     ReviewWrite reviewWrite;
 
-    public ReviewWriteDialog(@NonNull final Context context) {
+    public ReviewWriteDialog(@NonNull final Context context,final View btn,final View btn2) {
         super(context);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         //다이얼로그의 타이틀바를 없애주는 옵션입니다.
@@ -76,16 +76,21 @@ public class ReviewWriteDialog extends Dialog {
             @Override
             public void onClick(View view) {
 
-                if(click_flag!=3){
+
+
+                if(click_flag<3){
                     Toast.makeText(context.getApplicationContext(),"얼굴을 다 눌러주세요:)",Toast.LENGTH_SHORT).show();
                 }else{
+                    btn.setVisibility(View.INVISIBLE);
+                    btn2.setVisibility(View.VISIBLE);
+
                     int palace_id = SharePreferenceController.getPalaceId(context);
                     int ticket_id = SharePreferenceController.getTicketID(context);
                     reviewWrite = new ReviewWrite(palace_id,traffic_score,congestion_score,see_score,ticket_id);
 
 
 
-                    Call<ReviewWriteResult>reviewWriteResultCall = networkService.review("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6NzcsInVzZXJfaWQiOjkyNTExMTA0MywiaWF0IjoxNTM3OTcyMzAwLCJleHAiOjE1NDA1NjQzMDB9.G2YwvjIT74v8d9HmoxRghPRW3f3Sns3pdWbzm5ZHgZQ"
+                    Call<ReviewWriteResult>reviewWriteResultCall = networkService.review(SharePreferenceController.getTokenHeader(getContext())
                             ,reviewWrite);
                     reviewWriteResultCall.enqueue(new Callback<ReviewWriteResult>() {
                         @Override

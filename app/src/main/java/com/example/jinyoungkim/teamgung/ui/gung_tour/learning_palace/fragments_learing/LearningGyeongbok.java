@@ -20,7 +20,9 @@ import com.example.jinyoungkim.teamgung.R;
 import com.example.jinyoungkim.teamgung.model.ShowPhotoData;
 import com.example.jinyoungkim.teamgung.model.ShowPhotoGet;
 import com.example.jinyoungkim.teamgung.network.NetworkService;
+import com.example.jinyoungkim.teamgung.ui.gung_tour.learning_palace.fragments_learing.photo_dialog.PhotoDialog;
 import com.example.jinyoungkim.teamgung.util.GlobalApplication;
+import com.example.jinyoungkim.teamgung.util.SharePreferenceController;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -73,7 +75,7 @@ public class LearningGyeongbok extends Fragment {
 
 
     public void getPhoto(){
-        Call<ShowPhotoGet>showPhotoGetCall = networkService.showPhoto("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6NzcsInVzZXJfaWQiOjkyNTExMTA0MywiaWF0IjoxNTM3OTcyMzAwLCJleHAiOjE1NDA1NjQzMDB9.G2YwvjIT74v8d9HmoxRghPRW3f3Sns3pdWbzm5ZHgZQ"
+        Call<ShowPhotoGet>showPhotoGetCall = networkService.showPhoto(SharePreferenceController.getTokenHeader(getContext())
                 ,0);
         showPhotoGetCall.enqueue(new Callback<ShowPhotoGet>() {
             @Override
@@ -94,6 +96,35 @@ public class LearningGyeongbok extends Fragment {
                             .load(images[2])
                             .apply(new RequestOptions().centerCrop())
                             .into(third);
+
+                    first.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            SharePreferenceController.setPhotoURL(getContext(),images[0]);
+                            PhotoDialog dl1= new PhotoDialog(getContext());
+                            dl1.show();
+                        }
+                    });
+
+                    second.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            SharePreferenceController.setPhotoURL(getContext(),images[1]);
+                            PhotoDialog dl2= new PhotoDialog(getContext());
+                            dl2.show();
+
+                        }
+                    });
+
+                    third.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            SharePreferenceController.setPhotoURL(getContext(),images[2]);
+                            PhotoDialog dl3= new PhotoDialog(getContext());
+                            dl3.show();
+
+                        }
+                    });
 
                 }
             }
