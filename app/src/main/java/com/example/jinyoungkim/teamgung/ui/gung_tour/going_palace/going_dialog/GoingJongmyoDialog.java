@@ -22,6 +22,7 @@ import com.example.jinyoungkim.teamgung.R;
 import com.example.jinyoungkim.teamgung.ui.gung_tour.going_palace.going_dialog.vp_changdeok.ChangdeokKing;
 import com.example.jinyoungkim.teamgung.ui.gung_tour.going_palace.going_dialog.vp_changdeok.ChangdeokNasi;
 import com.example.jinyoungkim.teamgung.ui.gung_tour.going_palace.going_dialog.vp_changdeok.ChangdeokPrincess;
+import com.example.jinyoungkim.teamgung.ui.gung_tour.going_palace.going_dialog.vp_jongmyo.JongmyoKing;
 
 public class GoingJongmyoDialog extends DialogFragment {
     ViewPager viewPager;
@@ -40,7 +41,6 @@ public class GoingJongmyoDialog extends DialogFragment {
         viewPager = (ViewPager)view.findViewById(R.id.vp_jongmyo_swipe);
 //
         viewPager.setAdapter(new pagerAdapter(fm));
-        viewPager.setPageMargin(60);
         viewPager.setCurrentItem(0);
         return view;
     }
@@ -63,14 +63,8 @@ public class GoingJongmyoDialog extends DialogFragment {
 
             switch (position) {
                 case 0:
-                    ChangdeokNasi cdn = new ChangdeokNasi();
+                   JongmyoKing cdn = new JongmyoKing();
                     return cdn;
-                case 1:
-                    ChangdeokKing cdk = new ChangdeokKing();
-                    return cdk;
-                case 2:
-                    ChangdeokPrincess cdp = new ChangdeokPrincess();
-                    return cdp;
             }
 
             return null;
@@ -78,7 +72,7 @@ public class GoingJongmyoDialog extends DialogFragment {
 
         @Override
         public int getCount() {
-            return 3;
+            return 1;
         }
 
     }

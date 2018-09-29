@@ -55,6 +55,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="248dp">
                     <ImageView
+                        android:id="@+id/first_img_duksu"
                         android:layout_width="200dp"
                         android:layout_height="248dp" />
                     <RelativeLayout
@@ -62,9 +63,11 @@
                         android:layout_width="202dp"
                         android:layout_height="248dp">
                         <ImageView
+                            android:id="@+id/second_img_duksu"
                             android:layout_width="match_parent"
                             android:layout_height="88dp" />
                         <ImageView
+                            android:id="@+id/third_img_duksu"
                             android:layout_alignParentBottom="true"
                             android:layout_width="match_parent"
                             android:layout_height="151dp" />

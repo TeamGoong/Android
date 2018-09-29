@@ -22,6 +22,9 @@ import com.example.jinyoungkim.teamgung.R;
 import com.example.jinyoungkim.teamgung.ui.gung_tour.going_palace.going_dialog.vp_changdeok.ChangdeokKing;
 import com.example.jinyoungkim.teamgung.ui.gung_tour.going_palace.going_dialog.vp_changdeok.ChangdeokNasi;
 import com.example.jinyoungkim.teamgung.ui.gung_tour.going_palace.going_dialog.vp_changdeok.ChangdeokPrincess;
+import com.example.jinyoungkim.teamgung.ui.gung_tour.going_palace.going_dialog.vp_duksu.DuksuKing;
+import com.example.jinyoungkim.teamgung.ui.gung_tour.going_palace.going_dialog.vp_duksu.DuksuNasi;
+import com.example.jinyoungkim.teamgung.ui.gung_tour.going_palace.going_dialog.vp_duksu.DuksuPrincess;
 
 public class GoingDuksuDialog extends DialogFragment {
     ViewPager viewPager;
@@ -40,7 +43,6 @@ public class GoingDuksuDialog extends DialogFragment {
         viewPager = (ViewPager)view.findViewById(R.id.vp_duksu_swipe);
 //
         viewPager.setAdapter(new pagerAdapter(fm));
-        viewPager.setPageMargin(60);
         viewPager.setCurrentItem(0);
         return view;
     }
@@ -63,13 +65,13 @@ public class GoingDuksuDialog extends DialogFragment {
 
             switch (position) {
                 case 0:
-                    ChangdeokNasi cdn = new ChangdeokNasi();
+                    DuksuKing cdn = new DuksuKing();
                     return cdn;
                 case 1:
-                    ChangdeokKing cdk = new ChangdeokKing();
+                    DuksuPrincess cdk = new DuksuPrincess();
                     return cdk;
                 case 2:
-                    ChangdeokPrincess cdp = new ChangdeokPrincess();
+                    DuksuNasi cdp = new DuksuNasi();
                     return cdp;
             }
 
