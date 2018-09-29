@@ -453,8 +453,6 @@ public class ChangdeokNormalActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
-
                 palace_id = 1; // 창덕궁 아이디
                 ticket_title = "창덕궁 일반권";
                 ticket_special = 0; //특별권 구분
@@ -563,6 +561,8 @@ public class ChangdeokNormalActivity extends AppCompatActivity {
                             }
                         })
                         .show();
+
+
 
             }
         });

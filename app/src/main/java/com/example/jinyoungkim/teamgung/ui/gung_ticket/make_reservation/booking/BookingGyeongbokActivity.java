@@ -33,7 +33,6 @@ public class BookingGyeongbokActivity extends AppCompatActivity {
         // 초기화
         btn_normal_gyeongbok = (ImageView) findViewById(R.id.btn_normal_gyeongbok);
         btn_special_gyeongbok = (ImageView)findViewById(R.id.btn_special_gyeongbok);
-        profile_booking_gyeongbok = (ImageView)findViewById(R.id.profile_booking_gyeongbok);
 
         // 프로필 사진
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());

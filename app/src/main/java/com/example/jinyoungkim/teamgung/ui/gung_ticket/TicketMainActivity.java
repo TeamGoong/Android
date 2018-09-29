@@ -33,6 +33,8 @@ import com.example.jinyoungkim.teamgung.util.SharePreferenceController;
 import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.LogoutResponseCallback;
 
+import org.ankit.perfectdialog.EasyCustomDialog;
+import org.ankit.perfectdialog.EasyCustomDialogListener;
 
 
 // 예매하기, 예매 확인 메인 액티비티
@@ -77,6 +79,22 @@ public class TicketMainActivity extends AppCompatActivity implements View.OnClic
         menu9=(ImageView)findViewById(R.id.menu9);
 
 
+        Log.e("프사: ",SharePreferenceController.getProfile(getApplicationContext()));
+        // 프사
+        if(SharePreferenceController.getProfile(getApplicationContext()).equals("")){
+            Glide.with(this)
+                    .load(R.drawable.kakao_default_profile_image)
+                    .apply(new RequestOptions().centerCrop())
+                    .apply(new RequestOptions().circleCrop())
+                    .into(profile_ticket_main);
+        }else{
+            Glide.with(this)
+                    .load(SharePreferenceController.getProfile(getApplicationContext()))
+                    .apply(new RequestOptions().centerCrop())
+                    .apply(new RequestOptions().circleCrop())
+                    .into(profile_ticket_main);
+        }
+
 
 
        Glide.with(this)
@@ -85,13 +103,25 @@ public class TicketMainActivity extends AppCompatActivity implements View.OnClic
                 .apply(new RequestOptions().circleCrop())
                 .into(profile_ticket_main);
 
+
         // 로그아웃
         profile_ticket_main.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                logout();
-                GlobalApplication.getGlobalApplicationContext().makeToast("로그아웃 되었습니다 :)");
 
+                new EasyCustomDialog.Builder(TicketMainActivity.this,"로그아웃")
+                        .setHeader("로그아웃 하시겠습니까?")
+                        .setNegativeBtnText("취소")
+                        .setPositiveBtnText("확인")
+                        .onConfirm(new EasyCustomDialogListener() {
+                            @Override
+                            public void execute() {
+                                logout();
+                                GlobalApplication.getGlobalApplicationContext().makeToast("로그아웃 되었습니다 :)");
+                                startActivity(new Intent(getApplicationContext(),TicketMainActivity.class));
+                            }
+                        }).setIcon(getResources().getDrawable(R.drawable.nasi))
+                        .build();
             }
         });
 
@@ -210,7 +240,15 @@ public class TicketMainActivity extends AppCompatActivity implements View.OnClic
             public void onCompleteLogout() {
                 Log.e("로그아웃","로그아웃");
                 SharePreferenceController.deleteTokenHeader(getApplicationContext());
-                SharePreferenceController.setLogin(getApplicationContext(),"");
+                SharePreferenceController.setLogin(getApplicationContext(),""); // 로그인 삭제
+                SharePreferenceController.setProfile(getApplicationContext(),""); //프사 삭제
+
+                Glide.with(getApplicationContext())
+                        .load(R.drawable.kakao_default_profile_image)
+                        .apply(new RequestOptions().centerCrop())
+                        .apply(new RequestOptions().circleCrop())
+                        .into(profile_ticket_main);
+
             }
         });
     }

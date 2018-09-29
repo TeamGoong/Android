@@ -181,6 +181,8 @@ public class DuksuNormalActivity extends AppCompatActivity {
                 Log.e("사람 종류) ", ticket_people);
                 Log.e("특별권 구분) ", String.valueOf(ticket_special));
 
+                pay();
+
                 Bootpay.init(getFragmentManager())
                         .setApplicationId("5baa746eb6d49c5a2452ee7f") // 해당 프로젝트(안드로이드)의 application id 값
                         .setPG(PG.KAKAO) // 결제할 PG 사
