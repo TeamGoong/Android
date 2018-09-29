@@ -11,21 +11,42 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.jinyoungkim.teamgung.R;
+import com.example.jinyoungkim.teamgung.model.ConfirmTicket;
+import com.example.jinyoungkim.teamgung.model.ConfirmTicketData;
+import com.example.jinyoungkim.teamgung.model.ReviewWrite;
+import com.example.jinyoungkim.teamgung.network.NetworkService;
 import com.example.jinyoungkim.teamgung.ui.gung_ticket.confirm_reservation.adapter.ReservationConfirmAdapter;
 import com.example.jinyoungkim.teamgung.ui.gung_ticket.confirm_reservation.data.TicketData;
 import com.example.jinyoungkim.teamgung.ui.gung_tour.looking_palace.adapter.ShowingReviewsAdapter;
 import com.example.jinyoungkim.teamgung.ui.gung_tour.looking_palace.data.PalaceData;
+import com.example.jinyoungkim.teamgung.util.GlobalApplication;
 
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 // 예매 확인 탭 프레그먼트
 
 public class ConfirmReservationFragment extends Fragment {
 
+    //리사이클러뷰
     RecyclerView coming_rcv;
     RecyclerView finish_rcv;
     RecyclerView.LayoutManager mLayoutManager_f;
     RecyclerView.LayoutManager mLayoutManager_c;
+
+    //데이터
+    ArrayList<ConfirmTicketData> confirmTicketData;
+    ArrayList<ConfirmTicketData> finishTicket;
+    ArrayList<ConfirmTicketData> comingTicket;
+
+
+    //네트워킹
+    private NetworkService networkService;
+
+
 
     public ConfirmReservationFragment() {
         // Required empty public constructor
@@ -42,6 +63,9 @@ public class ConfirmReservationFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_confirm_reservation, container, false);
 
+        //네트워킹
+        networkService = GlobalApplication.getGlobalApplicationContext().getNetworkService();
+
         //      < 예매확인 > 리사이클러뷰 부분
 
         mLayoutManager_f = new LinearLayoutManager(this.getContext());
@@ -57,34 +81,56 @@ public class ConfirmReservationFragment extends Fragment {
         finish_rcv.setHasFixedSize(true);
         finish_rcv.setLayoutManager(mLayoutManager_f);
 
-        ArrayList<TicketData> ticketDataArrayList = new ArrayList<>();
+        //데이터 받아오고 그 데이터 리사이클러뷰에 뿌려주기
+        confirm_ticket(view);
 
-        ticketDataArrayList.add(new TicketData(0,1,1));
-        ticketDataArrayList.add(new TicketData(1,1,0));
-        ticketDataArrayList.add(new TicketData(1,0,1));
-        ticketDataArrayList.add(new TicketData(2,1,0));
-        ticketDataArrayList.add(new TicketData(1,1,1));
-
-        ArrayList<TicketData> finishTicket = new ArrayList<>();
-        ArrayList<TicketData> comingTicket = new ArrayList<>();
-
-        for(int i = 0; i<ticketDataArrayList.size();i++){
-            if(ticketDataArrayList.get(i).finish_flag == 1){
-                finishTicket.add(new TicketData(ticketDataArrayList.get(i).ticket_flag,ticketDataArrayList.get(i).finish_flag
-                        ,ticketDataArrayList.get(i).review_flag));
-            }else{
-                comingTicket.add(new TicketData(ticketDataArrayList.get(i).ticket_flag,ticketDataArrayList.get(i).finish_flag
-                        ,ticketDataArrayList.get(i).review_flag));
-            }
-        }
-
-        ReservationConfirmAdapter reservationConfirmAdapter_finish = new ReservationConfirmAdapter(finishTicket,view);
-        ReservationConfirmAdapter reservationConfirmAdapter_coming = new ReservationConfirmAdapter(comingTicket,view);
-
-        finish_rcv.setAdapter(reservationConfirmAdapter_finish);
-        coming_rcv.setAdapter(reservationConfirmAdapter_coming);
 
         return view;
+    }
+
+    public void confirm_ticket(final View view){
+        Call<ConfirmTicket> confirmTicketCall = networkService.confirmTicket("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6NzcsInVzZXJfaWQiOjkyNTExMTA0MywiaWF0IjoxNTM3OTcyMzAwLCJleHAiOjE1NDA1NjQzMDB9.G2YwvjIT74v8d9HmoxRghPRW3f3Sns3pdWbzm5ZHgZQ");
+        confirmTicketCall.enqueue(new Callback<ConfirmTicket>() {
+            @Override
+            public void onResponse(Call<ConfirmTicket> call, Response<ConfirmTicket> response) {
+                if(response.isSuccessful()){
+                    confirmTicketData = new ArrayList<>();
+
+                    confirmTicketData = response.body().result;
+
+                    finishTicket = new ArrayList<>();
+                    comingTicket = new ArrayList<>();
+
+
+                    for(int i = 0; i<confirmTicketData.size();i++){
+                        if(confirmTicketData.get(i).end_flag == 1){
+                            finishTicket.add(new ConfirmTicketData(confirmTicketData.get(i).ticket_id,confirmTicketData.get(i).palace_name,confirmTicketData.get(i).ticket_people
+                                    ,confirmTicketData.get(i).ticket_title,confirmTicketData.get(i).ticket_flag,confirmTicketData.get(i).ticket_start
+                                    ,confirmTicketData.get(i).ticket_end,confirmTicketData.get(i).ticket_review,confirmTicketData.get(i).end_flag));
+                        }else{
+                           comingTicket.add(new ConfirmTicketData(confirmTicketData.get(i).ticket_id,confirmTicketData.get(i).palace_name,confirmTicketData.get(i).ticket_people
+                                    ,confirmTicketData.get(i).ticket_title,confirmTicketData.get(i).ticket_flag,confirmTicketData.get(i).ticket_start
+                                    ,confirmTicketData.get(i).ticket_end,confirmTicketData.get(i).ticket_review,confirmTicketData.get(i).end_flag));
+                        }
+                    }
+
+
+                    ReservationConfirmAdapter reservationConfirmAdapter_finish = new ReservationConfirmAdapter(finishTicket,view);
+                    ReservationConfirmAdapter reservationConfirmAdapter_coming = new ReservationConfirmAdapter(comingTicket,view);
+
+                    finish_rcv.setAdapter(reservationConfirmAdapter_finish);
+                    coming_rcv.setAdapter(reservationConfirmAdapter_coming);
+
+
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ConfirmTicket> call, Throwable t) {
+
+            }
+        });
     }
 
 }

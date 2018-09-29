@@ -32,7 +32,7 @@ public class GoingGyeongbok extends Fragment {
             @Override
             public void onClick(View view) {
                 FragmentManager fm = getFragmentManager();
-                GoingDuksuDialog dialogFragment = new GoingDuksuDialog();
+                GoingGyeongbokDialog dialogFragment = new GoingGyeongbokDialog();
 
                 dialogFragment.show(fm,"dd");
             }

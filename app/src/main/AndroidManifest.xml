@@ -27,7 +27,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.main.MainActivity" />
+        <activity android:name=".ui.main.MainActivity">
+        </activity>
         <activity android:name=".ui.gung_ticket.TicketMainActivity" />
         <activity android:name=".ui.gung_tour.TourMainActivity" />
         <!-- 메타 데이터 -->
