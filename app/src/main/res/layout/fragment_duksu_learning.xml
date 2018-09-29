@@ -130,7 +130,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="30dp"
-                        android:text="9:00 - 18:00"
+                        android:text="9시-21시 (입장은 20시까지)"
                         android:textStyle="bold"
                         android:textColor="#707070"
                         android:textSize="@dimen/learning_gung"/>
@@ -155,7 +155,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="40dp"
-                        android:text="매주 일요일, 공휴일"
+                        android:text="월요일 휴무"
                         android:textStyle="bold"
                         android:textColor="#707070"
                         android:textSize="@dimen/learning_gung"/>
@@ -180,7 +180,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="55dp"
-                        android:text="설명설명설명설명설명설명설명설명설 명설명설명설명설명설명설명설명설명 설명설명설명설명설명설명설명설명설"
+                        android:text="인화문은 원래 덕수궁의 정문이었으나 중화전 건설로 궁궐이 확장되면서 사라졌습니다. 인화문은 고종이 아관파천 후 러시아 공사관에서 경운궁으로 돌아올 때 사용한 문입니다.\n
+ 경복궁에는 광화문이, 창덕궁에는 돈화문이, 경희궁에는 흥화문이, 창경궁에는 홍화문이 있듯이, 경운궁에도 ‘화(化)’자 돌림의 인화문(仁化門)이라는 정문이 있었습니다. 궁궐의 정문은 보통 남쪽에 있는 것으로 인화문 역시 경운궁 남쪽 궁궐 담장의 가운데 자리에 있었습니다.\n 하지만 1902년 무렵 남쪽으로 이웃하던 독일영사관 구역을 편입하고 궁궐 담장을 밖으로 늘리던 와중에 인화문은 해체되었습니다. 동쪽으로 난 대안문이 이미 궁궐의 정문 역할을 하고 있었으므로, 구태여 인화문을 새로 짓지 않았기 때문이었습니다."
                         android:textStyle="bold"
                         android:textColor="#707070"
                         android:textSize="@dimen/learning_gung"/>

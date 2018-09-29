@@ -11,6 +11,7 @@ public class SharePreferenceController {
     private static final String LOGIN = "login";
     private static final String PALACE_ID = "palace_id";
     private static final String TICKET_ID = "ticket_id";
+    private static final String PHOTO_URL = "photo_url";
 
 
     // 1. 토큰 값 비교
@@ -122,6 +123,21 @@ public class SharePreferenceController {
         SharedPreferences pref = context.getSharedPreferences(TICKET_ID,context.MODE_PRIVATE);
         int ticket_id = pref.getInt(TICKET_ID,0);
         return ticket_id;
+    }
+
+    //7.배워보기-사진확대 사진 url넘기기
+    public static void setPhotoURL(Context context,String url){
+        SharedPreferences pref = context.getSharedPreferences(PHOTO_URL,context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putString(PHOTO_URL,url);
+        editor.commit();
+    }
+
+    public static String getPhotoURL(Context context){
+        SharedPreferences pref = context.getSharedPreferences(PHOTO_URL,context.MODE_PRIVATE);
+        String photo_url = pref.getString(PHOTO_URL,"");
+        return photo_url;
+
     }
 
 

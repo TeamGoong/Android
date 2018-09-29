@@ -140,7 +140,7 @@ public class ReservationConfirmAdapter extends RecyclerView.Adapter {
 
 
         }
-        final ReviewWriteDialog rwd = new ReviewWriteDialog(view.getContext());
+        final ReviewWriteDialog rwd = new ReviewWriteDialog(view.getContext(),reservationConfirmViewHolder.review_btn, reservationConfirmViewHolder.review_fin);
 
         WindowManager.LayoutParams wm = rwd.getWindow().getAttributes();  //다이얼로그의 높이 너비 설정하기위해
         wm.copyFrom(rwd.getWindow().getAttributes());  //여기서 설정한값을 그대로 다이얼로그에 넣겠다는의미

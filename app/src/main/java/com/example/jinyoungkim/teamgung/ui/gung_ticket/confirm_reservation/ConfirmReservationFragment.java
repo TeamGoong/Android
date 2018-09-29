@@ -20,6 +20,7 @@ import com.example.jinyoungkim.teamgung.ui.gung_ticket.confirm_reservation.data.
 import com.example.jinyoungkim.teamgung.ui.gung_tour.looking_palace.adapter.ShowingReviewsAdapter;
 import com.example.jinyoungkim.teamgung.ui.gung_tour.looking_palace.data.PalaceData;
 import com.example.jinyoungkim.teamgung.util.GlobalApplication;
+import com.example.jinyoungkim.teamgung.util.SharePreferenceController;
 
 import java.util.ArrayList;
 
@@ -89,7 +90,7 @@ public class ConfirmReservationFragment extends Fragment {
     }
 
     public void confirm_ticket(final View view){
-        Call<ConfirmTicket> confirmTicketCall = networkService.confirmTicket("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6NzcsInVzZXJfaWQiOjkyNTExMTA0MywiaWF0IjoxNTM3OTcyMzAwLCJleHAiOjE1NDA1NjQzMDB9.G2YwvjIT74v8d9HmoxRghPRW3f3Sns3pdWbzm5ZHgZQ");
+        Call<ConfirmTicket> confirmTicketCall = networkService.confirmTicket(SharePreferenceController.getTokenHeader(getContext()));
         confirmTicketCall.enqueue(new Callback<ConfirmTicket>() {
             @Override
             public void onResponse(Call<ConfirmTicket> call, Response<ConfirmTicket> response) {

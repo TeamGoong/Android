@@ -130,7 +130,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="30dp"
-                        android:text="9:00 - 18:00"
+                        android:text="9시-17시 30분 (입장은 16시 30분까지)"
                         android:textStyle="bold"
                         android:textColor="#707070"
                         android:textSize="@dimen/learning_gung"/>
@@ -155,7 +155,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="40dp"
-                        android:text="매주 일요일, 공휴일"
+                        android:text="월요일 휴무"
                         android:textStyle="bold"
                         android:textColor="#707070"
                         android:textSize="@dimen/learning_gung"/>
@@ -180,7 +180,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="55dp"
-                        android:text="설명설명설명설명설명설명설명설명설 명설명설명설명설명설명설명설명설명 설명설명설명설명설명설명설명설명설"
+                        android:text="창경궁은 남향인 타 궁궐과 달리 동향으로 지어졌습니다. 1750년(영조 26년)에 영조는 균역법을 실시하기 전 홍화문 백성들에게 의견을 물어보았었고, 1795년(정조 19년)에 정조는 어머니인 혜경궁 홍씨의 회갑을 기념해, 이곳에서 가난한 백성들에게 직접 쌀을 나눠주기도 하였습니다.조선의 궁궐은 나라를 다스리는 법전까지 문이 세 개이지만 창경궁은 궁궐이 들어선 자리가 좁은 지형이기 때문에 홍화문에서 법전까지 문이 두 개 밖에 없습니다."
                         android:textStyle="bold"
                         android:textColor="#707070"
                         android:textSize="@dimen/learning_gung"/>
