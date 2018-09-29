@@ -1,5 +1,6 @@
 package com.example.jinyoungkim.teamgung.network;
 
+import com.example.jinyoungkim.teamgung.model.AvarageReview;
 import com.example.jinyoungkim.teamgung.model.ConfirmTicket;
 import com.example.jinyoungkim.teamgung.model.PayPost;
 import com.example.jinyoungkim.teamgung.model.PayResult;
@@ -14,7 +15,6 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
-import retrofit2.http.Part;
 import retrofit2.http.Path;
 
 public interface NetworkService {
@@ -45,6 +45,8 @@ public interface NetworkService {
     Call<ReviewWriteResult>review(@Header("Authorization")String header, @Body ReviewWrite reviewWrite);
 
     // 6.알아보기 - 궁별 후기 평점 보는 부분
+    @GET("/ticket/review_ticket/{palace_id}")
+    Call<AvarageReview>avarage(@Header("Authorization")String header,@Path("palace_id")int palace_id);
 
 
 }

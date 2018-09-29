@@ -131,7 +131,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="30dp"
-                        android:text="9:00 - 18:00"
+                        android:text="9시-17시 30분 (입장은 16시 30분까지)"
                         android:textStyle="bold"
                         android:textColor="#707070"
                         android:textSize="@dimen/learning_gung"/>
@@ -156,7 +156,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="40dp"
-                        android:text="매주 일요일, 공휴일"
+                        android:text="화요일 휴무 "
                         android:textStyle="bold"
                         android:textColor="#707070"
                         android:textSize="@dimen/learning_gung"/>
@@ -181,7 +181,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="55dp"
-                        android:text="설명설명설명설명설명설명설명설명설 명설명설명설명설명설명설명설명설명 설명설명설명설명설명설명설명설명설"
+                        android:text="삼도(三道):종묘 정문으로 들어서면 세 곳으로 나뉘어진 길, 삼도를 볼 수 있습니다. 정문에서 바라봤을 때 가운데 높은 길은 조상신이 다니는 신로라 하고, 신로 동쪽은 왕이 다니는 어로이며, 신로 서쪽은 세자가 다니는 세자로입니다. 일반 신하와 제사를 돕는 사람들은 삼도 옆으로 걸어 다녔지요.정문부터 시작된 신로는 왕과 왕비의 위패가 모셔져 있는 정전과 영녕전의 정문까지 이어져 있고, 왕의 길인 어로는 임금이 제사 기간 동안 머무는 어재실로 향해 있습니다."
                         android:textStyle="bold"
                         android:textColor="#707070"
                         android:textSize="@dimen/learning_gung"/>
