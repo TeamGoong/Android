@@ -1,5 +1,6 @@
 package com.example.jinyoungkim.teamgung.ui.gung_ticket;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -32,6 +33,7 @@ import com.example.jinyoungkim.teamgung.util.GlobalApplication;
 import com.example.jinyoungkim.teamgung.util.SharePreferenceController;
 import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.LogoutResponseCallback;
+import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
 import org.ankit.perfectdialog.EasyCustomDialog;
 import org.ankit.perfectdialog.EasyCustomDialogListener;
@@ -46,9 +48,10 @@ public class TicketMainActivity extends AppCompatActivity implements View.OnClic
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private Switch switch_ticket;
-    private LinearLayout special_reservation_layout;
+    private SlidingUpPanelLayout special_reservation_layout;
     private ImageView menu1, menu2, menu3, menu4, menu5, menu6, menu7, menu8, menu9;
 
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,7 +67,8 @@ public class TicketMainActivity extends AppCompatActivity implements View.OnClic
         tabLayout = (TabLayout)findViewById(R.id.tab_ticket); // 예매확인/예매하기 탭
         viewPager = (ViewPager)findViewById(R.id.viewpager_ticket); // 뷰페이저
         switch_ticket = (Switch)findViewById(R.id.switch_ticket); // 화면전환 스위치
-        special_reservation_layout= (LinearLayout)findViewById(R.id.special_reservation_layout); // 특별관람 예매하기 하단 레이아웃
+      //  special_reservation_layout= (LindearLayout)findViewById(R.id.dragView); // 특별관람 예매하기 하단 레이아웃
+        //special_reservation_layout= (SlidingUpPanelLayout)findViewById(R.id.dragView); // 특별관람 예매하기 하단 레이아웃
         profile_ticket_main = (ImageView)findViewById(R.id.profile_ticket_main); // 프로필 사진
 
         //특별관람 메뉴
@@ -140,8 +144,9 @@ public class TicketMainActivity extends AppCompatActivity implements View.OnClic
 
 
 //        탭 레이아웃 초기화
-        tabLayout.addTab(tabLayout.newTab().setText("예매확인"));
+
         tabLayout.addTab(tabLayout.newTab().setText("예매하기"));
+        tabLayout.addTab(tabLayout.newTab().setText("예매확인"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         tabLayout.setTabTextColors(R.color.background,Color.BLACK);
 
@@ -213,14 +218,14 @@ public class TicketMainActivity extends AppCompatActivity implements View.OnClic
 
             switch (position) {
                 case 0:
-                    special_reservation_layout.setVisibility(View.GONE);
-                    ConfirmReservationFragment confirmReservationFragment = new ConfirmReservationFragment();
-                    return  confirmReservationFragment; //예매 확인하기 프래그먼트
-
-                case 1:
-                    special_reservation_layout.setVisibility(View.VISIBLE);
+                    //special_reservation_layout.setVisibility(View.VISIBLE);
                     MakeReservationFragment makeReservationFragment = new MakeReservationFragment();
                     return makeReservationFragment; //예매 하기 프래그먼트
+
+                case 1:
+                    //special_reservation_layout.setVisibility(View.GONE);
+                    ConfirmReservationFragment confirmReservationFragment = new ConfirmReservationFragment();
+                    return  confirmReservationFragment; //예매 확인하기 프래그먼트
 
                 default:
                     return null;

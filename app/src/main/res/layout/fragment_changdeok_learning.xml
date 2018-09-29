@@ -195,5 +195,10 @@
 
 
     </LinearLayout>
-
+    <RelativeLayout
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/above_shadow_2"></RelativeLayout>
 </RelativeLayout>
