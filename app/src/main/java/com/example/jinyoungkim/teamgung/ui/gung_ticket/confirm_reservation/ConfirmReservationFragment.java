@@ -95,6 +95,7 @@ public class ConfirmReservationFragment extends Fragment {
             @Override
             public void onResponse(Call<ConfirmTicket> call, Response<ConfirmTicket> response) {
                 if(response.isSuccessful()){
+
                     confirmTicketData = new ArrayList<>();
 
                     confirmTicketData = response.body().result;

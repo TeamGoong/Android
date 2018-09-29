@@ -60,4 +60,5 @@ dependencies {
 
 //   6. Animation
     implementation 'pl.bclogic:pulsator4droid:1.0.3'
+    implementation 'com.github.ankitdubey021:MyAlertDialog:1.0.3'
 }

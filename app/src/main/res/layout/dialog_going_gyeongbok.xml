@@ -22,9 +22,8 @@
             android:id="@+id/btn_close_dialog_gyeongbok"
             android:layout_alignParentRight="true"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-            <!--android:src="@drawable/close_button"-->
+            android:layout_height="wrap_content"
+            android:src="@drawable/close_button"
             />
 
     </RelativeLayout>

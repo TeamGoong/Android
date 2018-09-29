@@ -2,26 +2,29 @@
 
 <!-- 티켓 예매/확인 메인 액티비티 -->
 
-<LinearLayout
-    android:background="@color/background"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ui.gung_ticket.TicketMainActivity">
+
 
     <com.sothree.slidinguppanel.SlidingUpPanelLayout
+        android:background="@color/background"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         xmlns:sothree="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/sliding_layout_reservation"
+        android:id="@+id/sliding_layout"
         android:gravity="bottom"
-        sothree:umanoPanelHeight="60dp"
-        sothree:umanoShadowHeight="4dp"
+        sothree:umanoPanelHeight="55dp"
+        sothree:umanoShadowHeight="0dp"
+        sothree:umanoParallaxOffset="100dp"
+        sothree:umanoDragView="@+id/dragView"
+        sothree:umanoOverlay="true"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context=".ui.gung_ticket.TicketMainActivity">
 
         <!-- 슬라이딩 패널 상단 메뉴 시작 -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -83,16 +86,29 @@
                 android:layout_height="match_parent"></android.support.v4.view.ViewPager>
 
 
+
         </LinearLayout>
+        <RelativeLayout
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/above_shadow_2"></RelativeLayout>
+    </RelativeLayout>
+
 
 
         <!-- 슬라이딩 패널 하단 메뉴 시작 -->
         <!-- 슬라이딩 패널 하단 레이아웃 시작 -->
+
         <LinearLayout
-            android:id="@+id/special_reservation_layout"
+            android:background="@drawable/img_slidepanel"
+            android:id="@+id/dragView"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="497dp">
+            android:layout_height="497dp"
+            android:clickable="true"
+            android:focusable="false">
             <TextView
                 android:layout_marginTop="10dp"
                 android:textStyle="bold"
@@ -101,6 +117,7 @@
                 android:text="특별관람 예매하기"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
 
             <!--특별관람 예매하기 뷰-->
             <LinearLayout
@@ -160,6 +177,7 @@
 
                 <!--세번째 줄-->
                 <LinearLayout
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <ImageView
@@ -191,4 +209,3 @@
     </com.sothree.slidinguppanel.SlidingUpPanelLayout>
 
 
-</LinearLayout>

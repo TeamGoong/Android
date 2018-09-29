@@ -31,7 +31,6 @@ public class BookingChangdeokActivity extends AppCompatActivity {
         // 초기화
         btn_normal_changdeok = (ImageView)findViewById(R.id.btn_normal_changdeok);
         btn_special_changdeok = (ImageView)findViewById(R.id.btn_special_changdeok);
-        profile_booking_changdeok = (ImageView)findViewById(R.id.profile_booking_changdeok);
 
         // 프로필 사진
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());

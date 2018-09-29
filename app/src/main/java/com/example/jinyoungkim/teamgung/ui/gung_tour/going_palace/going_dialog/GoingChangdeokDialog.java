@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 
 import com.example.jinyoungkim.teamgung.R;
 import com.example.jinyoungkim.teamgung.ui.gung_tour.going_palace.going_dialog.vp_changdeok.ChangdeokKing;
@@ -35,11 +36,19 @@ public class GoingChangdeokDialog extends DialogFragment {
         FragmentManager fm = getChildFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
 
+        ImageView close = (ImageView)view.findViewById(R.id.btn_close_dialog_changdeok);
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dismiss();
+            }
+        });
+
 
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
 
         viewPager = (ViewPager)view.findViewById(R.id.vp_changdeok_swipe);
-//
+
             viewPager.setAdapter(new pagerAdapter(fm));
             viewPager.setCurrentItem(0);
         return view;

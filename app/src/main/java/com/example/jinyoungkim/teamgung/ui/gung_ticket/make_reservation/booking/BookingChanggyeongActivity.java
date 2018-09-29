@@ -32,7 +32,6 @@ public class BookingChanggyeongActivity extends AppCompatActivity {
         // 초기화
         btn_normal_changgyeong = (ImageView) findViewById(R.id.btn_normal_changgyeong);
         btn_special_changgyeong = (ImageView)findViewById(R.id.btn_special_changgyeong);
-        profile_booking_changgyeong = (ImageView)findViewById(R.id.profile_booking_changgyeong);
 
         // 프로필 사진
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());

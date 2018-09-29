@@ -12,6 +12,7 @@ public class SharePreferenceController {
     private static final String PALACE_ID = "palace_id";
     private static final String TICKET_ID = "ticket_id";
     private static final String PHOTO_URL = "photo_url";
+    private static final String DATA_FLAG = "data_flag";
 
 
     // 1. 토큰 값 비교
@@ -27,6 +28,7 @@ public class SharePreferenceController {
         String tokenCompare = pref.getString(TOKEN_COMPARE,"");
         return tokenCompare;
     }
+
 
     // 2. 서버로 부터 받은 토큰 값
     public static void setTokenHeader(Context context,String tokenHeader){
@@ -137,6 +139,20 @@ public class SharePreferenceController {
         SharedPreferences pref = context.getSharedPreferences(PHOTO_URL,context.MODE_PRIVATE);
         String photo_url = pref.getString(PHOTO_URL,"");
         return photo_url;
+
+    }
+
+    //8.예매확인 데이터 변경 플래그
+    public static void setDataChange(Context context, int flag){
+        SharedPreferences pref = context.getSharedPreferences(DATA_FLAG,context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putInt(DATA_FLAG,flag);
+        editor.commit();
+    }
+    public static int getDataChange(Context context){
+        SharedPreferences pref = context.getSharedPreferences(DATA_FLAG,context.MODE_PRIVATE);
+        int data_flag = pref.getInt(DATA_FLAG,0);
+        return data_flag;
 
     }
 
