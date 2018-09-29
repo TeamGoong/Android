@@ -33,7 +33,6 @@ public class BookingDuksuActivity extends AppCompatActivity {
         // 초기화
         btn_normal_duksu = (ImageView) findViewById(R.id.btn_normal_duksu);
         btn_special_duksu = (ImageView)findViewById(R.id.btn_special_duksu);
-        profile_booking_duksu = (ImageView)findViewById(R.id.profile_booking_duksu);
 
         // 프로필 사진
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());

@@ -150,7 +150,15 @@ public class TourMainActivity extends AppCompatActivity {
             public void onCompleteLogout() {
                 Log.e("로그아웃","로그아웃");
                 SharePreferenceController.deleteTokenHeader(getApplicationContext());
-                SharePreferenceController.setLogin(getApplicationContext(),"");
+                SharePreferenceController.setLogin(getApplicationContext(),""); // 로그인 삭제
+                SharePreferenceController.setProfile(getApplicationContext(),""); //프사 삭제
+                TourMainActivity.this.notifyAll();
+
+                Glide.with(getApplicationContext())
+                        .load(R.drawable.kakao_default_profile_image)
+                        .apply(new RequestOptions().centerCrop())
+                        .apply(new RequestOptions().circleCrop())
+                        .into(profile_tour_main);
             }
         });
     }

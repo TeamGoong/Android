@@ -25,6 +25,7 @@ public class SharePreferenceController {
         return tokenCompare;
     }
 
+
     // 2. 서버로 부터 받은 토큰 값
     public static void setTokenHeader(Context context,String tokenHeader){
         SharedPreferences pref = context.getSharedPreferences(TOKEN_HEADER,Context.MODE_PRIVATE);
