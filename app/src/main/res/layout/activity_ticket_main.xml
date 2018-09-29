@@ -104,6 +104,9 @@
 
             <!--특별관람 예매하기 뷰-->
             <LinearLayout
+                android:clickable="false"
+                android:focusable="false"
+                android:background="@drawable/img_slidepanel"
                 android:layout_marginTop="20dp"
                 android:orientation="vertical"
                 android:layout_width="match_parent"

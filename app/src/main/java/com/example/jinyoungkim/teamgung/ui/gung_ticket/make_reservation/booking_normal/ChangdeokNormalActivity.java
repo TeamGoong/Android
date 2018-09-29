@@ -570,6 +570,7 @@ public class ChangdeokNormalActivity extends AppCompatActivity {
     }
 //    네트워킹
     public void pay() {
+        Log.e("창덕궁 노멀 토큰: ",SharePreferenceController.getTokenHeader(getApplicationContext()));
         payPost = new PayPost(palace_id,ticket_title,ticket_start,ticket_end,ticket_people,ticket_special,ticket_jongro);
         Call<PayResult> payResultCall = networkService.pay(SharePreferenceController.getTokenHeader(getApplicationContext()),payPost);
         payResultCall.enqueue(new Callback<PayResult>() {
