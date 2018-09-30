@@ -56,6 +56,7 @@ public class Changgyong extends Fragment {
                 Intent i = new Intent(getContext(),LoadingActivity.class);
                 i.putExtra("fragment_type","changgyeong");
                 startActivity(i);
+                getActivity().finish();
 
             }
         });

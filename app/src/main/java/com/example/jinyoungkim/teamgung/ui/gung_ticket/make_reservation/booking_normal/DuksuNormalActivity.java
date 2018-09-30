@@ -74,6 +74,8 @@ public class DuksuNormalActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(0xff394E7E);
         }
+        ticket_people_adult="";
+        ticket_people_junggu="";
 
         networkService = GlobalApplication.getGlobalApplicationContext().getNetworkService();
 

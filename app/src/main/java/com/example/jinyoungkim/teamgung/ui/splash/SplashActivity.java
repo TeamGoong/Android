@@ -35,6 +35,6 @@ public class SplashActivity extends AppCompatActivity {
                 overridePendingTransition(0,0);
                 finish();
             }
-        }, 3000);// 2 초
+        }, 2000);// 2 초
     }
 }
