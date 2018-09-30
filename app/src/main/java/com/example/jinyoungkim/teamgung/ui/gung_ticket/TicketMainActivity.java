@@ -158,10 +158,10 @@ public class TicketMainActivity extends AppCompatActivity implements View.OnClic
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
         if(SharePreferenceController.getDataChange(getApplicationContext())==0){
-            viewPager.setCurrentItem(0);
+            viewPager.setCurrentItem(1);
         } else if (SharePreferenceController.getDataChange(getApplicationContext())== 1) {
 
-            viewPager.setCurrentItem(1);
+            viewPager.setCurrentItem(0);
         }
 
 //        탭 리스너
