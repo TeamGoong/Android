@@ -78,6 +78,8 @@ public class GyeongbokNormalActivity extends AppCompatActivity {
             getWindow().setStatusBarColor(0xffB54141);
         }
 
+       ticket_people_adult="";
+       ticket_people_jongro="";
         networkService = GlobalApplication.getGlobalApplicationContext().getNetworkService();
 
         // 초기화

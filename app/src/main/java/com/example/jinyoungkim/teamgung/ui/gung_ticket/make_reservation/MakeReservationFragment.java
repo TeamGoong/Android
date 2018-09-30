@@ -1,6 +1,8 @@
 package com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -28,12 +30,12 @@ public class MakeReservationFragment extends Fragment {
     public MakeReservationFragment() {
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_make_reservation, container, false);
-
 
 
 //        뷰 초기화

@@ -49,6 +49,7 @@ public class Changdeok extends Fragment {
                 Intent i = new Intent(getContext(),LoadingActivity.class);
                 i.putExtra("fragment_type","changdeok");
                 startActivity(i);
+                getActivity().finish();
 
             }
         });

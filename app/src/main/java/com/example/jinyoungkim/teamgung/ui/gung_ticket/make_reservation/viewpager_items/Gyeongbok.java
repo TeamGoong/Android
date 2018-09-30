@@ -53,6 +53,7 @@ public class Gyeongbok extends Fragment {
                 Intent i = new Intent(getContext(),LoadingActivity.class);
                 i.putExtra("fragment_type","gyeongbok");
                 startActivity(i);
+                getActivity().finish();
 
             }
         });

@@ -9,6 +9,7 @@ import android.widget.ImageView;
 //import com.bumptech.glide.Glide;
 import com.bumptech.glide.Glide;
 import com.example.jinyoungkim.teamgung.R;
+import com.example.jinyoungkim.teamgung.ui.gung_ticket.TicketMainActivity;
 import com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.booking.BookingChangdeokActivity;
 import com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.booking.BookingChanggyeongActivity;
 import com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.booking.BookingDuksuActivity;
@@ -43,6 +44,8 @@ public class Loading2Activity extends AppCompatActivity {
             intent = new Intent(getApplicationContext(), BookingGyeongbokActivity.class);
         }else if(flag.equals("jongmyo")){
             intent = new Intent(getApplicationContext(),BookingJongmyoActivity.class);
+        }else if(flag.equals("confirm")){
+            intent = new Intent(getApplicationContext(),TicketMainActivity.class);
         }
 
         Handler handler = new Handler();
