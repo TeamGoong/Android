@@ -152,12 +152,17 @@ public class TicketMainActivity extends AppCompatActivity implements View.OnClic
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         tabLayout.setTabTextColors(R.color.background,Color.BLACK);
 
-
 //        탭 어댑터
         TabPagerAdapter pagerAdapter = new TabPagerAdapter(getSupportFragmentManager(),tabLayout.getTabCount());
         viewPager.setAdapter(pagerAdapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
+        if(SharePreferenceController.getDataChange(getApplicationContext())==0){
+            viewPager.setCurrentItem(1);
+        } else if (SharePreferenceController.getDataChange(getApplicationContext())== 1) {
+
+            viewPager.setCurrentItem(0);
+        }
 
 //        탭 리스너
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
