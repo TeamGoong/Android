@@ -72,6 +72,8 @@ public class ChanggyeongNormalActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setTheme(R.style.changgyeong);
         setContentView(R.layout.activity_changgyeong_normal);
+        ticket_people_adult="";
+        ticket_people_jongro="";
 
         //        상태바 색상변경
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -179,7 +181,7 @@ public class ChanggyeongNormalActivity extends AppCompatActivity {
                 Log.e("티켓종류) ", ticket_title);
                 Log.e("티켓 시작일) ", ticket_start);
                 Log.e("티켓 종료일) ", ticket_end);
-                ticket_people = ticket_people_adult+", "+ticket_people_jongro;
+                ticket_people = ticket_people_adult+" "+ticket_people_jongro;
                 Log.e("사람 종류) ", ticket_people);
                 Log.e("특별권 구분) ", String.valueOf(ticket_special));
 

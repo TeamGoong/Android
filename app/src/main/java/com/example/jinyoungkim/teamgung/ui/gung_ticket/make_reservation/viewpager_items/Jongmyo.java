@@ -57,6 +57,7 @@ public class Jongmyo extends Fragment {
                 Intent i = new Intent(getContext(),LoadingActivity.class);
                 i.putExtra("fragment_type","jongmyo");
                 startActivity(i);
+                getActivity().finish();
 
             }
         });

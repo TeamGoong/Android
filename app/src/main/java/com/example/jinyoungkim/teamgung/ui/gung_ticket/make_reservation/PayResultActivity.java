@@ -74,8 +74,9 @@ public class PayResultActivity extends AppCompatActivity {
         goto_confirm_reservation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharePreferenceController.setDataChange(getApplicationContext(),1);
-                startActivity(new Intent(getApplicationContext(), TicketMainActivity.class));
+                SharePreferenceController.setDataChange(getApplicationContext(),0);
+                Intent i = new Intent(getApplicationContext(),TicketMainActivity.class);
+                startActivity(i);
                 finish();
             }
         });
@@ -83,7 +84,9 @@ public class PayResultActivity extends AppCompatActivity {
         goto_home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), TicketMainActivity.class));
+                SharePreferenceController.setDataChange(getApplicationContext(),1);
+                Intent i = new Intent(getApplicationContext(),TicketMainActivity.class);
+                startActivity(i);
                 finish();
             }
         });

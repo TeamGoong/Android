@@ -55,6 +55,7 @@ public class Duksu extends Fragment {
                 Intent i = new Intent(getContext(),LoadingActivity.class);
                 i.putExtra("fragment_type","duksu");
                 startActivity(i);
+                getActivity().finish();
 
             }
         });

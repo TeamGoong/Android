@@ -42,7 +42,8 @@
 
                 <!-- 예매정보/궁궐정보 화면전환 스위치 -->
                 <Switch
-                    android:track="@drawable/change_button_blue"
+                    android:thumbTint="@color/tabindicator1"
+                    android:track="@drawable/switch_track_selector"
                     android:id="@+id/switch_ticket"
                     android:layout_centerVertical="true"
                     android:layout_centerHorizontal="true"
@@ -53,6 +54,7 @@
 
                 <!-- 프로필 -->
                 <ImageView
+                    android:clickable="false"
                     android:id="@+id/profile_ticket_main"
                     android:layout_marginRight="20dp"
                     android:layout_centerVertical="true"
@@ -121,6 +123,9 @@
 
             <!--특별관람 예매하기 뷰-->
             <LinearLayout
+                android:clickable="false"
+                android:focusable="false"
+                android:background="@drawable/img_slidepanel"
                 android:layout_marginTop="20dp"
                 android:orientation="vertical"
                 android:layout_width="match_parent"

@@ -48,7 +48,7 @@ public class LoadingActivity extends AppCompatActivity {
         Log.e("#######호출","호출");
         fragment_type = i.getStringExtra("fragment_type");
         Log.e("fragment_type",fragment_type);
-        if(SharePreferenceController.getLogin(getApplicationContext()).equals("yes")){
+        if(!SharePreferenceController.getTokenHeader(getApplicationContext()).equals("")){
             Log.e("header",SharePreferenceController.getTokenHeader(getApplicationContext()));
             Intent i2 = new Intent(getApplicationContext(),Loading2Activity.class);
             i2.putExtra("fragment_type2",fragment_type);
@@ -139,11 +139,14 @@ public class LoadingActivity extends AppCompatActivity {
                             SharePreferenceController.setTokenHeader(getApplicationContext(),response.body().result.token);
                             Toast.makeText(getApplicationContext(),"카카오 로그인이 되었습니다 :)",Toast.LENGTH_SHORT).show();
                             SharePreferenceController.setProfile(getApplicationContext(),profileUrl);
+                            SharePreferenceController.setLogin(getApplicationContext(),"yes");
                             Log.e("Server in, 프사: ",SharePreferenceController.getProfile(getApplicationContext()));
                             Log.e("header",response.body().result.token);
                             Intent i2 = new Intent(getApplicationContext(),Loading2Activity.class);
                             i2.putExtra("fragment_type2",fragment_type);
                             startActivity(i2);
+                            finish();
+                        }else{
                             finish();
                         }
                     }
@@ -154,8 +157,6 @@ public class LoadingActivity extends AppCompatActivity {
                         finish();
                     }
                 });
-
-
 
             }
 

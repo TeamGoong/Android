@@ -29,6 +29,7 @@ import com.example.jinyoungkim.teamgung.R;
 import com.example.jinyoungkim.teamgung.ui.gung_ticket.confirm_reservation.ConfirmReservationFragment;
 import com.example.jinyoungkim.teamgung.ui.gung_ticket.make_reservation.MakeReservationFragment;
 import com.example.jinyoungkim.teamgung.ui.gung_tour.TourMainActivity;
+import com.example.jinyoungkim.teamgung.ui.main.MainActivity;
 import com.example.jinyoungkim.teamgung.util.GlobalApplication;
 import com.example.jinyoungkim.teamgung.util.SharePreferenceController;
 import com.kakao.usermgmt.UserManagement;
@@ -100,34 +101,35 @@ public class TicketMainActivity extends AppCompatActivity implements View.OnClic
         }
 
 
-
-       Glide.with(this)
-                .load(R.drawable.kakao_default_profile_image)
-                .apply(new RequestOptions().centerCrop())
-                .apply(new RequestOptions().circleCrop())
-                .into(profile_ticket_main);
-
-
         // 로그아웃
-        profile_ticket_main.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                new EasyCustomDialog.Builder(TicketMainActivity.this,"로그아웃")
-                        .setHeader("로그아웃 하시겠습니까?")
-                        .setNegativeBtnText("취소")
-                        .setPositiveBtnText("확인")
-                        .onConfirm(new EasyCustomDialogListener() {
-                            @Override
-                            public void execute() {
-                                logout();
-                                GlobalApplication.getGlobalApplicationContext().makeToast("로그아웃 되었습니다 :)");
-                                startActivity(new Intent(getApplicationContext(),TicketMainActivity.class));
-                            }
-                        }).setIcon(getResources().getDrawable(R.drawable.nasi))
-                        .build();
-            }
-        });
+        if(!SharePreferenceController.getLogin(getApplicationContext()).equals("")){
+            profile_ticket_main.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    new EasyCustomDialog.Builder(TicketMainActivity.this,"로그아웃")
+                            .setHeader("로그아웃 하시겠습니까?")
+                            .setNegativeBtnText("취소")
+                            .setPositiveBtnText("확인")
+                            .onConfirm(new EasyCustomDialogListener() {
+                                @Override
+                                public void execute() {
+                                    logout();
+                                    GlobalApplication.getGlobalApplicationContext().makeToast("로그아웃 되었습니다 :)");
+                                    Glide.with(getApplicationContext())
+                                            .load(R.drawable.kakao_default_profile_image)
+                                            .apply(new RequestOptions().centerCrop())
+                                            .apply(new RequestOptions().circleCrop())
+                                            .into(profile_ticket_main);
+                                    startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                                    finish();
+                                }
+                            }).setIcon(getResources().getDrawable(R.drawable.nasi))
+                            .build();
+                }
+            });
+
+        }
 
 //        스위치
         switch_ticket.setChecked(false);
@@ -150,12 +152,17 @@ public class TicketMainActivity extends AppCompatActivity implements View.OnClic
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         tabLayout.setTabTextColors(R.color.background,Color.BLACK);
 
-
 //        탭 어댑터
         TabPagerAdapter pagerAdapter = new TabPagerAdapter(getSupportFragmentManager(),tabLayout.getTabCount());
         viewPager.setAdapter(pagerAdapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
+        if(SharePreferenceController.getDataChange(getApplicationContext())==0){
+            viewPager.setCurrentItem(1);
+        } else if (SharePreferenceController.getDataChange(getApplicationContext())== 1) {
+
+            viewPager.setCurrentItem(0);
+        }
 
 //        탭 리스너
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -247,13 +254,7 @@ public class TicketMainActivity extends AppCompatActivity implements View.OnClic
                 SharePreferenceController.deleteTokenHeader(getApplicationContext());
                 SharePreferenceController.setLogin(getApplicationContext(),""); // 로그인 삭제
                 SharePreferenceController.setProfile(getApplicationContext(),""); //프사 삭제
-
-                Glide.with(getApplicationContext())
-                        .load(R.drawable.kakao_default_profile_image)
-                        .apply(new RequestOptions().centerCrop())
-                        .apply(new RequestOptions().circleCrop())
-                        .into(profile_ticket_main);
-
+                SharePreferenceController.setTokenHeader(getApplicationContext(),""); //헤더 삭제
             }
         });
     }

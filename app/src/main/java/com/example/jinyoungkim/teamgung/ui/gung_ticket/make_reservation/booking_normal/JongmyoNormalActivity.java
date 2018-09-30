@@ -80,6 +80,8 @@ public class JongmyoNormalActivity extends AppCompatActivity {
             getWindow().setStatusBarColor(0xff60A682);
         }
 
+        ticket_people_adult="";
+        ticket_people_junggu="";
         networkService = GlobalApplication.getGlobalApplicationContext().getNetworkService();
 
         // 초기화

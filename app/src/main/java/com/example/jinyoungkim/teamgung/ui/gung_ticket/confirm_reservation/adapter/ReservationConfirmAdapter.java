@@ -71,7 +71,7 @@ public class ReservationConfirmAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
 
       if(SharePreferenceController.getDataChange(view.getContext())==1){
-          notifyDataSetChanged();
+//          notifyDataSetChanged();
           SharePreferenceController.setDataChange(view.getContext(),0);
       }
 
