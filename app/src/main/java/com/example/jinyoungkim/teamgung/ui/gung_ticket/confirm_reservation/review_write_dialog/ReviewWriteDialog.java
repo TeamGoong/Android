@@ -40,7 +40,9 @@ public class ReviewWriteDialog extends Dialog {
         float congestion_score;
         float see_score;
 
-        int click_flag;
+        int traffic_flag;
+        int congestion_flag;
+        int see_flag;
 
         //네트워킹
     NetworkService networkService;
@@ -78,8 +80,8 @@ public class ReviewWriteDialog extends Dialog {
 
 
 
-                if(click_flag<3){
-                    Toast.makeText(context.getApplicationContext(),"얼굴을 다 눌러주세요:)",Toast.LENGTH_SHORT).show();
+                if(traffic_flag==0||congestion_flag==0||see_flag==0){
+                    Toast.makeText(context.getApplicationContext(),"모든 항목을 평가해주세요 :)",Toast.LENGTH_SHORT).show();
                 }else{
                     btn.setVisibility(View.INVISIBLE);
                     btn2.setVisibility(View.VISIBLE);
@@ -96,7 +98,7 @@ public class ReviewWriteDialog extends Dialog {
                         @Override
                         public void onResponse(Call<ReviewWriteResult> call, Response<ReviewWriteResult> response) {
                             if(response.isSuccessful()){
-                                Toast.makeText(context.getApplicationContext(),"성공",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context.getApplicationContext(),"후기를 등록했습니다 :)",Toast.LENGTH_SHORT).show();
                             }
                         }
 
@@ -119,11 +121,11 @@ public class ReviewWriteDialog extends Dialog {
                 clearSelected_traffic();
                 if(good_tr.isSelected()==false){
                     traffic_score = 10;
-                    click_flag += 1;
+                    traffic_flag += 1;
                     good_tr.setSelected(true);
                 }else{
                     traffic_score = 0;
-                    click_flag -= 1;
+                    traffic_flag -= 1;
                     good_tr.setSelected(false);
                 }
 
@@ -135,11 +137,11 @@ public class ReviewWriteDialog extends Dialog {
                 clearSelected_congestion();
                 if(good_con.isSelected()==false){
                     congestion_score = 10;
-                    click_flag += 1;
+                    congestion_flag += 1;
                     good_con.setSelected(true);
                 }else{
                     congestion_score = 0;
-                    click_flag -= 1;
+                    congestion_flag -= 1;
                     good_con.setSelected(false);
                 }
 
@@ -151,11 +153,11 @@ public class ReviewWriteDialog extends Dialog {
                 clearSelected_see();
                 if(good_see.isSelected()==false){
                     see_score = 10;
-                    click_flag += 1;
+                    see_flag += 1;
                     good_see.setSelected(true);
                 }else{
                     see_score = 0;
-                    click_flag -= 1;
+                    see_flag -= 1;
                     good_see.setSelected(false);
                 }
 
@@ -167,12 +169,12 @@ public class ReviewWriteDialog extends Dialog {
                 clearSelected_traffic();
                 if(soso_tr.isSelected()==false){
                     traffic_score = 5;
-                    click_flag += 1;
+                    traffic_flag += 1;
 
                     soso_tr.setSelected(true);
                 }else{
                     traffic_score = 0;
-                    click_flag -= 1;
+                    traffic_flag -= 1;
                     soso_tr.setSelected(false);
                 }
 
@@ -184,11 +186,11 @@ public class ReviewWriteDialog extends Dialog {
                 clearSelected_congestion();
                 if(soso_con.isSelected()==false){
                     congestion_score = 5;
-                    click_flag += 1;
+                    congestion_flag += 1;
                     soso_con.setSelected(true);
                 }else{
                     congestion_score = 0;
-                    click_flag -= 1;
+                    congestion_flag -= 1;
                    soso_con.setSelected(false);
                 }
 
@@ -200,11 +202,11 @@ public class ReviewWriteDialog extends Dialog {
                 clearSelected_see();
                 if(soso_see.isSelected()==false){
                     see_score = 5;
-                    click_flag += 1;
+                    see_flag += 1;
                     soso_see.setSelected(true);
                 }else{
                     see_score = 0;
-                    click_flag -= 1;
+                    see_flag -= 1;
                    soso_see.setSelected(false);
                 }
 
@@ -216,11 +218,11 @@ public class ReviewWriteDialog extends Dialog {
                 clearSelected_traffic();
                 if(bad_tr.isSelected()==false){
                     traffic_score = 0;
-                    click_flag += 1;
+                    traffic_flag += 1;
                    bad_tr.setSelected(true);
                 }else{
                     traffic_score = 0;
-                    click_flag -= 1;
+                    traffic_flag -= 1;
                    bad_tr.setSelected(false);
                 }
 
@@ -232,11 +234,11 @@ public class ReviewWriteDialog extends Dialog {
                 clearSelected_congestion();
                 if(bad_con.isSelected()==false){
                     congestion_score = 0;
-                    click_flag += 1;
+                    congestion_flag += 1;
                    bad_con.setSelected(true);
                 }else{
                     congestion_score = 0;
-                    click_flag -= 1;
+                    congestion_flag -= 1;
                    bad_con.setSelected(false);
                 }
 
@@ -248,11 +250,11 @@ public class ReviewWriteDialog extends Dialog {
                 clearSelected_see();
                 if(bad_see.isSelected()==false){
                     see_score = 0;
-                    click_flag += 1;
+                    see_flag += 1;
                     bad_see.setSelected(true);
                 }else{
                     see_score = 0;
-                    click_flag -= 1;
+                    see_flag -= 1;
                     bad_see.setSelected(false);
                 }
 

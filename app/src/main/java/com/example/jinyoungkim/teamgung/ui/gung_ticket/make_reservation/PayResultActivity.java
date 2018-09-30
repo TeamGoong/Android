@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.example.jinyoungkim.teamgung.R;
 import com.example.jinyoungkim.teamgung.ui.gung_ticket.TicketMainActivity;
 import com.example.jinyoungkim.teamgung.ui.gung_ticket.confirm_reservation.ConfirmReservationFragment;
+import com.example.jinyoungkim.teamgung.util.SharePreferenceController;
 
 public class PayResultActivity extends AppCompatActivity {
 
@@ -73,6 +74,7 @@ public class PayResultActivity extends AppCompatActivity {
         goto_confirm_reservation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SharePreferenceController.setDataChange(getApplicationContext(),1);
                 startActivity(new Intent(getApplicationContext(), TicketMainActivity.class));
                 finish();
             }

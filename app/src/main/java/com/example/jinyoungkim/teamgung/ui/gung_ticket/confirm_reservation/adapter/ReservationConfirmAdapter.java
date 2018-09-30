@@ -30,12 +30,15 @@ import java.util.ArrayList;
 public class ReservationConfirmAdapter extends RecyclerView.Adapter {
 
     public static class ReservationConfirmViewHolder extends RecyclerView.ViewHolder{
+
         LinearLayout ticket_bgr;
         TextView review_btn;
 
         TextView ticket_title;
         TextView ticket_people;
         TextView ticket_date;
+
+
 
         ImageView review_fin;//후기 작성 끝냈을 때
         public ReservationConfirmViewHolder(View itemView) {
@@ -55,23 +58,31 @@ public class ReservationConfirmAdapter extends RecyclerView.Adapter {
         this.confirmTicketData = confirmTicketData;
         this.view = view;
     }
-
+    public int update_flag=0;
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.rcv_item_confirm_ticket,parent,false);
+
         return new ReservationConfirmViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
+
+      if(SharePreferenceController.getDataChange(view.getContext())==1){
+          notifyDataSetChanged();
+          SharePreferenceController.setDataChange(view.getContext(),0);
+      }
+
+
         final ReservationConfirmViewHolder reservationConfirmViewHolder = (ReservationConfirmViewHolder) holder;
 
         int ticket_flag = confirmTicketData.get(position).ticket_flag; //0:일반 1:선착 2:특별
         int review_flag = confirmTicketData.get(position).ticket_review;//1이면 리뷰작성함
         int finish_flag = confirmTicketData.get(position).end_flag;// 1이면끝난예약
 
-        String date = confirmTicketData.get(position).ticket_start+"~"+confirmTicketData.get(position).ticket_end;
+        String date = confirmTicketData.get(position).ticket_start+" - "+confirmTicketData.get(position).ticket_end;
 
         reservationConfirmViewHolder.ticket_title.setText(confirmTicketData.get(position).ticket_title);
         reservationConfirmViewHolder.ticket_people.setText(confirmTicketData.get(position).ticket_people);
@@ -156,6 +167,7 @@ public class ReservationConfirmAdapter extends RecyclerView.Adapter {
                 }
             });
         }
+
 
     }
 
